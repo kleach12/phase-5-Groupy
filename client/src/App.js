@@ -1,10 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Dashboard from './Dashboard/Dashboard';
 
 function App() {
   return (
     <div>
-      <h1> Hello </h1>
+      <Routes>
+        <Route path = "/" element = {<Dashboard/>}/>
+      </Routes>
     </div>
   )
 }

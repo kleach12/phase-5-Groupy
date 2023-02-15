@@ -21,4 +21,11 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+Colors
+- #FE5D26 Giants Orange
+- #F2C078 Earth Yello
+- #FAEDCA Dutch White
+- #C1DBB3 Tea Green
+- #7EBC89 Emerald
+- #FFFFFF White
+
