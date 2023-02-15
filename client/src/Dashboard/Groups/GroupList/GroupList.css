@@ -1,0 +1,21 @@
+#group_card{
+
+}
+
+.card {
+  height: 200px;
+  border-radius: 1vh;
+  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+  margin-bottom: 20px;
+    background-size: cover;
+  
+  @include media {
+    height: 500px;
+  }
+  
+}

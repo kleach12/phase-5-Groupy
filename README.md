@@ -29,3 +29,5 @@ Colors
 - #7EBC89 Emerald
 - #FFFFFF White
 
+
+Acknowledge: Halo Labs - UX/ui

@@ -1,19 +1,9 @@
-#dash_nav{
+#friends_nav {
   background-color: #ffffff;
   margin: 2% 1% 2% 1%;
-  padding: 2% 4%;
+  padding: 1% 1%;
   border-radius: 1vh;
   display: flex;
   flex-direction: column;
   text-align: center;
-}
-
-#profile_pic{
-  padding: 10% 0%;
-  border-radius: 50%; 
-  width: 150px;
-}
-
-#title{
-  color: #fa7e1e;
 }
