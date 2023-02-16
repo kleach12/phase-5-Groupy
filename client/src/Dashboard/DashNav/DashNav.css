@@ -1,6 +1,6 @@
 #dash_nav{
+  font-family: 'Inter', sans-serif;
   background-color: #ffffff;
-  margin: 2% 1% 2% 1%;
   padding: 2% 4%;
   border-radius: 1vh;
   display: flex;
@@ -16,4 +16,6 @@
 
 #title{
   color: #fa7e1e;
+  font-size: 40px;
+  font-weight: 900;
 }

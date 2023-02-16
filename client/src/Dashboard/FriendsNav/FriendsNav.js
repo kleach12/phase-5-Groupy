@@ -1,9 +1,13 @@
-import './FriendsNav.css'
+import "./FriendsNav.css";
+import FriendsList from "./FriendsList/FriendsList";
 
-export default function FriendsNav(){
+export default function FriendsNav() {
   return (
-    <div id = 'friends_nav'> 
-      <h2> Friends</h2>
+    <div id="friends_nav">
+      <div>
+      <h2 id="friends_title"> Friends</h2>
+      </div>
+        <FriendsList />
     </div>
-  )
+  );
 }
