@@ -9,11 +9,9 @@ export default function Dashboard(){
   return(
     <div id ='dashboard'>
       <div id = "bg_background"></div>
-      <div className='container'>
         <DashNav/>
         <Groups/>
         <FriendsNav/>
-      </div>
     </div>
   )
 }

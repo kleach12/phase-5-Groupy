@@ -1,5 +1,5 @@
 #groups {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   padding: 1% 1%;
   border-radius: 1vh;
   display: flex;
@@ -7,22 +7,45 @@
   text-align: center;
   flex-grow: 1;
 }
+#groups_top {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+}
 
-.btn-dash_button{
-  background-color:#ff7a29 ;
+.dropdown-dash_button {
+  background-color: #ff7a29 !important;
   color: #ffffff;
   border: 3px solid #ff7a29 !important;
-  border: none;
-  padding: 10px;
-  margin: 5px;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 15px !important;
+  font-weight: 600 !important;
   border-radius: 1vh;
 }
 
-#groups_title{
+
+.dropdown-toggle::after {
+  display: none !important; 
+}
+
+#groups_title {
   float: left;
   font-size: 40px;
   font-weight: 900;
   margin-left: 1%;
+}
+
+.dropdown-menu-custom {
+  align-items: start;
+  background-color: #ff7a29;
+  padding: 0% 1% 0% 1% ;
+  border-radius: 1vh;
+  /* z-index: 1; */
+}
+
+.dropdown-item-custom {
+  color: #ff7a29 !important;
+  font-family: "Inter", sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600 !important; 
+  /* padding: 10% 0% 5% 0% ; */
 }
