@@ -1,7 +1,8 @@
 #friends_nav {
   font-family: "Inter", sans-serif;
   background-color: #ffffff;
-  padding: 1% 5%;
+  padding-top: 3% !important;
+  margin: 2% 2% 2% 2%;
   border-radius: 1vh;
   display: flex;
   flex-direction: column;
@@ -11,11 +12,10 @@
   padding: 5px;
 }
 
-
-
-#friends_title{
+#friends_title {
   float: left;
   font-size: 30px;
   font-weight: 800;
   margin-left: 1%;
+  color: #000000;
 }

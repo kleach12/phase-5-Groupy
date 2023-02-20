@@ -1,21 +1,25 @@
 #dash_nav{
   font-family: 'Inter', sans-serif;
   background-color: #ffffff;
-  padding: 2% 4%;
-  border-radius: 1vh;
+  color:#000000;
+  padding: 25px 2%;
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
+  border-right: 5px solid #F2F3F5;
 }
 
 #profile_pic{
-  padding: 10% 0%;
+  padding: 20% 0%;
   border-radius: 50%; 
   width: 150px;
 }
 
 #title{
-  color: #fa7e1e;
+  font-family: 'Inter', sans-serif;
+  color: #000000;
   font-size: 40px;
   font-weight: 900;
+  padding-top: 10%;
 }

@@ -1,13 +1,23 @@
 #friends_list {
   display: flex;
-  border-top: 1px #e92100 solid;
-  border-bottom: 1px #e92100 solid;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
   box-sizing: border-box;
   width: 100%;
 }
 
 .friend_prof_pic {
-  width: 40px;
-  border-radius: 50%;
-  padding: 5% 10%;
+  width: 15%;
+  /* border-radius: 50%; */
+  /* padding: 5% 10%; */
+}
+
+.friedns_name{
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  margin: 0px;
+  padding-left: 10px;
 }

@@ -1,15 +1,18 @@
 import "./GroupList.css";
-import pattern2 from "./pattern_2.svg";
 
 export default function GroupList() {
   return (
     <div id="group_card">
-      <div className="card" style={{ backgroundImage: `url(${pattern2})` }}>
-        <div className="inner">
+      <div className="card_group">
+        <div className="left_card">
           <h2 className="title">Group Name</h2>
           <h3> group size</h3>
         </div>
+        <div className="right_card">
+          <h2> User pictures</h2>
+        </div>
       </div>
+      <div></div>
     </div>
   );
 }

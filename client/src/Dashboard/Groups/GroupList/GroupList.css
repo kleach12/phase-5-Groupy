@@ -5,25 +5,42 @@
   flex-direction: column;
 }
 
-.card {
+.card_group {
   font-family: "Inter", sans-serif;
-  width: 85%;
+  width: 95%;
   height: 200px;
   border-radius: 1vh;
   position: relative;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
-  align-items: flex-end;
   text-decoration: none;
   background-size: cover;
-
+  background-color: #ffffff;
+  justify-content:flex-start;
+  align-items: center;
+}
+.card_group:hover{
+  background-color: #000000;
+  box-shadow: 0 0 40px ;
+  color: #ffffff;
 }
 
-.inner {
-  text-align: left;
-  background-color: rgba(255, 255, 255, 0.9);
-  width: 100%;
-  border-radius: 1vh;
-  padding: 20px;
+/* .card_group:hover {
+  background-color: #000000 !important;
+  color: #ffffff ;
+} */
+
+.left_card{
+  display: flex;
+  flex-grow: 1;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.right_card{
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
