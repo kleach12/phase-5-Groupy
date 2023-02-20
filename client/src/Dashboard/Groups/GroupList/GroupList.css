@@ -7,11 +7,12 @@
 
 .card_group {
   font-family: "Inter", sans-serif;
-  width: 95%;
+  width: 900px;
   height: 200px;
   border-radius: 1vh;
   position: relative;
   padding: 20px;
+  margin-bottom: 2%;
   box-sizing: border-box;
   display: flex;
   text-decoration: none;
@@ -31,14 +32,19 @@
 
 .left_card {
   display: flex;
-  flex-grow: 1;
+  flex-grow: 2;
   align-items: flex-start;
   flex-direction: column;
+  white-space: nowrap
 }
 
 .right_card {
-  flex-grow: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.card_prof_pic{
+  width: 40px;
 }
