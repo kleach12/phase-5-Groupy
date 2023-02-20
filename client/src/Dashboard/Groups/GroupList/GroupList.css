@@ -17,28 +17,26 @@
   text-decoration: none;
   background-size: cover;
   background-color: #ffffff;
-  justify-content:flex-start;
+  justify-content: flex-start;
   align-items: center;
+  box-shadow: 0 0 10px #000000;
+  transition: box-shadow 0.1s ease-in-out;
 }
-.card_group:hover{
+.card_group:hover {
   background-color: #000000;
-  box-shadow: 0 0 40px ;
+  box-shadow: 0 0 40px;
   color: #ffffff;
+  box-shadow: 0 0 40px #000000;
 }
 
-/* .card_group:hover {
-  background-color: #000000 !important;
-  color: #ffffff ;
-} */
-
-.left_card{
+.left_card {
   display: flex;
   flex-grow: 1;
   align-items: flex-start;
   flex-direction: column;
 }
 
-.right_card{
+.right_card {
   flex-grow: 1;
   display: flex;
   justify-content: flex-end;
