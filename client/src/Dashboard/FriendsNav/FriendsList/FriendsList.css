@@ -1,4 +1,4 @@
-#friends_list {
+.friends_list {
   display: flex;
   align-items: center;
   font-family: "Inter", sans-serif;
@@ -6,10 +6,18 @@
   font-size: 15px;
   box-sizing: border-box;
   width: 100%;
+  padding: 2% 0%;
+  border-top: 2px solid #F2F3F5;
+  border-bottom: 2px solid #F2F3F5;
+}
+.friends_list:hover{
+  color: #ffffff;
+  background-color: #000000;
 }
 
 .friend_prof_pic {
   width: 15%;
+  border-radius: 50%;
   /* border-radius: 50%; */
   /* padding: 5% 10%; */
 }

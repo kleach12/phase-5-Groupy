@@ -22,12 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 Colors
-- #FE5D26 Giants Orange
-- #F2C078 Earth Yello
-- #FAEDCA Dutch White
-- #C1DBB3 Tea Green
-- #7EBC89 Emerald
-- #FFFFFF White
+- #00fefe Bright Blue
+- #03fc04 Light Green
 
 
 Acknowledge: Halo Labs - UX/ui
