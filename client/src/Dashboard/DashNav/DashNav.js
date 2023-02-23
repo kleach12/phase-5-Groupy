@@ -8,7 +8,7 @@ export default function DashNav(){
         <h3 id = "at"> @Irl</h3>
       <h3 id = "idea"> Meet your next group of local friends!</h3>
       </div>
-      <h3 id = 'sign_in_up'> Sign In/New User</h3>
+      <h3 id = 'sign_out'> Sign out</h3>
     </div>
   )
 }

@@ -1,0 +1,93 @@
+#sign_in_up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Inter", sans-serif;
+}
+
+#web_name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  padding-right: 10%;
+}
+
+#sign_in_up_box {
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0 0 10px #000000;
+  border-radius: 0.5vh;
+  width: 400px;
+}
+#sign_in {
+  display: flex;
+  flex-direction: column;
+}
+#sign_in::after{
+  content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: block; /* This will put the pseudo element on its own line. */
+    margin: 0 auto; /* This will center the border. */
+    width: 90%; /* Change this to whatever width you want. *//* This creates some space between the element and the border. */
+    border-bottom: 2px solid #d9dadc; /* This creates the border. Replace black with whatever color you want. */
+}
+#sign_up {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border-top: 5px solid #d9dadc; */
+}
+#IRL {
+  font-family: "Inter", sans-serif;
+  color: #000000;
+  font-size: 50px;
+  font-weight: 900;
+}
+
+#logo {
+  border-radius: 50%;
+}
+.sign_in_text {
+  font-family: "Inter", sans-serif;
+  padding: 2%;
+  margin: 2%;
+  font-size: 20px;
+  border-radius: 0.5vh;
+  font-weight: 700;
+}
+
+.sing_in_button {
+  font-family: "Inter", sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 1%;
+  margin: 2%;
+  border-radius: 0.5vh;
+  font-weight: 700;
+}
+
+.sign_up_button{
+  font-family: "Inter", sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 1%;
+  margin: 2%;
+  border-radius: 0.5vh;
+  font-weight: 700;
+  width:50%;
+}
+
+@media only screen and (max-width: 780px) {
+  #sign_in_up {
+    flex-direction: column;
+  }
+
+  #web_name {
+    padding-right: 0%;
+    margin-bottom: 5%;
+  }
+}
