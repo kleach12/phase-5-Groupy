@@ -1,6 +1,10 @@
 import "./SignInUp.css";
+import SignInModal from "./SingInModal/SignInModal";
+import Button from "react-bootstrap/Button";
+import { useState } from "react";
 
 export default function SignInUp() {
+  const [show, setShow] = useState(false);
   return (
     <div id="sign_in_up">
       <div id="web_name">
@@ -10,9 +14,10 @@ export default function SignInUp() {
           src="https://www.clipartmax.com/png/small/1-16702_world-clip-art-transparent-background-earth-clipart.png"
           alt="profile pic"
         />
+        <h3 id="idea"> Meet a new group of friends!</h3>
       </div>
       <div id="sign_in_up_box">
-        <div id = "sign_in">
+        <form id="sign_in">
           <input
             className="sign_in_text"
             tupe="textbox"
@@ -24,9 +29,14 @@ export default function SignInUp() {
             placeholder="Password"
           />
           <input className="sing_in_button" type="button" value="Sign In" />
-        </div>
+        </form>
         <div id="sign_up">
-          <input className="sign_up_button" type="button" value="Sign Up" />
+          {/* <input className="sign_up_button" type="button" value="Sign Up" /> */}
+
+          <Button className="sign_up_button" onClick={() => setShow(true)}>
+            Create New Account
+          </Button>
+          <SignInModal show={show} setShow={setShow} />
         </div>
       </div>
     </div>

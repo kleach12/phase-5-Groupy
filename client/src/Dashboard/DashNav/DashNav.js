@@ -6,7 +6,7 @@ export default function DashNav(){
       <img id = "profile_pic" src = 'https://www.clipartmax.com/png/small/1-16702_world-clip-art-transparent-background-earth-clipart.png' alt = "profile pic"/>
       <div>
         <h3 id = "at"> @Irl</h3>
-      <h3 id = "idea"> Meet your next group of local friends!</h3>
+      
       </div>
       <h3 id = 'sign_out'> Sign out</h3>
     </div>

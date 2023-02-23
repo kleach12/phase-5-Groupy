@@ -1,0 +1,48 @@
+#sign_up_modal{
+  width: 500px;
+}
+
+.modal_title{
+  font-size: 30px !important;
+  font-weight: 700 !important;
+}
+#sign_up_form{
+  display: flex;
+  flex-direction: column;
+}
+
+#first_last{
+  display: flex;
+  width: 100%;
+  flex: 1;
+}
+
+.sign_up_text{
+  flex-grow: 1;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 1%;
+  padding: 1%;
+}
+
+#modal_foot{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+
+@media only screen and (max-width: 520px) {
+  #sign_up_modal{
+    width: 300px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #first_last{
+    flex-direction:column;
+  }
+
+}

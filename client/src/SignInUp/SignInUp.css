@@ -48,6 +48,7 @@
 
 #logo {
   border-radius: 50%;
+  width: 30%;
 }
 .sign_in_text {
   font-family: "Inter", sans-serif;
@@ -70,15 +71,22 @@
 }
 
 .sign_up_button{
-  font-family: "Inter", sans-serif;
-  background-color: #000000;
+  font-family: "Inter", sans-serif !important;
+  background-color: #000000 !important;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 15px;
   padding: 1%;
   margin: 2%;
   border-radius: 0.5vh;
   font-weight: 700;
   width:50%;
+}
+
+#idea{
+  font-size: 30px;
+  font-family: 'Inter', sans-serif;
+  color: #000000;
+  font-weight: 500;
 }
 
 @media only screen and (max-width: 780px) {
