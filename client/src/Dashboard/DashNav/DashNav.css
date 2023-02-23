@@ -8,18 +8,55 @@
   text-align: center;
   align-items: center;
   border-right: 5px solid #F2F3F5;
+  width: 17%;
 }
 
 #profile_pic{
-  padding: 20% 0%;
+  padding: 15% 0% 0% 0% ;
   border-radius: 50%; 
-  width: 150px;
+  width: 80%;
+  margin-bottom: 5%;
 }
 
 #title{
   font-family: 'Inter', sans-serif;
   color: #000000;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 900;
-  padding-top: 10%;
+  padding-top: 20%;
+  margin-bottom: 10%;
+}
+
+#at{
+  color: #b2b2b2;
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 15%;
+  cursor: pointer !important;
+}
+#at:hover{
+  color: #000000;
+}
+
+#idea{
+  font-size: 30px;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 10%;
+  margin-top: 10%;
+  color: #000000;
+  font-weight: 700;
+}
+
+#sign_in_up{
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 10%;
+  margin-top: 10%;
+  color: #b2b2b2;
+  font-weight: 700;
+  cursor: pointer !important;
+}
+
+#sign_in_up:hover{
+  color: #000000;
 }

@@ -40,6 +40,7 @@ export default function FriendsNav() {
         key={friend.userName}
         userName={friend.userName}
         profPic={friend.profPic}
+        
       />
     );
   });

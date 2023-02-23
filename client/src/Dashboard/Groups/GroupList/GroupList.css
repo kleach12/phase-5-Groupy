@@ -6,6 +6,7 @@
 }
 
 .card_group {
+  font-weight: 900 !important;
   font-family: "Inter", sans-serif;
   width: 85%;
   height: 200px;
@@ -23,6 +24,7 @@
   box-shadow: 0 0 10px #000000;
   transition: box-shadow 0.1s ease-in-out;
   margin-top: 2% !important;
+  cursor: pointer !important;
 }
 .card_group:hover {
   background-color: #000000;
@@ -30,14 +32,40 @@
   color: #ffffff;
   box-shadow: 0 0 40px #000000;
 }
-
-.card_group:first {
-  margin-top: 5% !important;
+.group_title{
+  font-weight: 800 !important;
 }
-/* .card_group:hover h3{
-  color: #ffffff;
-} */
+.num_mem{
+  font-weight: 800 !important;
+  font-size: 20px;
+}
 
+.first_card_group{
+  font-family: "Inter", sans-serif;
+  width: 85%;
+  height: 200px;
+  border-radius: 1vh;
+  position: relative;
+  padding: 20px;
+  margin-bottom: 1%;
+  box-sizing: border-box;
+  display: flex;
+  text-decoration: none;
+  background-size: cover;
+  background-color: #ffffff;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0 0 10px #000000;
+  transition: box-shadow 0.1s ease-in-out;
+  margin-top: 5% !important;
+  cursor: pointer !important;
+}
+.first_card_group:hover {
+  background-color: #000000;
+  box-shadow: 0 0 40px;
+  color: #ffffff;
+  box-shadow: 0 0 40px #000000;
+}
 .left_card {
   display: flex;
   flex-grow: 2;
