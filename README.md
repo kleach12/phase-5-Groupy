@@ -28,3 +28,7 @@ Colors
 
 Acknowledge: Halo Labs - UX/ui
 Orix Creative
+
+
+Start Postgres 
+sudo service postgresql start
