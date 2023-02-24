@@ -1,6 +1,7 @@
 import "./SignInModal.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import CityAutoComp from "../../CityAutoComp/CityAutoComp";
 
 export default function SignInModal({ show, setShow }) {
   return (
@@ -48,6 +49,7 @@ export default function SignInModal({ show, setShow }) {
             name="birthday"
             className="sign_up_text"
           />
+          <CityAutoComp/>
         </form>
       </Modal.Body>
       <Modal.Footer>
