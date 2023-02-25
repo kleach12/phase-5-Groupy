@@ -1,7 +1,7 @@
 import "./SignInModal.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import CityAutoComp from "../../CityAutoComp/CityAutoComp";
+import CoStCi from "../../CoStCi/CoStCi";
 
 export default function SignInModal({ show, setShow }) {
   return (
@@ -19,7 +19,7 @@ export default function SignInModal({ show, setShow }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form id="sign_up_form">
+        <form id="sign_up_form" autocomplete="off">
           <div id="first_last">
             <input
               className="sign_up_text"
@@ -49,7 +49,7 @@ export default function SignInModal({ show, setShow }) {
             name="birthday"
             className="sign_up_text"
           />
-          <CityAutoComp/>
+          <CoStCi/>
         </form>
       </Modal.Body>
       <Modal.Footer>
