@@ -11,7 +11,7 @@
 //     if (!city) return;
 
 //     const res = await fetchPlace(city);
-//     !autocompleteCities.includes(e.target.value) &&
+
 //       res.features &&
 //       setAutocompleteCities(res.features.map((place) => place.place_name));
 //     res.error ? setAutocompleteErr(res.error) : setAutocompleteErr("");
