@@ -3,7 +3,7 @@ import SignInModal from "./SingInModal/SignInModal";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 
-export default function SignInUp() {
+export default function SignInUp({ setUser, setSignedIn, signedIn }) {
   const [show, setShow] = useState(false);
   return (
     <div id="sign_in_up">
@@ -36,8 +36,14 @@ export default function SignInUp() {
           <Button className="sign_up_button" onClick={() => setShow(true)}>
             Create New Account
           </Button>
-          
-          <SignInModal show={show} setShow={setShow} />
+
+          <SignInModal
+            show={show}
+            setShow={setShow}
+            setUser={setUser}
+            setSignedIn={setSignedIn}
+            signedIn ={signedIn}
+          />
         </div>
       </div>
     </div>

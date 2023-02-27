@@ -3,9 +3,15 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import CoStCi from "../../CoStCi/CoStCi";
 import { useState } from "react";
-import { City } from "country-state-city";
+import { Navigate } from "react-router-dom";
 
-export default function SignInModal({ show, setShow }) {
+export default function SignInModal({
+  show,
+  setShow,
+  setSignedIn,
+  setUser,
+  signedIn,
+}) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
@@ -17,11 +23,6 @@ export default function SignInModal({ show, setShow }) {
   const [userState, setUserState] = useState("");
   const [userCity, setUserCity] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-  // const [error, setError] = useState(null)
-  // console.log(country,state,city,email)
-  // console.log(userCountry);
-  // console.log(userState);
-  // console.log(userCity);
 
   function handleFirstName(e) {
     setFirstName(e.target.value);
@@ -82,12 +83,15 @@ export default function SignInModal({ show, setShow }) {
           }, 5000);
         } else {
           console.log(data);
-          // setSignedIn(true);
-          // setUser(data);
+          setSignedIn(true);
+          setUser(data);
         }
       });
   }
 
+  if (signedIn) {
+    return <Navigate to="/Dashboard" />;
+  }
   return (
     <Modal
       show={show}
