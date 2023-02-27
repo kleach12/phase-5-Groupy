@@ -171,7 +171,7 @@ export default function SignInModal({
       <Modal.Footer>
         <div id="modal_foot">
           <h2 className="error_message">
-            {`*${errorMessage}*` ? errorMessage : null}
+            {errorMessage ? errorMessage : null}
           </h2>
           <Button onClick={handleNewUserSignUp} className="sign_up_button">
             {" "}

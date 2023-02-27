@@ -12,7 +12,17 @@ function App() {
     <div>
       <Routes>
         <Route path="/GroupRoom" element={<GroupRoom />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route
+          path="/Dashboard"
+          element={
+            <Dashboard
+              user={user}
+              setUser={setUser}
+              signedIn={signedIn}
+              setSignedIn={setSignedIn}
+            />
+          }
+        />
         <Route
           path="/"
           element={

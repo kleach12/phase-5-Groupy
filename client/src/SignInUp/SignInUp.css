@@ -26,6 +26,8 @@
 #sign_in {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #sign_in::after{
   content: ""; /* This is necessary for the pseudo element to work. */ 
@@ -58,6 +60,7 @@
   font-size: 20px;
   border-radius: 0.5vh;
   font-weight: 700;
+  width: 95%;
 }
 
 .sing_in_button {
@@ -69,6 +72,7 @@
   margin: 2%;
   border-radius: 0.5vh;
   font-weight: 700;
+  width: 95%;
 }
 
 .sign_up_button{
