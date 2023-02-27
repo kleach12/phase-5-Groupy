@@ -5,3 +5,14 @@ display: flex;
 .input_container{
 display: flex;
 }
+
+
+.sign_up_select{
+  flex-grow: 1;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 1%;
+  /* padding: 1%; */
+  border: .5px solid #000000;
+  border-radius: 1vh;
+}

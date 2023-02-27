@@ -36,6 +36,7 @@ export default function SignInUp() {
           <Button className="sign_up_button" onClick={() => setShow(true)}>
             Create New Account
           </Button>
+          
           <SignInModal show={show} setShow={setShow} />
         </div>
       </div>

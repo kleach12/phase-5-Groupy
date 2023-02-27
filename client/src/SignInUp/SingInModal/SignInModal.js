@@ -2,8 +2,92 @@ import "./SignInModal.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import CoStCi from "../../CoStCi/CoStCi";
+import { useState } from "react";
+import { City } from "country-state-city";
 
 export default function SignInModal({ show, setShow }) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [userCountry, setuserCounty] = useState("");
+  const [userState, setUserState] = useState("");
+  const [userCity, setUserCity] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
+  // const [error, setError] = useState(null)
+  // console.log(country,state,city,email)
+  // console.log(userCountry);
+  // console.log(userState);
+  // console.log(userCity);
+
+  function handleFirstName(e) {
+    setFirstName(e.target.value);
+  }
+
+  function handleLastName(e) {
+    setLastName(e.target.value);
+  }
+
+  function handleUserName(e) {
+    setUsername(e.target.value);
+  }
+
+  function handleEmail(e) {
+    setEmail(e.target.value);
+  }
+
+  function handlePassword(e) {
+    setPassword(e.target.value);
+  }
+
+  function handlePasswordConfirm(e) {
+    setPasswordConfirm(e.target.value);
+  }
+
+  function handleDateOfBirth(e) {
+    setDateOfBirth(e.target.value);
+  }
+
+  function handleNewUserSignUp(e) {
+    e.preventDefault();
+    const formdata = {
+      first_name: firstName,
+      last_name: lastName,
+      username: username,
+      email: email,
+      password: password,
+      password_confirmation: passwordConfirm,
+      dob: dateOfBirth,
+      country: userCountry,
+      state: userState,
+      city: userCity,
+    };
+    fetch("/users", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formdata),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.errors) {
+          console.log(data.errors);
+          setErrorMessage(data.errors[0]);
+          setTimeout(() => {
+            setErrorMessage(null);
+          }, 5000);
+        } else {
+          console.log(data);
+          // setSignedIn(true);
+          // setUser(data);
+        }
+      });
+  }
+
   return (
     <Modal
       show={show}
@@ -12,6 +96,7 @@ export default function SignInModal({ show, setShow }) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
       id="sign_up_modal"
+      backdrop="static"
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter" className="modal_title">
@@ -19,42 +104,75 @@ export default function SignInModal({ show, setShow }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form id="sign_up_form" autocomplete="off">
+        <form id="sign_up_form">
           <div id="first_last">
             <input
               className="sign_up_text"
               type="type"
               placeholder="First name"
+              value={firstName}
+              onChange={(e) => handleFirstName(e)}
             />
             <input
               className="sign_up_text"
               type="type"
               placeholder="Last name"
+              value={lastName}
+              onChange={(e) => handleLastName(e)}
             />
           </div>
-          <input className="sign_up_text" type="type" placeholder="Username" />
+          <input
+            className="sign_up_text"
+            type="type"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => handleUserName(e)}
+          />
+          <input
+            className="sign_up_text"
+            type="type"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => handleEmail(e)}
+          />
           <input
             className="sign_up_text"
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => handlePassword(e)}
           />
           <input
             className="sign_up_text"
             type="password"
             placeholder="Re-Enter Password"
+            value={passwordConfirm}
+            onChange={(e) => handlePasswordConfirm(e)}
           />
           <input
             type="date"
             id="birthday"
             name="birthday"
             className="sign_up_text"
+            value={dateOfBirth}
+            onChange={(e) => handleDateOfBirth(e)}
           />
-          <CoStCi/>
+          <CoStCi
+            setuserCounty={setuserCounty}
+            setUserState={setUserState}
+            setUserCity={setUserCity}
+          />
         </form>
       </Modal.Body>
       <Modal.Footer>
-        <div id = 'modal_foot'> 
-          <Button className="sign_up_button"> Sign Up </Button>
+        <div id="modal_foot">
+          <h2 className="error_message">
+            {`*${errorMessage}*` ? errorMessage : null}
+          </h2>
+          <Button onClick={handleNewUserSignUp} className="sign_up_button">
+            {" "}
+            Sign Up{" "}
+          </Button>
         </div>
       </Modal.Footer>
     </Modal>

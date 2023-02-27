@@ -23,16 +23,22 @@
   font-weight: 500;
   margin: 1%;
   padding: 1%;
+  border: .5px solid #000000;
+  border-radius: 1vh;
 }
 
 #modal_foot{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-
+.error_message{
+  font-size: 20px;
+  color: red;
+}
 
 @media only screen and (max-width: 520px) {
   #sign_up_modal{
