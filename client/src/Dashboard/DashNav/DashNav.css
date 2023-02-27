@@ -11,11 +11,12 @@
   width: 17%;
 }
 
-#profile_pic{
-  padding: 15% 0% 0% 0% ;
-  border-radius: 50%; 
-  width: 80%;
-  margin-bottom: 5%;
+.profile_pic{
+  /* padding: 15% 0% 0% 0% !important; */
+  border-radius: 50% !important; 
+  width: 25vh !important;
+  height: 25vh  !important;
+  margin-bottom: 5% !important;
 }
 
 #title{
@@ -39,7 +40,7 @@
 }
 
 
-#sign_out{
+.dashnav_text{
   font-size: 20px;
   font-family: 'Inter', sans-serif;
   margin-bottom: 10%;
@@ -49,6 +50,6 @@
   cursor: pointer !important;
 }
 
-#sign_in_up:hover{
+.dashnav_text:hover{
   color: #000000;
 }
