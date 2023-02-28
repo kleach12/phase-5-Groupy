@@ -3,9 +3,13 @@ import { Navigate } from "react-router-dom";
 import { BsInstagram, BsFacebook } from "react-icons/bs";
 import { useState } from "react";
 import Avatar from "react-avatar";
+import EditModal from "./EditModal/EditModal";
 // import Button from "react-bootstrap/Button";
 
 export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
+  const [show, setShow] = useState(false);
+  const [username, setUsername] = useState("");
+
   function handleSignOut() {
     fetch("/logout", {
       method: "DELETE",
@@ -43,7 +47,14 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
         <BsInstagram className="socials" />
         <BsFacebook className="socials" />
       </div>
-      <h3 className="dashnav_text"> Edit Profile </h3>
+      <h3 className="dashnav_text" onClick={() => setShow(true)}> Edit Profile </h3>
+      <EditModal
+            show={show}
+            setShow={setShow}
+            setUser={setUser}
+            setSignedIn={setSignedIn}
+            
+          />
       <h3 className="dashnav_text" onClick={handleSignOut}>
         Sign out
       </h3>

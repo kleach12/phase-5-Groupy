@@ -17,6 +17,7 @@
   width: 25vh !important;
   height: 25vh  !important;
   margin-bottom: 5% !important;
+  background-color: #000000 !important;
 }
 
 #title{
@@ -65,4 +66,8 @@
   color: #b2b2b2;
   font-size: 20px;
   margin: 3px
+}
+
+.socials:hover{
+  color: #000000
 }

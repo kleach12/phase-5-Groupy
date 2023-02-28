@@ -1,0 +1,31 @@
+#edit_profile{
+  display: flex;
+  flex-direction: column;
+}
+
+.edit_input_text{
+  flex-grow: 1;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 1%;
+  padding: 1%;
+  border: .5px solid #000000;
+  border-radius: 1vh;
+}
+
+#bio_box{
+  height: 150px;
+}
+
+#file_label{
+  flex-grow: 1;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 1%;
+  border-radius: 1vh;
+}
+input::file-selector-button{
+  border-radius: 1vh;
+  background-color: #000000;
+  color: white;
+}
