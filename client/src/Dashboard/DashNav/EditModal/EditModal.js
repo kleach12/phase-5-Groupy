@@ -4,6 +4,15 @@ import Button from "react-bootstrap/Button";
 import { useState } from 'react';
 export default function EditModal({show, setShow}){
   const [errorMessage, setErrorMessage] = useState(null);
+  const [bio, setBio] = useState("")
+
+    function handleBio(e){
+      setBio(e.target.value)
+      console.log(bio)
+    }
+
+    const charCount = ( bio.length > 250 ? <h2 className = 'char_count'style={{color:'red'}}>{bio.length}/250</h2> : <h2 className = 'char_count'> {bio.length}/250</h2>)
+
   return (
     <Modal
       show={show}
@@ -23,7 +32,8 @@ export default function EditModal({show, setShow}){
         <form id = 'edit_profile'>
           <label id='file_label'> Profile Picture </label>
           <input className = "edit_input_text" type = 'file' placeholder='Profile Picture'/>
-          <textarea id = "bio_box" className = "edit_input_text" type = 'textarea' placeholder='Bio'/>
+          <textarea id = "bio_box" className = "edit_input_text" type = 'textarea' placeholder='Bio' value={bio} onChange={handleBio}/>
+          {charCount}
           <input className = "edit_input_text" type = 'text' placeholder='Instagram'/>
           <input className = "edit_input_text" type = 'text' placeholder='Facebook'/>
         </form>
