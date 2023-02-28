@@ -4,7 +4,6 @@
   justify-content: center;
   height: 100vh;
   font-family: "Inter", sans-serif;
-  
 }
 
 #web_name {
@@ -29,12 +28,12 @@
   align-items: center;
   justify-content: center;
 }
-#sign_in::after{
-  content: ""; /* This is necessary for the pseudo element to work. */ 
-    display: block; /* This will put the pseudo element on its own line. */
-    margin: 0 auto; /* This will center the border. */
-    width: 90%; /* Change this to whatever width you want. *//* This creates some space between the element and the border. */
-    border-bottom: 2px solid #d9dadc; /* This creates the border. Replace black with whatever color you want. */
+#sign_in::after {
+  content: ""; /* This is necessary for the pseudo element to work. */
+  display: block; /* This will put the pseudo element on its own line. */
+  margin: 0 auto; /* This will center the border. */
+  width: 90%; /* Change this to whatever width you want. */ /* This creates some space between the element and the border. */
+  border-bottom: 2px solid #d9dadc; /* This creates the border. Replace black with whatever color you want. */
 }
 #sign_up {
   display: flex;
@@ -75,7 +74,7 @@
   width: 95%;
 }
 
-.sign_up_button{
+.sign_up_button {
   font-family: "Inter", sans-serif !important;
   background-color: #000000 !important;
   border: #000000 1px solid !important;
@@ -85,16 +84,27 @@
   margin: 2%;
   border-radius: 0.5vh;
   font-weight: 700 !important;
-  width:50%;
+  width: 50%;
 }
 
-#idea{
+#idea {
   font-size: 30px;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   color: #000000;
   font-weight: 500;
 }
 
+.show_password {
+  position: absolute;
+  margin-left: 350px;
+  font-size: 20px;
+  color: #000000;
+}
+
+.show_password:hover{
+  color: #d9dadc;
+  cursor: pointer;
+}
 @media only screen and (max-width: 780px) {
   #sign_in_up {
     flex-direction: column;

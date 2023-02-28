@@ -3,12 +3,14 @@ import SignInModal from "./SingInModal/SignInModal";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 
 export default function SignInUp({ setUser, setSignedIn, signedIn }) {
   const [show, setShow] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
+  const [showPassword, setShowPassword] = useState(false)
 
   function handleUsername(e) {
     setUsername(e.target.value);
@@ -48,6 +50,8 @@ export default function SignInUp({ setUser, setSignedIn, signedIn }) {
       });
   }
 
+  const hiddenPassword = ( showPassword ? <BsFillEyeSlashFill className="show_password" onClick={() => setShowPassword(!showPassword)} onFocus={() => setShow(false)   }/> : <BsFillEyeFill className="show_password" onClick={() => setShowPassword(!showPassword)} />)
+
   if (signedIn) {
     return <Navigate to="/Dashboard" />;
   }
@@ -74,11 +78,13 @@ export default function SignInUp({ setUser, setSignedIn, signedIn }) {
           />
           <input
             className="sign_in_text"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             placeholder="Password"
             onChange={(e) => handlePassword(e)}
             value={password}
           />
+          {/* <BsFillEyeFill className="show_password" onClick={() => handleShowPassword()}/> */}
+          {hiddenPassword}
           <h2 className="error_message">
             {errorMessage ? errorMessage : null}
           </h2>
