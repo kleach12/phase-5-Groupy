@@ -11,6 +11,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def show 
+    user = user_in_session
+    if user
+      render json: user
+    else
+      render json: {error: "No User Signed In"}, status: :ok
+    end
+  end
+
   def update
     user = user_in_session
     if user

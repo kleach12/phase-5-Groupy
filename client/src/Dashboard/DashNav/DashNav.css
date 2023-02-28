@@ -24,13 +24,13 @@
   color: #000000;
   font-size: 50px;
   font-weight: 900;
-  padding-top: 20%;
-  margin-bottom: 10%;
+  padding-top: 25px;
+  margin-bottom: 30%;
 }
 
 #at{
   color: #b2b2b2;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 700;
   margin-bottom: 15%;
   cursor: pointer !important;
@@ -39,17 +39,30 @@
   color: #000000;
 }
 
-
 .dashnav_text{
   font-size: 20px;
   font-family: 'Inter', sans-serif;
-  margin-bottom: 10%;
-  margin-top: 10%;
+  /* margin-bottom: 10%; */
+  /* margin-top: 10%; */
   color: #b2b2b2;
   font-weight: 700;
   cursor: pointer !important;
 }
 
+.dashnav_text:first-of-type{
+  margin-top: 100%;
+}
+
 .dashnav_text:hover{
   color: #000000;
+}
+
+.social_icons{
+  display: flex;
+}
+
+.socials{
+  color: #b2b2b2;
+  font-size: 20px;
+  margin: 3px
 }
