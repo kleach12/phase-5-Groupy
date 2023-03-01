@@ -1,6 +1,7 @@
 import "./DashNav.css";
 import { Navigate } from "react-router-dom";
-import { BsInstagram, BsFacebook } from "react-icons/bs";
+import { BsInstagram, BsFacebook,BsTwitter} from "react-icons/bs";
+import { FaTiktok }from "react-icons/fa";
 import { useState } from "react";
 import Avatar from "react-avatar";
 import EditModal from "./EditModal/EditModal";
@@ -44,15 +45,17 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
         <h3 id="at"> Bio </h3>
       </div>
       <div className="social_icons">
-        <BsInstagram className="socials" />
-        <BsFacebook className="socials" />
+        <BsInstagram className="socials" href="" />
+        <BsFacebook className="socials" href="" />
+        <BsTwitter className="socials" href=""/>
+        <FaTiktok className="socials" href=""/>
       </div>
       <h3 className="dashnav_text" onClick={() => setShow(true)}> Edit Profile </h3>
       <EditModal
             show={show}
             setShow={setShow}
+            user={user}
             setUser={setUser}
-            setSignedIn={setSignedIn}
             
           />
       <h3 className="dashnav_text" onClick={handleSignOut}>

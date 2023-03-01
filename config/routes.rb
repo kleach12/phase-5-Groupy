@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users
-  put "/user/:username", to: "users#update"
+  put "/user/:username", to: "users#update_profile"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/me", to: "users#show"

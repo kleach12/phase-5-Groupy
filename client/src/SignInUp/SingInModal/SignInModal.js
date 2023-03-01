@@ -23,6 +23,7 @@ export default function SignInModal({
   const [userState, setUserState] = useState("");
   const [userCity, setUserCity] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
+  const [profilePic, setProfilePic] = useState(null);
 
   function handleFirstName(e) {
     setFirstName(e.target.value);
@@ -65,6 +66,7 @@ export default function SignInModal({
       country: userCountry,
       state: userState,
       city: userCity,
+      pro_pic: profilePic
     };
     fetch("/users", {
       method: "POST",
@@ -165,6 +167,14 @@ export default function SignInModal({
             setuserCounty={setuserCounty}
             setUserState={setUserState}
             setUserCity={setUserCity}
+          />
+          <label id="file_label"> Profile Picture </label>
+          <input
+            className="edit_input_text"
+            type="file"
+            placeholder="Profile Picture"
+            accept="image/*"
+            onChange={(e) => setProfilePic(e.target.files[0])}
           />
         </form>
       </Modal.Body>

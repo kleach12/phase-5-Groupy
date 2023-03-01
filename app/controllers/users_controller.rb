@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def create 
     user = User.create(user_params)
+    # user.pro_pic.attach(params[:pro_pic])
     if user.valid?
       session[:user_id] = user.id
       render json: user, status: :created
@@ -20,7 +21,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
+  def update_profile
+    # user = user_in_session
     user = user_in_session
     if user
       user.update(user_params)
@@ -32,12 +34,17 @@ class UsersController < ApplicationController
 
   private 
 
+  #try clark johnsons way on medium
   def user_params
-    params.permit(:username, :profile_picture, :first_name, :last_name, :password, :password_confirmation, :dob, :email, :country, :state, :city)
+    params.permit(:username, :first_name, :last_name, :password, :password_confirmation, :dob, :email, :country, :state, :city, :bio, :facebook, :insta, :tiktok, :twitter, :pro_pic)
   end
+
 
   def user_in_session
     User.find_by(id: session[:user_id]) 
   end
 
 end
+
+
+# use attached and new params for update only

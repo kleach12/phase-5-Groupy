@@ -1,6 +1,6 @@
 class User < ApplicationRecord
+  has_one_attached :pro_pic
   has_secure_password
-  has_one_attached :profile_picture
   validates :first_name, :last_name, :username, :dob, :email, :country, presence: true
   validates :username, uniqueness: true
   validates :email, uniqueness: true
@@ -13,18 +13,18 @@ class User < ApplicationRecord
   validates :username, format: { with: /\A[A-Za-z0-9#@$%^&+=]+\z/, message: "only allows letters, numbers, and symbols #@$%^&+=" }
   # validates :email, format: { with: /\A[A-Za-z0-9#@$%^&+=]+\z/, message: "only allows letters, numbers, and symbols #@$%^&+=" }
 
-  validate :acceptable_image
+  # validate :acceptable_image
 
-  def acceptable_image
-    return unless profile_picture.attached?
+#   def acceptable_image
+#     return unless pro_pic.attached?
   
-    unless profile_picture.blob.byte_size <= 1.megabyte
-      errors.add(:profile_picture, "is too big")
-    end
+#     unless profile_picture.blob.byte_size <= 1.megabyte
+#       errors.add(:pro_pic, "is too big")
+#     end
   
-    acceptable_types = ["image/jpeg", "image/png"]
-    unless acceptable_types.include?(profile_picture.content_type)
-      errors.add(:profile_picture, "must be a JPEG or PNG")
-    end
-  end
+#     acceptable_types = ["image/jpeg", "image/png"]
+#     unless acceptable_types.include?(profile_picture.content_type)
+#       errors.add(:pro_pic, "must be a JPEG or PNG")
+#     end
+#   end
 end
