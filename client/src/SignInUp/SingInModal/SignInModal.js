@@ -1,6 +1,6 @@
 import "./SignInModal.css";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 import CoStCi from "../../CoStCi/CoStCi";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
@@ -23,59 +23,62 @@ export default function SignInModal({
   const [userState, setUserState] = useState("");
   const [userCity, setUserCity] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-  const [profilePic, setProfilePic] = useState(null);
+  // const [profilePic, setProfilePic] = useState(null);
 
-  function handleFirstName(e) {
-    setFirstName(e.target.value);
-  }
+  // function handleFirstName(e) {
+  //   setFirstName(e.target.value);
+  // }
 
-  function handleLastName(e) {
-    setLastName(e.target.value);
-  }
+  // function handleLastName(e) {
+  //   setLastName(e.target.value);
+  // }
 
-  function handleUserName(e) {
-    setUsername(e.target.value);
-  }
+  // function handleUserName(e) {
+  //   setUsername(e.target.value);
+  // }
 
-  function handleEmail(e) {
-    setEmail(e.target.value);
-  }
+  // function handleEmail(e) {
+  //   setEmail(e.target.value);
+  // }
 
-  function handlePassword(e) {
-    setPassword(e.target.value);
-  }
+  // function handlePassword(e) {
+  //   setPassword(e.target.value);
+  // }
 
-  function handlePasswordConfirm(e) {
-    setPasswordConfirm(e.target.value);
-  }
+  // function handlePasswordConfirm(e) {
+  //   setPasswordConfirm(e.target.value);
+  // }
 
-  function handleDateOfBirth(e) {
-    setDateOfBirth(e.target.value);
-  }
+  // function handleDateOfBirth(e) {
+  //   setDateOfBirth(e.target.value);
+  // }
 
-  function handleNewUserSignUp(e) {
+  function handleSumbit(e) {
     e.preventDefault();
-    const formdata = {
-      first_name: firstName,
-      last_name: lastName,
-      username: username,
-      email: email,
-      password: password,
-      password_confirmation: passwordConfirm,
-      dob: dateOfBirth,
-      country: userCountry,
-      state: userState,
-      city: userCity,
-      pro_pic: profilePic
-    };
+    const data = new FormData();
+    data.append("image", e.target.image.files[0]);
+    data.append("first_name", firstName);
+    data.append("last_name", lastName);
+    data.append("username", username);
+    data.append("email", email);
+    data.append("password", password);
+    data.append("password_confirmation", passwordConfirm);
+    data.append("dob", dateOfBirth);
+    data.append("country", userCountry);
+    data.append("state", userState);
+    data.append("city", userCity);
+
+    submitToAPI(data);
+    // Use an appropriate url
+    // bkl
+  }
+  function submitToAPI(data) {
+    // fetch("http://localhost:3000/avatars",
     fetch("/users", {
       method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(formdata),
+      body: data,
     })
-      .then((res) => res.json())
+      .then((response) => response.json())
       .then((data) => {
         if (data.errors) {
           console.log(data.errors);
@@ -88,8 +91,46 @@ export default function SignInModal({
           setSignedIn(true);
           setUser(data);
         }
-      });
+      })
+      .catch((error) => console.error(error));
   }
+
+  // function handleNewUserSignUp(e) {
+  //   e.preventDefault();
+  //   const formdata = {
+  //     first_name: firstName,
+  //     last_name: lastName,
+  //     username: username,
+  //     email: email,
+  //     password: password,
+  //     password_confirmation: passwordConfirm,
+  //     dob: dateOfBirth,
+  //     country: userCountry,
+  //     state: userState,
+  //     city: userCity
+  //   };
+  //   fetch("/users", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(formdata),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.errors) {
+  //         console.log(data.errors);
+  //         setErrorMessage(data.errors[0]);
+  //         setTimeout(() => {
+  //           setErrorMessage(null);
+  //         }, 5000);
+  //       } else {
+  //         console.log(data);
+  //         setSignedIn(true);
+  //         setUser(data);
+  //       }
+  //     });
+  // }
 
   if (signedIn) {
     return <Navigate to="/Dashboard" />;
@@ -110,21 +151,21 @@ export default function SignInModal({
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form id="sign_up_form">
+        <form id="sign_up_form" onSubmit={(e) => handleSumbit(e)}>
           <div id="first_last">
             <input
               className="sign_up_text"
               type="type"
               placeholder="First name"
               value={firstName}
-              onChange={(e) => handleFirstName(e)}
+              onChange={(e) => setFirstName(e.target.value)}
             />
             <input
               className="sign_up_text"
               type="type"
               placeholder="Last name"
               value={lastName}
-              onChange={(e) => handleLastName(e)}
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
           <input
@@ -132,28 +173,28 @@ export default function SignInModal({
             type="type"
             placeholder="Username"
             value={username}
-            onChange={(e) => handleUserName(e)}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <input
             className="sign_up_text"
             type="type"
             placeholder="Email"
             value={email}
-            onChange={(e) => handleEmail(e)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             className="sign_up_text"
             type="password"
             placeholder="Password"
             value={password}
-            onChange={(e) => handlePassword(e)}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <input
             className="sign_up_text"
             type="password"
             placeholder="Re-Enter Password"
             value={passwordConfirm}
-            onChange={(e) => handlePasswordConfirm(e)}
+            onChange={(e) => setPasswordConfirm(e.target.value)}
           />
           <input
             type="date"
@@ -161,7 +202,7 @@ export default function SignInModal({
             name="birthday"
             className="sign_up_text"
             value={dateOfBirth}
-            onChange={(e) => handleDateOfBirth(e)}
+            onChange={(e) => setDateOfBirth(e.target.value)}
           />
           <CoStCi
             setuserCounty={setuserCounty}
@@ -172,13 +213,19 @@ export default function SignInModal({
           <input
             className="edit_input_text"
             type="file"
-            placeholder="Profile Picture"
+            name="image"
             accept="image/*"
-            onChange={(e) => setProfilePic(e.target.files[0])}
+            onChange={(e) => console.log(e.target.image)}
           />
+          <div id="modal_foot">
+            <h2 className="error_message">
+              {errorMessage ? errorMessage : null}
+            </h2>
+            <button type="submit" className="sign_up_button"> Sign Up </button>
+          </div>
         </form>
       </Modal.Body>
-      <Modal.Footer>
+      {/* <Modal.Footer>
         <div id="modal_foot">
           <h2 className="error_message">
             {errorMessage ? errorMessage : null}
@@ -188,7 +235,7 @@ export default function SignInModal({
             Sign Up{" "}
           </Button>
         </div>
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   );
-  }
+}

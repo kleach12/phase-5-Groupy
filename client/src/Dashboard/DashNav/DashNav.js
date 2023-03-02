@@ -5,10 +5,12 @@ import { FaTiktok }from "react-icons/fa";
 import { useState } from "react";
 import Avatar from "react-avatar";
 import EditModal from "./EditModal/EditModal";
+import PictureModal from "./PictureModal/PictureModal";
 // import Button from "react-bootstrap/Button";
 
 export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
-  const [show, setShow] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [showPictureEdit, setShowPicture] = useState(false)
   const [username, setUsername] = useState("");
 
   function handleSignOut() {
@@ -34,8 +36,13 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
       {/* <img id="profile_pic" src={user.profile_picture} alt="profile pic" /> */}
       <Avatar
         className="profile_pic"
-        src={user.profile_picture}
+        src={user.image}
         name={user.full_name}
+        onClick={() => setShowPicture(true)}
+      />
+      <PictureModal
+      showPictureEdit={showPictureEdit}
+      setShowPicture={setShowPicture}
       />
       <div>
         <h3 id="at"> @{user.username}</h3>
@@ -50,13 +57,12 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
         <BsTwitter className="socials" href=""/>
         <FaTiktok className="socials" href=""/>
       </div>
-      <h3 className="dashnav_text" onClick={() => setShow(true)}> Edit Profile </h3>
+      <h3 className="dashnav_text" onClick={() => setShowEdit(true)}> Edit Profile </h3>
       <EditModal
-            show={show}
-            setShow={setShow}
             user={user}
             setUser={setUser}
-            
+            showEdit = {showEdit}
+            setShowEdit ={setShowEdit}
           />
       <h3 className="dashnav_text" onClick={handleSignOut}>
         Sign out

@@ -2,10 +2,10 @@ import "./EditModal.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
-export default function EditModal({ show, setShow, user, setUser }) {
+export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   const [errorMessage, setErrorMessage] = useState(null);
   const [bio, setBio] = useState("");
-  const [profilePic, setProfilePic] = useState(null);
+  // const [profilePic, setProfilePic] = useState(null);
   const [facebook, setFaceBook] = useState("");
   const [insta, setInsta] = useState("");
   const [tiktok, setTiktok] = useState("");
@@ -39,7 +39,7 @@ export default function EditModal({ show, setShow, user, setUser }) {
   function handleUpdate(e) {
     // e.preventDefault();
     const formData = {
-      pro_pic: profilePic,
+      // avatar: profilePic,
       bio: bio,
       facebook: facebook,
       insta: insta,
@@ -74,8 +74,8 @@ export default function EditModal({ show, setShow, user, setUser }) {
 
   return (
     <Modal
-      show={show}
-      onHide={() => setShow(false)}
+      show={showEdit}
+      onHide={() => setShowEdit(false)}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
@@ -89,14 +89,14 @@ export default function EditModal({ show, setShow, user, setUser }) {
       </Modal.Header>
       <Modal.Body>
         <form id="edit_profile">
-          <label id="file_label"> Profile Picture </label>
-          <input
+          {/* <label id="file_label"> Profile Picture </label> */}
+          {/* <input
             className="edit_input_text"
             type="file"
             placeholder="Profile Picture"
             accept="image/*"
             onChange={(e) => setProfilePic(e.target.files[0])}
-          />
+          /> */}
           <textarea
             id="bio_box"
             className="edit_input_text"

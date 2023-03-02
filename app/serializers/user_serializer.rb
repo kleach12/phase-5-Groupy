@@ -1,8 +1,9 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :first_name, :last_name, :username, :dob, :email, :country, :state, :city, :pro_pic, :full_name, :bio, :facebook, :insta, :tiktok, :twitter
+  include Rails.application.routes.url_helpers
+  attributes :first_name, :last_name, :username, :dob, :email, :country, :state, :city, :full_name, :bio, :facebook, :insta, :tiktok, :twitter, :image
 
-  def pro_pic
-    rails.blob.path(object.pro_pic, only_path: true) if object.pro_pic.attached?
+  def image
+    rails_blob_path(object.image, only_path: true) if object.image.attached?
   end
 
   def full_name

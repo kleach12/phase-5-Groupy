@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_one_attached :pro_pic
+  has_one_attached :image
   has_secure_password
   validates :first_name, :last_name, :username, :dob, :email, :country, presence: true
   validates :username, uniqueness: true
