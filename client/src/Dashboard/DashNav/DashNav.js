@@ -1,18 +1,16 @@
 import "./DashNav.css";
 import { Navigate } from "react-router-dom";
-import { BsInstagram, BsFacebook,BsTwitter} from "react-icons/bs";
-import { FaTiktok }from "react-icons/fa";
+import { BsInstagram, BsFacebook, BsTwitter } from "react-icons/bs";
+import { FaTiktok } from "react-icons/fa";
 import { useState } from "react";
 import Avatar from "react-avatar";
 import EditModal from "./EditModal/EditModal";
 import PictureModal from "./PictureModal/PictureModal";
-// import Button from "react-bootstrap/Button";
 
 export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
   const [showEdit, setShowEdit] = useState(false);
-  const [showPictureEdit, setShowPicture] = useState(false)
-  const [username, setUsername] = useState("");
-
+  const [showPictureEdit, setShowPicture] = useState(false);
+  console.log(user);
   function handleSignOut() {
     fetch("/logout", {
       method: "DELETE",
@@ -20,8 +18,6 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
       console.log(res);
       setSignedIn(false);
       setUser(null);
-      console.log(user.profile_picture);
-      console.log(signedIn);
     });
   }
 
@@ -32,8 +28,6 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
   return (
     <div id="dash_nav">
       <h1 id="title"> IRL </h1>
-      {/* {userProfilePic} */}
-      {/* <img id="profile_pic" src={user.profile_picture} alt="profile pic" /> */}
       <Avatar
         className="profile_pic"
         src={user.image}
@@ -41,8 +35,8 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
         onClick={() => setShowPicture(true)}
       />
       <PictureModal
-      showPictureEdit={showPictureEdit}
-      setShowPicture={setShowPicture}
+        showPictureEdit={showPictureEdit}
+        setShowPicture={setShowPicture}
       />
       <div>
         <h3 id="at"> @{user.username}</h3>
@@ -52,18 +46,21 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
         <h3 id="at"> Bio </h3>
       </div>
       <div className="social_icons">
-        <BsInstagram className="socials" href="" />
-        <BsFacebook className="socials" href="" />
-        <BsTwitter className="socials" href=""/>
-        <FaTiktok className="socials" href=""/>
+      <a href={user.insta ? user.insta : null} target="_blank" rel="noreferrer"> <BsInstagram className="socials"  /> </a>
+      <a href={user.facebook ? user.facebook : null} target="_blank"rel="noreferrer"> <BsFacebook className="socials"  /> </a>
+      <a href={user.twitter ? user.twitter : null} target="_blank" rel="noreferrer"> <BsTwitter className="socials"/> </a>
+      <a href={user.tiktok ? user.tiktok : null} target="_blank" rel="noreferrer"> <FaTiktok className="socials" /> </a>
       </div>
-      <h3 className="dashnav_text" onClick={() => setShowEdit(true)}> Edit Profile </h3>
+      <h3 className="dashnav_text" onClick={() => setShowEdit(true)}>
+        {" "}
+        Edit Profile{" "}
+      </h3>
       <EditModal
-            user={user}
-            setUser={setUser}
-            showEdit = {showEdit}
-            setShowEdit ={setShowEdit}
-          />
+        user={user}
+        setUser={setUser}
+        showEdit={showEdit}
+        setShowEdit={setShowEdit}
+      />
       <h3 className="dashnav_text" onClick={handleSignOut}>
         Sign out
       </h3>

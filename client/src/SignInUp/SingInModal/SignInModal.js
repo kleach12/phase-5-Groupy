@@ -23,35 +23,6 @@ export default function SignInModal({
   const [userState, setUserState] = useState("");
   const [userCity, setUserCity] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-  // const [profilePic, setProfilePic] = useState(null);
-
-  // function handleFirstName(e) {
-  //   setFirstName(e.target.value);
-  // }
-
-  // function handleLastName(e) {
-  //   setLastName(e.target.value);
-  // }
-
-  // function handleUserName(e) {
-  //   setUsername(e.target.value);
-  // }
-
-  // function handleEmail(e) {
-  //   setEmail(e.target.value);
-  // }
-
-  // function handlePassword(e) {
-  //   setPassword(e.target.value);
-  // }
-
-  // function handlePasswordConfirm(e) {
-  //   setPasswordConfirm(e.target.value);
-  // }
-
-  // function handleDateOfBirth(e) {
-  //   setDateOfBirth(e.target.value);
-  // }
 
   function handleSumbit(e) {
     e.preventDefault();
@@ -73,7 +44,6 @@ export default function SignInModal({
     // bkl
   }
   function submitToAPI(data) {
-    // fetch("http://localhost:3000/avatars",
     fetch("/users", {
       method: "POST",
       body: data,
@@ -90,47 +60,20 @@ export default function SignInModal({
           console.log(data);
           setSignedIn(true);
           setUser(data);
+          setFirstName('')
+          setLastName('')
+          setUsername('')
+          setEmail('')
+          setPassword('')
+          setPasswordConfirm('')
+          setDateOfBirth('')
+          setuserCounty('')
+          setUserCity('')
+          setUserState('')
         }
       })
       .catch((error) => console.error(error));
   }
-
-  // function handleNewUserSignUp(e) {
-  //   e.preventDefault();
-  //   const formdata = {
-  //     first_name: firstName,
-  //     last_name: lastName,
-  //     username: username,
-  //     email: email,
-  //     password: password,
-  //     password_confirmation: passwordConfirm,
-  //     dob: dateOfBirth,
-  //     country: userCountry,
-  //     state: userState,
-  //     city: userCity
-  //   };
-  //   fetch("/users", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(formdata),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.errors) {
-  //         console.log(data.errors);
-  //         setErrorMessage(data.errors[0]);
-  //         setTimeout(() => {
-  //           setErrorMessage(null);
-  //         }, 5000);
-  //       } else {
-  //         console.log(data);
-  //         setSignedIn(true);
-  //         setUser(data);
-  //       }
-  //     });
-  // }
 
   if (signedIn) {
     return <Navigate to="/Dashboard" />;
@@ -221,21 +164,13 @@ export default function SignInModal({
             <h2 className="error_message">
               {errorMessage ? errorMessage : null}
             </h2>
-            <button type="submit" className="sign_up_button"> Sign Up </button>
+            <button type="submit" className="sign_up_button">
+              {" "}
+              Sign Up{" "}
+            </button>
           </div>
         </form>
       </Modal.Body>
-      {/* <Modal.Footer>
-        <div id="modal_foot">
-          <h2 className="error_message">
-            {errorMessage ? errorMessage : null}
-          </h2>
-          <Button onClick={handleNewUserSignUp} className="sign_up_button">
-            {" "}
-            Sign Up{" "}
-          </Button>
-        </div>
-      </Modal.Footer> */}
     </Modal>
   );
 }

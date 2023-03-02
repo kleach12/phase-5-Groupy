@@ -10,59 +10,70 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   const [insta, setInsta] = useState("");
   const [tiktok, setTiktok] = useState("");
   const [twitter, setTwitter] = useState("");
-  console.log(user)
-  function handleBio(e) {
-    setBio(e.target.value);
-  }
 
-  function handleFaceBook(e) {
-    setFaceBook(e.target.value);
-  }
+  function handleSumbit(e) {
+    e.preventDefault()
+    const updateData = new FormData();
+    updateData.append("bio", bio);
+    updateData.append("facebook", facebook);
+    updateData.append("insta", insta);
+    updateData.append("twitter", twitter);
+    updateData.append("tiktok", tiktok);
+    handleUpdate(updateData, e);
+    // Use an appropriate url
+    // bkl
 
-  function handleInsta(e) {
-    setInsta(e.target.value);
-  }
-
-  function handleTwitter(e) {
-    setTwitter(e.target.value);
-  }
-
-  function handleTiktok(e) {
-    setTiktok(e.target.value);
-  }
-
-  // function handleProfilePic(e) {
-  //   setProfilePic(e.target.value);
-  //   // console.log(e.target.value)
-  // }
-
-  function handleUpdate(e) {
-    // e.preventDefault();
-    const formData = {
-      // avatar: profilePic,
-      bio: bio,
-      facebook: facebook,
-      insta: insta,
-      twitter: twitter,
-      tiktok: tiktok,
-    };
-    fetch(`/user/${user.username}`, {
-      method: "PUT",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(formData),
+  function handleUpdate(data) {
+    fetch("/users", {
+      method: "PATCH",
+      body: data,
     })
-      .then((res) => res.json())
+      .then((response) => response.json())
       .then((data) => {
         if (data.errors) {
           console.log(data.errors);
+          setErrorMessage(data.errors[0]);
+          setTimeout(() => {
+            setErrorMessage(null);
+          }, 5000);
         } else {
-          setUser(data);
           console.log(data);
+          setUser(data);
+          setShowEdit(false);
         }
-      });
+      })
+      .catch((error) => console.error(error));
   }
+}
+
+  // function handleUpdate(e) {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   const formData = {
+  //     bio: bio,
+  //     facebook: facebook,
+  //     insta: insta,
+  //     twitter: twitter,
+  //     tiktok: tiktok,
+  //   };
+  //   fetch(`/users`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(formData),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       if (data.errors) {
+  //         console.log(data.errors);
+  //       } else {
+  //         setUser(data);
+  //         console.log(data);
+  //         setShowEdit(false);
+  //       }
+  //     });
+  // }
   const charCount =
     bio.length > 250 ? (
       <h2 className="char_count" style={{ color: "red" }}>
@@ -88,22 +99,14 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form id="edit_profile">
-          {/* <label id="file_label"> Profile Picture </label> */}
-          {/* <input
-            className="edit_input_text"
-            type="file"
-            placeholder="Profile Picture"
-            accept="image/*"
-            onChange={(e) => setProfilePic(e.target.files[0])}
-          /> */}
+        <form id="edit_profile" onSubmit={(e) => handleSumbit(e)}>
           <textarea
             id="bio_box"
             className="edit_input_text"
             type="textarea"
             placeholder="Bio"
             value={bio}
-            onChange={(e) => handleBio(e)}
+            onChange={(e) => setBio(e.target.value)}
           />
           {charCount}
           <input
@@ -112,7 +115,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
             placeholder="Instagram"
             value={insta}
             onChange={(e) => {
-              handleInsta(e);
+              setInsta(e.target.value);
             }}
           />
           <input
@@ -121,7 +124,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
             placeholder="Facebook"
             value={facebook}
             onChange={(e) => {
-              handleFaceBook(e);
+              setFaceBook(e.target.value);
             }}
           />
           <input
@@ -130,7 +133,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
             placeholder="Twitter"
             value={twitter}
             onChange={(e) => {
-              handleTwitter(e);
+              setTwitter(e.target.value);
             }}
           />
           <input
@@ -139,12 +142,15 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
             placeholder="TikTok"
             value={tiktok}
             onChange={(e) => {
-              handleTiktok(e);
+              setTiktok(e.target.value);
             }}
           />
+          <button className="sign_up_button" type="submit">
+            Save
+          </button>
         </form>
       </Modal.Body>
-      <Modal.Footer>
+      {/* <Modal.Footer>
         <div id="modal_foot">
           <h2 className="error_message">
             {errorMessage ? errorMessage : null}
@@ -153,7 +159,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
             Save
           </Button>
         </div>
-      </Modal.Footer>
+      </Modal.Footer> */}
     </Modal>
   );
 }

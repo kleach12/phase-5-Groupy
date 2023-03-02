@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  resources :avatars
-  resources :users
-  put "/user/:username", to: "users#update_profile"
+  # resources :avatars
+  resources :users, :only => [:index, :create, :show, :destroy]
+  put "/users", to: "users#update"
+  patch "/users", to: "users#update"
+  # put "/user/:username", to: "users#update_profile"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/me", to: "users#show"
