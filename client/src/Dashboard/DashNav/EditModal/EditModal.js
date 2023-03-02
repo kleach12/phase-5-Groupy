@@ -4,12 +4,12 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   const [errorMessage, setErrorMessage] = useState(null);
-  const [bio, setBio] = useState("");
+  const [bio, setBio] = useState(user.bio);
   // const [profilePic, setProfilePic] = useState(null);
-  const [facebook, setFaceBook] = useState("");
-  const [insta, setInsta] = useState("");
-  const [tiktok, setTiktok] = useState("");
-  const [twitter, setTwitter] = useState("");
+  const [facebook, setFaceBook] = useState(user.facebook);
+  const [insta, setInsta] = useState(user.insta);
+  const [tiktok, setTiktok] = useState(user.tiktok);
+  const [twitter, setTwitter] = useState(user.twitter);
 
   function handleSumbit(e) {
     e.preventDefault()
