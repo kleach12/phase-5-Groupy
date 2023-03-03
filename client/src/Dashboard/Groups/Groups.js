@@ -2,9 +2,13 @@ import "./Groups.css";
 import GroupList from "./GroupList/GroupList";
 import Dropdown from "react-bootstrap/Dropdown";
 import { BsPlusLg } from "react-icons/bs";
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 export default function Groups() {
+  const [inGroup, setInGroup] = useState(false)
   const noUserGroupsArr = [];
+  console.log(inGroup)
 
   for (let i = 0; i < 5; i++) {
     noUserGroupsArr.push({
@@ -34,9 +38,15 @@ export default function Groups() {
         numOfUsers={group.numOfUsers}
         users={group.users}
         index = {index}
+        setInGroup ={setInGroup}
       />
     );
   });
+
+  if (inGroup){
+   return <Navigate to = '/GroupRoom'/>
+  }
+
   return (
     <div id="groups">
       <div id="groups_top">

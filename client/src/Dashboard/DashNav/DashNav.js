@@ -46,10 +46,10 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
         <h3 id="at"> Bio </h3>
       </div>
       <div className="social_icons">
-      <a
+        <a
           href={user.insta ? user.insta : null}
-          // target="_blank"
-          // rel="noreferrer"
+          target="_blank"
+          rel="noreferrer"
         >
           {" "}
           <BsInstagram className="socials" />{" "}

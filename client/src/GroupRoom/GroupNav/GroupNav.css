@@ -1,0 +1,66 @@
+#group_nav{
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  color:#000000;
+  padding: 1% 2%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  border-right: 5px solid #F2F3F5;
+  width: 17%;
+}
+
+.profile_pic{
+  /* padding: 15% 0% 0% 0% !important; */
+  border-radius: 50% !important; 
+  width: 25vh !important;
+  height: 25vh  !important;
+  margin-bottom: 5% !important;
+  background-color: #000000 !important;
+}
+
+#title{
+  font-family: 'Inter', sans-serif;
+  color: #000000;
+  font-size: 50px;
+  font-weight: 900;
+  padding-top: 25px;
+  margin-bottom: 30%;
+}
+
+#at{
+  color: #b2b2b2;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15%;
+  cursor: pointer !important;
+}
+#at:hover{
+  color: #000000;
+}
+
+/* .dashnav_text{
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 10%;
+  margin-top: 10%;
+  color: #b2b2b2;
+  font-weight: 700;
+  cursor: pointer !important;
+} */
+
+.social_icons{
+  display: flex;
+}
+
+.socials{
+  color: #b2b2b2;
+  font-size: 20px;
+  margin: 3px
+}
+
+.socials:hover{
+  color: #000000;
+  cursor: pointer;
+}

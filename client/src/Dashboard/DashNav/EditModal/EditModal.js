@@ -5,7 +5,6 @@ import { useState } from "react";
 export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   const [errorMessage, setErrorMessage] = useState(null);
   const [bio, setBio] = useState(user.bio);
-  // const [profilePic, setProfilePic] = useState(null);
   const [facebook, setFaceBook] = useState(user.facebook);
   const [insta, setInsta] = useState(user.insta);
   const [tiktok, setTiktok] = useState(user.tiktok);
@@ -46,34 +45,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   }
 }
 
-  // function handleUpdate(e) {
-  //   e.preventDefault();
-  //   e.stopPropagation();
-  //   const formData = {
-  //     bio: bio,
-  //     facebook: facebook,
-  //     insta: insta,
-  //     twitter: twitter,
-  //     tiktok: tiktok,
-  //   };
-  //   fetch(`/users`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(formData),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       if (data.errors) {
-  //         console.log(data.errors);
-  //       } else {
-  //         setUser(data);
-  //         console.log(data);
-  //         setShowEdit(false);
-  //       }
-  //     });
-  // }
+
   const charCount =
     bio.length > 250 ? (
       <h2 className="char_count" style={{ color: "red" }}>
@@ -150,16 +122,6 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
           </button>
         </form>
       </Modal.Body>
-      {/* <Modal.Footer>
-        <div id="modal_foot">
-          <h2 className="error_message">
-            {errorMessage ? errorMessage : null}
-          </h2>
-          <Button className="sign_up_button" onClick={(e) => handleUpdate()}>
-            Save
-          </Button>
-        </div>
-      </Modal.Footer> */}
     </Modal>
   );
 }
