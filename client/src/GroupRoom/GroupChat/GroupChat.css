@@ -3,7 +3,6 @@
   border-radius: 1vh;
   display: flex;
   flex-direction: column;
-  text-align: center;
   flex-grow: 1;
   padding-top: 1%;
   border-right: 5px solid #F2F3F5;
@@ -13,6 +12,7 @@
   justify-content: space-between;
   display: flex;
   padding-top: 25px;
+  flex-grow: 1;
 }
 
 .dropdown-dash_button {
@@ -65,4 +65,27 @@
 .overflow{
   overflow: auto;
   -ms-overflow-style: none;
+}
+
+#bottom_chat{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chat_box{
+  width: 98%;
+  max-width: 98%;
+  height: auto;
+  /* min-height: 40px; */
+  color: #000000 !important;
+  border: 3px solid #000000 !important;
+  align-self: center;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 10px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;	
 }

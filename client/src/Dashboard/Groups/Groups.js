@@ -5,8 +5,8 @@ import { BsPlusLg } from "react-icons/bs";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 
-export default function Groups() {
-  const [inGroup, setInGroup] = useState(false)
+export default function Groups({inGroup, setInGroup}) {
+  // const [inGroup, setInGroup] = useState(false)
   const noUserGroupsArr = [];
   console.log(inGroup)
 

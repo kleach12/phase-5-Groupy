@@ -1,6 +1,11 @@
 import './GroupNav.css'
  import Avatar from 'react-avatar';
-export default function GroupNav(){
+import { Navigate } from 'react-router-dom';
+export default function GroupNav({inGroup, setInGroup}){
+
+  if(inGroup === false){
+   return <Navigate to = '/Dashboard'/>
+  }
   return (
     <div id="group_nav">
       <Avatar
@@ -54,7 +59,7 @@ export default function GroupNav(){
           <FaTiktok className="socials" />{" "}
         </a> */}
       {/* </div> */}
-
+      <h2 onClick={() => setInGroup(false)}> Leave Group </h2>
     </div>
   );
 }
