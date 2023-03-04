@@ -14,7 +14,8 @@
 }
 
 #bio_box{
-  height: 150px;
+  height: 140px;
+  resize: none;
 }
 
 #file_label{
