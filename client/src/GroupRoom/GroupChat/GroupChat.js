@@ -35,7 +35,7 @@ export default function GroupChat() {
           // onBlur={handleBlur}
           onChange={handleChange}
         />
-        <button type="submit"> Submit </button>
+        <button type="submit" id= "send_message"> Submit </button>
       </form>
       <div className="overflow"></div>
     </div>

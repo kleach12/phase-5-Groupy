@@ -93,3 +93,10 @@
   border-radius: 1vh;
   resize: none;
 }
+
+#send_message{
+  position: absolute;
+  margin-left: 1120px;
+  font-size: 20px;
+  color: #000000;
+}

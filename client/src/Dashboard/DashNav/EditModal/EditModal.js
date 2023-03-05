@@ -9,9 +9,11 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   const [insta, setInsta] = useState(user.insta);
   const [tiktok, setTiktok] = useState(user.tiktok);
   const [twitter, setTwitter] = useState(user.twitter);
+  // const [charCount, setCharCount] = useState(0)
 
-  function handleSumbit(e) {
-    e.preventDefault()
+  function handleEdit(e) {
+    e.preventDefault();
+
     const updateData = new FormData();
     updateData.append("bio", bio);
     updateData.append("facebook", facebook);
@@ -22,38 +24,38 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
     // Use an appropriate url
     // bkl
 
-  function handleUpdate(data) {
-    fetch("/users", {
-      method: "PATCH",
-      body: data,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.errors) {
-          console.log(data.errors);
-          setErrorMessage(data.errors[0]);
-          setTimeout(() => {
-            setErrorMessage(null);
-          }, 5000);
-        } else {
-          console.log(data);
-          setUser(data);
-          setShowEdit(false);
-        }
+    function handleUpdate(data, e) {
+      e.preventDefault();
+      fetch("/users", {
+        method: "PATCH",
+        body: data,
       })
-      .catch((error) => console.error(error));
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.errors) {
+            console.log(data.errors);
+            setErrorMessage(data.errors[0]);
+            setTimeout(() => {
+              setErrorMessage(null);
+            }, 5000);
+          } else {
+            console.log(data);
+            setUser(data);
+            setShowEdit(false);
+          }
+        })
+        .catch((error) => console.error(error));
+    }
   }
-}
 
-
-  const charCount =
-    bio.length > 250 ? (
-      <h2 className="char_count" style={{ color: "red" }}>
-        {bio.length}/250
-      </h2>
-    ) : (
-      <h2 className="char_count"> {bio.length}/250</h2>
-    );
+  // const charCount =
+  //   bio.length > 250 || bio === 0 ? (
+  //     <h2 className="char_count" style={{ color: "red" }}>
+  //       {bio.length}/250
+  //     </h2>
+  //   ) : (
+  //     <h2 className="char_count"> {bio.length}/250</h2>
+  //   );
 
   return (
     <Modal
@@ -71,7 +73,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form id="edit_profile" onSubmit={(e) => handleSumbit(e)}>
+        <form id="edit_profile"  name="edit_profile">
           <textarea
             id="bio_box"
             className="edit_input_text"
@@ -80,7 +82,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
             value={bio}
             onChange={(e) => setBio(e.target.value)}
           />
-          {charCount}
+          {/* {charCount} */}
           <input
             className="edit_input_text"
             type="text"
@@ -117,7 +119,13 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
               setTiktok(e.target.value);
             }}
           />
-          <button className="sign_up_button" type="submit">
+          <button
+            className="sign_up_button"
+            type="button"
+            name="edit_submit"
+            id="edit_submit"
+            onClick={(e) => handleEdit(e)}
+          >
             Save
           </button>
         </form>

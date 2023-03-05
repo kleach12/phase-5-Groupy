@@ -23,11 +23,12 @@ export default function SignInModal({
   const [userState, setUserState] = useState("");
   const [userCity, setUserCity] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
+  const [profileImage, setProfileImage] = useState('');
 
   function handleSumbit(e) {
     e.preventDefault();
     const data = new FormData();
-    data.append("image", e.target.image.files[0]);
+    data.append("image", profileImage);
     data.append("first_name", firstName);
     data.append("last_name", lastName);
     data.append("username", username);
@@ -38,42 +39,83 @@ export default function SignInModal({
     data.append("country", userCountry);
     data.append("state", userState);
     data.append("city", userCity);
+    data.append("bio", "");
 
-    submitToAPI(data);
+    submitToAPI(data, e);
     // Use an appropriate url
     // bkl
-  }
-  function submitToAPI(data) {
-    fetch("/users", {
-      method: "POST",
-      body: data,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.errors) {
-          console.log(data.errors);
-          setErrorMessage(data.errors[0]);
-          setTimeout(() => {
-            setErrorMessage(null);
-          }, 5000);
-        } else {
-          console.log(data);
-          setSignedIn(true);
-          setUser(data);
-          setFirstName('')
-          setLastName('')
-          setUsername('')
-          setEmail('')
-          setPassword('')
-          setPasswordConfirm('')
-          setDateOfBirth('')
-          setuserCounty('')
-          setUserCity('')
-          setUserState('')
-        }
+    function submitToAPI(data, e) {
+      e.preventDefault();
+      fetch("/users", {
+        method: "POST",
+        body: data,
       })
-      .catch((error) => console.error(error));
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.errors) {
+            console.log(data.errors);
+            setErrorMessage(data.errors[0]);
+            setTimeout(() => {
+              setErrorMessage(null);
+            }, 5000);
+          } else if (data.error) {
+            console.log(data.error);
+            console.log(data)
+            setErrorMessage('A Profile Picture is required');
+            setTimeout(() => {
+              setErrorMessage(null);
+            }, 5000);
+          } else {
+            console.log(data);
+            setSignedIn(true);
+            setUser(data);
+            setFirstName("");
+            setLastName("");
+            setUsername("");
+            setEmail("");
+            setPassword("");
+            setPasswordConfirm("");
+            setDateOfBirth("");
+            setuserCounty("");
+            setUserCity("");
+            setUserState("");
+          }
+        })
+        .catch((error) => console.error(error));
+    }
   }
+  // function submitToAPI(data,e) {
+  //   e.preventDefault();
+  //   fetch("/users", {
+  //     method: "POST",
+  //     body: data,
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.errors) {
+  //         console.log(data.errors);
+  //         setErrorMessage(data.errors[0]);
+  //         setTimeout(() => {
+  //           setErrorMessage(null);
+  //         }, 5000);
+  //       } else {
+  //         console.log(data);
+  //         setSignedIn(true);
+  //         setUser(data);
+  //         setFirstName("");
+  //         setLastName("");
+  //         setUsername("");
+  //         setEmail("");
+  //         setPassword("");
+  //         setPasswordConfirm("");
+  //         setDateOfBirth("");
+  //         setuserCounty("");
+  //         setUserCity("");
+  //         setUserState("");
+  //       }
+  //     })
+  //     .catch((error) => console.error(error));
+  // }
 
   if (signedIn) {
     return <Navigate to="/Dashboard" />;
@@ -94,7 +136,7 @@ export default function SignInModal({
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <form id="sign_up_form" onSubmit={(e) => handleSumbit(e)}>
+        <div id="sign_up_form" name="sign_up_form">
           <div id="first_last">
             <input
               className="sign_up_text"
@@ -158,18 +200,25 @@ export default function SignInModal({
             type="file"
             name="image"
             accept="image/*"
-            onChange={(e) => console.log(e.target.image)}
+            onChange={(e) => setProfileImage(e.target.files[0])}
           />
           <div id="modal_foot">
             <h2 className="error_message">
               {errorMessage ? errorMessage : null}
             </h2>
-            <button type="submit" className="sign_up_button">
-              {" "}
+            <input
+              type="button"
+              className="sign_up_button"
+              id="sign_up_btn"
+              name="sign_up_btn"
+              onClick={(e) => handleSumbit(e)}
+              value="Sign up"
+            />
+            {/* {" "}
               Sign Up{" "}
-            </button>
+            </input> */}
           </div>
-        </form>
+        </div>
       </Modal.Body>
     </Modal>
   );
