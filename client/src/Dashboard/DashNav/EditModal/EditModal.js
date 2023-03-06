@@ -6,7 +6,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   const [errorMessage, setErrorMessage] = useState(null);
   const [bio, setBio] = useState(user.bio);
   const [facebook, setFaceBook] = useState(user.facebook);
-  const [insta, setInsta] = useState(user.insta);
+  const [insta, setInsta] = useState(user.insta );
   const [tiktok, setTiktok] = useState(user.tiktok);
   const [twitter, setTwitter] = useState(user.twitter);
   // const [charCount, setCharCount] = useState(0)
@@ -48,14 +48,14 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
     }
   }
 
-  // const charCount =
-  //   bio.length > 250 || bio === 0 ? (
-  //     <h2 className="char_count" style={{ color: "red" }}>
-  //       {bio.length}/250
-  //     </h2>
-  //   ) : (
-  //     <h2 className="char_count"> {bio.length}/250</h2>
-  //   );
+  const charCount =
+    bio.length > 250 || bio === 0 ? (
+      <h2 className="char_count" style={{ color: "red" }}>
+        {bio.length}/250
+      </h2>
+    ) : (
+      <h2 className="char_count"> {bio.length}/250</h2>
+    );
 
   return (
     <Modal
@@ -82,7 +82,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
             value={bio}
             onChange={(e) => setBio(e.target.value)}
           />
-          {/* {charCount} */}
+          {charCount}
           <input
             className="edit_input_text"
             type="text"

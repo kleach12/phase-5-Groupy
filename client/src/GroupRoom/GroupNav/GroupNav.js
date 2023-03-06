@@ -1,17 +1,23 @@
-import './GroupNav.css'
- import Avatar from 'react-avatar';
-import { Navigate } from 'react-router-dom';
-export default function GroupNav({inGroup, setInGroup}){
-
-  if(inGroup === false){
-   return <Navigate to = '/Dashboard'/>
+import "./GroupNav.css";
+import Avatar from "react-avatar";
+import { Navigate } from "react-router-dom";
+import {
+  BsFillArrowLeftSquareFill,
+  BsInstagram,
+  BsFacebook,
+  BsTwitter,
+} from "react-icons/bs";
+import { FaTiktok } from "react-icons/fa";
+export default function GroupNav({ inGroup, setInGroup }) {
+  if (inGroup === false) {
+    return <Navigate to="/Dashboard" />;
   }
   return (
     <div id="group_nav">
       <Avatar
         className="profile_pic"
         // src={user.image}
-        // name={user.full_name}
+        name="Group 1"
         // onClick={() => setShowPicture(true)}
       />
       {/* <PictureModal
@@ -22,12 +28,12 @@ export default function GroupNav({inGroup, setInGroup}){
         <h3 id="at"> </h3>
       </div>
 
-      <div>
-        <h3 id="at"> Bio </h3>
-      </div>
-      {/* <div className="social_icons">
+      
+        <span id="group_bio"> Bio </span>
+
+      <div className="social_icons">
         <a
-          href={user.insta ? user.insta : null}
+          // href={user.insta ? user.insta : null}
           target="_blank"
           rel="noreferrer"
         >
@@ -35,7 +41,7 @@ export default function GroupNav({inGroup, setInGroup}){
           <BsInstagram className="socials" />{" "}
         </a>
         <a
-          href={user.facebook ? user.facebook : null}
+          // href={user.facebook ? user.facebook : null}
           target="_blank"
           rel="noreferrer"
         >
@@ -43,7 +49,7 @@ export default function GroupNav({inGroup, setInGroup}){
           <BsFacebook className="socials" />{" "}
         </a>
         <a
-          href={user.twitter ? user.twitter : null}
+          // href={user.twitter ? user.twitter : null}
           target="_blank"
           rel="noreferrer"
         >
@@ -51,15 +57,17 @@ export default function GroupNav({inGroup, setInGroup}){
           <BsTwitter className="socials" />{" "}
         </a>
         <a
-          href={user.tiktok ? user.tiktok : null}
+          // href={user.tiktok ? user.tiktok : null}
           target="_blank"
           rel="noreferrer"
         >
           {" "}
           <FaTiktok className="socials" />{" "}
-        </a> */}
-      {/* </div> */}
-      <h2 onClick={() => setInGroup(false)}> Leave Group </h2>
+        </a>
+      </div>
+      <button className="exit_group"  onClick={() => setInGroup(false)}
+      > Leave </button>
+      {/* <BsFillArrowLeftSquareFill className="exit_button"/> */}
     </div>
   );
 }

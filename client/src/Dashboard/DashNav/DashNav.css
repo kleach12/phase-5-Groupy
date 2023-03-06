@@ -36,8 +36,17 @@
   margin-bottom: 15%;
   cursor: pointer !important;
 }
+
 #at:hover{
   color: #000000;
+}
+
+#bio{
+  color: #b2b2b2;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 15%;
+  cursor: pointer !important;
 }
 
 .dashnav_text{
@@ -51,7 +60,7 @@
 }
 
 .dashnav_text:first-of-type{
-  margin-top: 100%;
+  margin-top: 20%;
 }
 
 .dashnav_text:hover{

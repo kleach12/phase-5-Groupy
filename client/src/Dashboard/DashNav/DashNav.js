@@ -43,7 +43,7 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
       </div>
 
       <div>
-        <h3 id="at"> Bio </h3>
+        <h3 id="bio"> {user.bio} </h3>
       </div>
       <div className="social_icons">
         <a

@@ -3,7 +3,7 @@
   background-color: #ffffff;
   color:#000000;
   padding: 1% 2%;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   text-align: center;
   align-items: center;
@@ -63,4 +63,25 @@
 .socials:hover{
   color: #000000;
   cursor: pointer;
+}
+
+.exit_group{
+  font-size: 20px;
+  align-self: baseline;
+  width: 100%;
+  background-color: #000000;
+  color:#ffffff;
+  font-family: 'Inter', sans-serif;
+  border-radius: 1vh;
+  /* flex-grow: 1; */
+}
+.exit_button{
+  font-size: 25px;
+  stroke: red;
+  fill: purple
+  /* fill: none; */
+}
+
+#group_bio{
+  flex-grow: 1;
 }
