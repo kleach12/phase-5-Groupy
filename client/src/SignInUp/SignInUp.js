@@ -10,7 +10,7 @@ export default function SignInUp({ setUser, setSignedIn, signedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
 
   function handleUsername(e) {
     setUsername(e.target.value);
@@ -50,7 +50,18 @@ export default function SignInUp({ setUser, setSignedIn, signedIn }) {
       });
   }
 
-  const hiddenPassword = ( showPassword ? <BsFillEyeSlashFill className="show_password" onClick={() => setShowPassword(!showPassword)} onFocus={() => setShow(false)   }/> : <BsFillEyeFill className="show_password" onClick={() => setShowPassword(!showPassword)} />)
+  const hiddenPassword = showPassword ? (
+    <BsFillEyeSlashFill
+      className="show_password"
+      onClick={() => setShowPassword(!showPassword)}
+      onFocus={() => setShow(false)}
+    />
+  ) : (
+    <BsFillEyeFill
+      className="show_password"
+      onClick={() => setShowPassword(!showPassword)}
+    />
+  );
 
   if (signedIn) {
     return <Navigate to="/Dashboard" />;
@@ -76,15 +87,25 @@ export default function SignInUp({ setUser, setSignedIn, signedIn }) {
             onChange={(e) => handleUsername(e)}
             value={username}
           />
-          <input
+          <div className="sign_in_pass">
+            <input
+              className="pass_btn"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              onChange={(e) => handlePassword(e)}
+              value={password}
+            />
+            {hiddenPassword}
+          </div>
+          {/* <input
             className="sign_in_text"
             type={showPassword ? 'text' : 'password'}
             placeholder="Password"
             onChange={(e) => handlePassword(e)}
-            value={password}
-          />
+            value={password} */}
+          {/* /> */}
           {/* <BsFillEyeFill className="show_password" onClick={() => handleShowPassword()}/> */}
-          {hiddenPassword}
+          {/* {hiddenPassword} */}
           <h2 className="error_message">
             {errorMessage ? errorMessage : null}
           </h2>

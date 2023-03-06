@@ -1,0 +1,34 @@
+.message{
+  display: flex;
+  align-self: flex-end;
+  flex-grow: 1;
+  border-top: 5px solid #F2F3F5;
+  border-bottom: 5px solid #F2F3F5 ;
+  padding: 1%;
+}
+
+.mem_pic{
+  width: 40px;
+  border-radius: 50%;
+  align-self: flex-start;
+}
+
+.message_text{
+  /* align-self: center;
+  margin-bottom: 0;
+  margin-left: 10px; */
+  font-size: 15px;
+}
+
+.user_of_messge{
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.username_msg{
+  align-self: center;
+  margin-bottom: 0;
+  margin-left: 10px;
+  font-size: 15px;
+}

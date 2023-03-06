@@ -61,6 +61,19 @@
   font-weight: 700;
   width: 95%;
 }
+.sign_in_pass {
+  display: flex;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  /* font-weight: 1000; */
+  padding: 2%;
+  margin: 2%;
+  font-size: 20px;
+  border-radius: 0.5vh;
+  font-weight: 700;
+  width: 95%;
+  border: #000000 2px solid !important;
+}
 
 .sing_in_button {
   font-family: "Inter", sans-serif;
@@ -95,8 +108,7 @@
 }
 
 .show_password {
-  position: absolute;
-  margin-left: 350px;
+  /* position: absolute; */
   font-size: 20px;
   color: #000000;
 }
@@ -105,6 +117,17 @@
   color: #d9dadc;
   cursor: pointer;
 }
+
+.pass_btn{
+  border: none;
+  flex-grow: 1;
+  font-weight: 700;
+}
+
+.pass_btn:focus{
+  outline: none;
+}
+
 @media only screen and (max-width: 780px) {
   #sign_in_up {
     flex-direction: column;

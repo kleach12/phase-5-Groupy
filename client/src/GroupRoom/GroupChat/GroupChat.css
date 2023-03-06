@@ -69,34 +69,37 @@
 
 #bottom_chat{
   display: flex;
-  width: 100%;
-  flex-direction: column;
+  width: 98%;
   justify-content: center;
   overflow: hidden; 
+  color: #000000 !important;
+  border: 3px solid #000000 !important;
+  border-radius: 1vh;
+  margin: 1%;
+  padding: 5px;
 }
 
 .chat_box{
   width: 98%;
   max-width: 98%;
   height: auto;
-  color: #000000 !important;
-  border: 3px solid #000000 !important;
   align-self: center;
   flex-grow: 1;
   justify-content: center;
-  padding: 8px;
-  /* overflow: hidden; */
-  /* word-wrap: break-word;
-  overflow-wrap: break-word;
-  white-space: normal;	 */
-  margin: 1%;
-  border-radius: 1vh;
   resize: none;
 }
 
+.chat_box:focus{
+  outline: none;
+}
+
 #send_message{
-  position: absolute;
-  margin-left: 1120px;
   font-size: 20px;
   color: #000000;
+}
+
+.send_message_btn{
+  color: #000000;
+  font-size: 30px;
+  align-self:end;
 }
