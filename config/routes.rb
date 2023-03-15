@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :groups
   # resources :avatars
   resources :users, :only => [:index, :create, :show, :destroy]
   put "/users", to: "users#update"
