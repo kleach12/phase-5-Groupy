@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :groups_users
   resources :groups
   # resources :avatars
   resources :users, :only => [:index, :create, :show, :destroy]

@@ -4,9 +4,11 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { BsPlusLg } from "react-icons/bs";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
+import NewGroup from "./NewGroup/NewGroup";
 
 export default function Groups({inGroup, setInGroup}) {
-  // const [inGroup, setInGroup] = useState(false)
+ const [show, setShow] = useState(false)
+
   const noUserGroupsArr = [];
   console.log(inGroup)
 
@@ -59,7 +61,7 @@ export default function Groups({inGroup, setInGroup}) {
             <BsPlusLg />
           </Dropdown.Toggle>
           <Dropdown.Menu className="dropdown-menu-custom">
-            <Dropdown.Item className="dropdown-item-custom">
+            <Dropdown.Item className="dropdown-item-custom" onClick={() => setShow(true)}>
               Create Group
             </Dropdown.Item>
             <Dropdown.Item className="dropdown-item-custom">
@@ -70,6 +72,7 @@ export default function Groups({inGroup, setInGroup}) {
       </div>
       <div className="overflow">
       {mappedGroups}
+      <NewGroup show = {show} setShow ={setShow}/>
       </div>
     </div>
   );
