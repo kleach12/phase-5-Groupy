@@ -23,7 +23,7 @@ export default function SignInModal({
   const [userState, setUserState] = useState("");
   const [userCity, setUserCity] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-  const [profileImage, setProfileImage] = useState('');
+  const [profileImage, setProfileImage] = useState("");
 
   function handleSumbit(e) {
     e.preventDefault();
@@ -60,8 +60,8 @@ export default function SignInModal({
             }, 5000);
           } else if (data.error) {
             console.log(data.error);
-            console.log(data)
-            setErrorMessage('A Profile Picture is required');
+            console.log(data);
+            setErrorMessage("A Profile Picture is required");
             setTimeout(() => {
               setErrorMessage(null);
             }, 5000);
@@ -84,38 +84,6 @@ export default function SignInModal({
         .catch((error) => console.error(error));
     }
   }
-  // function submitToAPI(data,e) {
-  //   e.preventDefault();
-  //   fetch("/users", {
-  //     method: "POST",
-  //     body: data,
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.errors) {
-  //         console.log(data.errors);
-  //         setErrorMessage(data.errors[0]);
-  //         setTimeout(() => {
-  //           setErrorMessage(null);
-  //         }, 5000);
-  //       } else {
-  //         console.log(data);
-  //         setSignedIn(true);
-  //         setUser(data);
-  //         setFirstName("");
-  //         setLastName("");
-  //         setUsername("");
-  //         setEmail("");
-  //         setPassword("");
-  //         setPasswordConfirm("");
-  //         setDateOfBirth("");
-  //         setuserCounty("");
-  //         setUserCity("");
-  //         setUserState("");
-  //       }
-  //     })
-  //     .catch((error) => console.error(error));
-  // }
 
   if (signedIn) {
     return <Navigate to="/Dashboard" />;
