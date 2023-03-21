@@ -1,10 +1,8 @@
 import "./SignInModal.css";
 import Modal from "react-bootstrap/Modal";
-// import Button from "react-bootstrap/Button";
-import CoStCi from "../../CoStCi/CoStCi";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
-
+import CityDropdown from "../../CityDropdown/CityDropdown";
 export default function SignInModal({
   show,
   setShow,
@@ -19,8 +17,6 @@ export default function SignInModal({
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [userCountry, setuserCounty] = useState("");
-  const [userState, setUserState] = useState("");
   const [userCity, setUserCity] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const [profileImage, setProfileImage] = useState("");
@@ -36,8 +32,6 @@ export default function SignInModal({
     data.append("password", password);
     data.append("password_confirmation", passwordConfirm);
     data.append("dob", dateOfBirth);
-    data.append("country", userCountry);
-    data.append("state", userState);
     data.append("city", userCity);
     data.append("bio", "");
 
@@ -76,9 +70,7 @@ export default function SignInModal({
             setPassword("");
             setPasswordConfirm("");
             setDateOfBirth("");
-            setuserCounty("");
             setUserCity("");
-            setUserState("");
           }
         })
         .catch((error) => console.error(error));
@@ -157,11 +149,12 @@ export default function SignInModal({
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.target.value)}
           />
-          <CoStCi
+          <CityDropdown setCity={setUserCity} />
+          {/* <CoStCi
             setuserCounty={setuserCounty}
             setUserState={setUserState}
             setUserCity={setUserCity}
-          />
+          /> */}
           <label id="file_label"> Profile Picture </label>
           <input
             className="edit_input_text"

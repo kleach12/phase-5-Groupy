@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_one_attached :image
   has_secure_password
-  validates :first_name, :last_name, :username, :dob, :email, :country, :image, presence: true
+  validates :first_name, :last_name, :username, :dob, :email, :city, :image, presence: true
   validates :username, uniqueness: true
   validates :email, uniqueness: true
   validates :username, length: {minimum: 1}

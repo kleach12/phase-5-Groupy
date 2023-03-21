@@ -1,36 +1,14 @@
 import "./NewGroup.css";
 import Modal from "react-bootstrap/Modal";
-import Select from "react-select";
+// import Select from "react-select";
 import { useState } from "react";
-
+import CityDropdown
+ from "../../../CityDropdown/CityDropdown";
 export default function NewGroup({ show, setShow }) {
   const [groupName, setGroupName] = useState("");
   const [groupCity, setGroupCity] = useState("");
   const [groupImage, setGroupImage] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
-
-  const cities = [
-    {
-      label: "Los Angeles",
-      value: "Los Angeles",
-    },
-    {
-      label: "Sacramento",
-      value: "Sacramento",
-    },
-    {
-      label: "San Diego",
-      value: "San Diego",
-    },
-    {
-      label: "San Francisco",
-      value: "San Francisco",
-    },
-    {
-      label: "San Jose",
-      value: "San Jose",
-    },
-  ];
 
   function handleSumbit(e) {
     e.preventDefault();
@@ -96,16 +74,16 @@ export default function NewGroup({ show, setShow }) {
             value={groupName}
             onChange={(e) => setGroupName(e.target.value)}
           />
-          <Select
+          <CityDropdown setCity = {setGroupCity}/>
+          {/* <Select
             id="city"
             name="city"
             label="city"
             className="sign_up_select"
             options={cities}
-            // value={groupCity}
             onChange={(e) => setGroupCity(e.value)}
             placeholder={<div>Select city...</div>}
-          />
+          /> */}
           <label id="file_label"> Group Picture </label>
           <input
             className="edit_input_text"

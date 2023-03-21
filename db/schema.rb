@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_16_184709) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_21_163740) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,17 +48,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_184709) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "avatars", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "title"
-    t.integer "user_id"
-  end
-
   create_table "groups", force: :cascade do |t|
     t.string "name"
-    t.string "country"
-    t.string "state"
     t.string "city"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,15 +72,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_184709) do
     t.text "password_digest"
     t.date "dob"
     t.text "email"
-    t.text "country"
-    t.text "state"
     t.text "city"
     t.text "bio"
     t.text "facebook"
     t.text "insta"
     t.text "twitter"
     t.text "tiktok"
-    t.text "profile_picture"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -34,21 +34,13 @@ class UsersController < ApplicationController
     end
   end
 
-  # def add_avatar
-  #   # user = user_in_session
-  #   # if user
-  #     user.avatar.attach(:image)
-  #     render json: user
-  #   # end
-  # end
-
 
   private 
 
   
-  # def user_params
-  #   params.permit(:username, :first_name, :last_name, :password, :password_confirmation, :dob, :email, :country, :state, :city, :bio, :facebook, :insta, :tiktok, :twitter, :image)
-  # end
+  def user_params
+    params.permit(:username, :first_name, :last_name, :password, :password_confirmation, :dob, :email, :city, :bio, :facebook, :insta, :tiktok, :twitter, :image)
+  end
 
   def user_updated_params
     params.permit(:bio, :facebook, :insta, :tiktok, :twitter, :image)
