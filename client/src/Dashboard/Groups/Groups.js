@@ -5,12 +5,19 @@ import { BsPlusLg } from "react-icons/bs";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import NewGroup from "./NewGroup/NewGroup";
+import { redirect } from "react-router-dom";
 
-export default function Groups({inGroup, setInGroup}) {
- const [show, setShow] = useState(false)
+export default function Groups({ inGroup, setInGroup }) {
+  const [show, setShow] = useState(false);
+  const [groupSearch, setGroupSearch] = useState(false);
 
   const noUserGroupsArr = [];
-  console.log(inGroup)
+
+  console.log(inGroup);
+
+  function navToGroupPage() {
+    <Navigate to="/Grouppage" />;
+  }
 
   for (let i = 0; i < 5; i++) {
     noUserGroupsArr.push({
@@ -31,7 +38,6 @@ export default function Groups({inGroup, setInGroup}) {
     });
   }
 
-
   const mappedGroups = noUserGroupsArr.map((group, index) => {
     return (
       <GroupList
@@ -39,14 +45,18 @@ export default function Groups({inGroup, setInGroup}) {
         groupName={group.groupName}
         numOfUsers={group.numOfUsers}
         users={group.users}
-        index = {index}
-        setInGroup ={setInGroup}
+        index={index}
+        setInGroup={setInGroup}
       />
     );
   });
 
-  if (inGroup){
-   return <Navigate to = '/GroupRoom'/>
+  if (inGroup) {
+    return <Navigate to="/GroupRoom" />;
+  }
+
+  if (groupSearch){
+    return <Navigate to='/GroupPage'/>;
   }
 
   return (
@@ -61,18 +71,24 @@ export default function Groups({inGroup, setInGroup}) {
             <BsPlusLg />
           </Dropdown.Toggle>
           <Dropdown.Menu className="dropdown-menu-custom">
-            <Dropdown.Item className="dropdown-item-custom" onClick={() => setShow(true)}>
+            <Dropdown.Item
+              className="dropdown-item-custom"
+              onClick={() => setShow(true)}
+            >
               Create Group
             </Dropdown.Item>
-            <Dropdown.Item className="dropdown-item-custom">
+            <Dropdown.Item
+              className="dropdown-item-custom"
+              onClick={() => setGroupSearch(true)}
+            >
               Join Group
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </div>
       <div className="overflow">
-      {mappedGroups}
-      <NewGroup show = {show} setShow ={setShow}/>
+        {mappedGroups}
+        <NewGroup show={show} setShow={setShow} />
       </div>
     </div>
   );

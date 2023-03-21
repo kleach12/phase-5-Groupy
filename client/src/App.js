@@ -4,7 +4,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import GroupRoom from "./GroupRoom/GroupRoom";
 import SignInUp from "./SignInUp/SignInUp";
 import { useEffect, useState } from "react";
-
+import GroupPage from "./GroupPage/GroupPage";
 function App() {
   const [user, setUser] = useState(null);
   const [signedIn, setSignedIn] = useState(false);
@@ -28,7 +28,7 @@ function App() {
       <Routes>
         <Route
           path="/GroupRoom"
-          element={<GroupRoom inGroup={inGroup} setInGroup={setInGroup}/>}
+          element={<GroupRoom inGroup={inGroup} setInGroup={setInGroup} />}
         />
         <Route
           path="/Dashboard"
@@ -43,6 +43,7 @@ function App() {
             />
           }
         />
+        <Route path="/GroupPage" element={<GroupPage />} />
         <Route
           path="/"
           element={
