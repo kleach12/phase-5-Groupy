@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   wrap_parameters format: []
 
   def index 
-    render json: Groups.all
+    render json: Group.all
   end
 
   def create 
