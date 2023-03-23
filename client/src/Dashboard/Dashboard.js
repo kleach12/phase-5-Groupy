@@ -4,7 +4,16 @@ import DashNav from "./DashNav/DashNav";
 import Groups from "./Groups/Groups";
 import FriendsNav from "./FriendsNav/FriendsNav";
 
-export default function Dashboard({user, setUser, signedIn, setSignedIn, inGroup, setInGroup}) {
+export default function Dashboard({
+  user,
+  setUser,
+  signedIn,
+  setSignedIn,
+  inGroup,
+  setInGroup,
+  setGroupSearch,
+  groupSearch,
+}) {
   // Add a modal for user who just signed up so they have an Idea of what they are doing
   return (
     <div id="dashboard">
@@ -15,10 +24,7 @@ export default function Dashboard({user, setUser, signedIn, setSignedIn, inGroup
         signedIn={signedIn}
         setSignedIn={setSignedIn}
       />
-      <Groups 
-      inGroup = {inGroup}
-      setInGroup = {setInGroup}
-      />
+      <Groups inGroup={inGroup} setInGroup={setInGroup} groupSearch={groupSearch} setGroupSearch = {setGroupSearch} />
       <FriendsNav />
     </div>
   );

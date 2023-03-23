@@ -1,0 +1,42 @@
+#group_page {
+  display: flex;
+  flex-direction: column;
+}
+
+#back_btn{
+  font-size: 40px;
+  margin-top: 5px;
+  margin-left: 5px;
+  float: left;
+}
+
+#group_filter{
+  font-size: 25px;
+  font-weight: 500;
+  margin: 1%;
+  padding: 3px;
+  border: 0.5px solid #000000;
+  border-radius: 1vh;
+  flex-grow: 1;
+}
+
+#filter{
+  position: fixed;
+  z-index: 1;
+  background-color: #ffffff;
+  width: 100%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  font-family: "Inter", sans-serif !important;
+  padding-top: 10px;
+  text-align: center;
+}
+#filter_label{
+font-weight: 800;
+font-size: 32px;
+}
+
+#list{
+  margin-top:5%;
+}

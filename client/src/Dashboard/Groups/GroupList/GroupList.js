@@ -6,7 +6,7 @@ export default function GroupList({ groupName, numOfUsers, users ,index,setInGro
   // need to make user authentication so I can move forward onClick={() => <Navigate to = {"/GroupRoom"}/>
   return (
     <div className="group_card" onClick={() => setInGroup(true)}>
-      <div  className={index === 0 ? 'first_card_group' : 'card_group'}>
+      <div  className={'card_group'}>
         <div className="left_card">
           <h2 className="group_title">{groupName}</h2>
           <h3 className="num_mem"> Members: {numOfUsers}</h3>

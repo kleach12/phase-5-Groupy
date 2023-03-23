@@ -28,9 +28,8 @@
 }
 .card_group:hover {
   background-color: #000000;
-  box-shadow: 0 0 40px;
   color: #ffffff;
-  box-shadow: 0 0 40px #000000;
+  box-shadow: 0 0 30px #000000;
 }
 .group_title{
   font-weight: 800 !important;

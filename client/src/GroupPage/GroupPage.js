@@ -1,7 +1,10 @@
 import "./GroupPage.css";
 import GroupList from "../Dashboard/Groups/GroupList/GroupList";
 import { useEffect, useState } from "react";
-export default function GroupPage() {
+import { BsFillArrowLeftSquareFill } from "react-icons/bs";
+import { Navigate } from "react-router-dom";
+
+export default function GroupPage({groupSearch, setGroupSearch}) {
   const [groups, setGroups] = useState([]);
   useEffect(() => {
     fetch("/groups")
@@ -17,9 +20,19 @@ export default function GroupPage() {
   }, []);
   console.log(groups);
 
+  if(groupSearch === false){
+    return(<Navigate to='/dashboard'/>)
+  }
+
   if (groups.length > 0) {
     return (
-      <div>
+      <div id = "group_page">
+        <div id = 'filter'>
+        <BsFillArrowLeftSquareFill id = "back_btn" onClick={() => setGroupSearch(false)}/>
+        <label id = 'filter_label'>Search</label> 
+        <input type='text' id = 'group_filter'/>
+        </div>
+        <div id = 'list'>
         {groups.map((group, index) => {
           return (
             <GroupList
@@ -33,6 +46,7 @@ export default function GroupPage() {
             />
           );
         })}
+        </div>
       </div>
     );
   }

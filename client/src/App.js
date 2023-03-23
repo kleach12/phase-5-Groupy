@@ -9,6 +9,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [signedIn, setSignedIn] = useState(false);
   const [inGroup, setInGroup] = useState(false);
+  const [groupSearch, setGroupSearch] = useState(false);
 
   useEffect(() => {
     fetch("/me")
@@ -40,10 +41,15 @@ function App() {
               setSignedIn={setSignedIn}
               inGroup={inGroup}
               setInGroup={setInGroup}
+              groupSearch={groupSearch}
+              setGroupSearch={setGroupSearch}
             />
           }
         />
-        <Route path="/GroupPage" element={<GroupPage />} />
+        <Route
+          path="/GroupPage"
+          element={<GroupPage groupSearch={groupSearch} setGroupSearch={setGroupSearch} />}
+        />
         <Route
           path="/"
           element={
