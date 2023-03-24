@@ -10,7 +10,6 @@ import { redirect } from "react-router-dom";
 export default function Groups({ inGroup, setInGroup, setGroupSearch, groupSearch }) {
   const [show, setShow] = useState(false);
 
-
   const noUserGroupsArr = [];
 
   console.log(inGroup);
