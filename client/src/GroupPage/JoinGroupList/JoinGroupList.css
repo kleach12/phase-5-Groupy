@@ -1,0 +1,11 @@
+ #join_btn{
+  font-family: "Inter", sans-serif !important;
+  background-color: #000000 !important;
+  border: #000000 1px solid !important;
+  color: #ffffff;
+  font-size: 25px;
+  /* padding: 1%; */
+  /* margin: 2%; */
+  border-radius: 1vh;
+  font-weight: 700 !important;
+ }

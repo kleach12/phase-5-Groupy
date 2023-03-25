@@ -1,5 +1,5 @@
 import "./GroupPage.css";
-import GroupList from "../Dashboard/Groups/GroupList/GroupList";
+import JoingGroupList from "./JoinGroupList/JoinGroupList";
 import { useEffect, useState } from "react";
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { Navigate } from "react-router-dom";
@@ -63,7 +63,7 @@ export default function GroupPage({ groupSearch, setGroupSearch }) {
 
           {search(groups).map((group) => {
             return (
-              <GroupList
+              <JoingGroupList
                 key={group.name}
                 groupName={group.name}
                 groupImage={group.image}
