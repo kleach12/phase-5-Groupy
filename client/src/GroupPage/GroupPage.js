@@ -67,6 +67,7 @@ export default function GroupPage({ groupSearch, setGroupSearch }) {
                 key={group.name}
                 groupName={group.name}
                 groupImage={group.image}
+                groupId = {group.id}
                 // numOfUsers={group.numOfUsers}
                 // users={group.users}
                 // index={index}

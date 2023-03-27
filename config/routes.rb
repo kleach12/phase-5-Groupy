@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :group_users
   resources :groups_users
   resources :groups
   # resources :avatars

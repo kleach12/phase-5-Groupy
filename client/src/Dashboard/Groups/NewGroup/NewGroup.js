@@ -41,6 +41,7 @@ export default function NewGroup({ show, setShow }) {
               setErrorMessage(null);
             }, 5000);
           } else {
+            setShow(false)
             console.log(data);
             setGroupCity("");
             setGroupName("");

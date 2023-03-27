@@ -6,6 +6,7 @@ import JoinModal from "./JoinModal/JoinModal";
 export default function JoinGroupList({
   groupName,
   numOfUsers,
+  groupId,
   users,
   index,
 }) {
@@ -22,7 +23,7 @@ export default function JoinGroupList({
         </div>
         <div className="right_card"></div>
       </div>
-      <JoinModal showJoinModal={showJoinModal} SetShowJoinModal={SetShowJoinModal} />
+      <JoinModal showJoinModal={showJoinModal} SetShowJoinModal={SetShowJoinModal} groupName = {groupName} groupId = {groupId} />
     </div>
   );
 }

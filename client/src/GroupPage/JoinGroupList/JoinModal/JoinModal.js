@@ -6,74 +6,46 @@ import { Navigate } from "react-router-dom";
 
 export default function JoinModal({
   showJoinModal,
-  SetShowJoinModal
+  SetShowJoinModal,
+  groupName,
+  groupId
 }) {
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [passwordConfirm, setPasswordConfirm] = useState("");
-  // const [dateOfBirth, setDateOfBirth] = useState("");
-  // const [userCity, setUserCity] = useState("");
-  // const [errorMessage, setErrorMessage] = useState(null);
-  // const [profileImage, setProfileImage] = useState("");
 
-  // function handleSumbit(e) {
-  //   e.preventDefault();
-  //   const data = new FormData();
-  //   data.append("image", profileImage);
-  //   data.append("first_name", firstName);
-  //   data.append("last_name", lastName);
-  //   data.append("username", username);
-  //   data.append("email", email);
-  //   data.append("password", password);
-  //   data.append("password_confirmation", passwordConfirm);
-  //   data.append("dob", dateOfBirth);
-  //   data.append("city", userCity);
-  //   data.append("bio", "");
+  function handleSumbit(e) {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("group_id", groupId);
 
-  //   submitToAPI(data, e);
-  //   // Use an appropriate url
-  //   // bkl
-  //   function submitToAPI(data, e) {
-  //     e.preventDefault();
-  //     fetch("/users", {
-  //       method: "POST",
-  //       body: data,
-  //     })
-  //       .then((response) => response.json())
-  //       .then((data) => {
-  //         if (data.errors) {
-  //           console.log(data.errors);
-  //           setErrorMessage(data.errors[0]);
-  //           setTimeout(() => {
-  //             setErrorMessage(null);
-  //           }, 5000);
-  //         } else if (data.error) {
-  //           console.log(data.error);
-  //           console.log(data);
-  //           setErrorMessage("A Profile Picture is required");
-  //           setTimeout(() => {
-  //             setErrorMessage(null);
-  //           }, 5000);
-  //         } else {
-  //           console.log(data);
-  //           setSignedIn(true);
-  //           setUser(data);
-  //           setFirstName("");
-  //           setLastName("");
-  //           setUsername("");
-  //           setEmail("");
-  //           setPassword("");
-  //           setPasswordConfirm("");
-  //           setDateOfBirth("");
-  //           setUserCity("");
-  //         }
-  //       })
-  //       .catch((error) => console.error(error));
-  //   }
-  // }
+    submitToAPI(data, e);
+
+    function submitToAPI(data, e) {
+      e.preventDefault();
+      fetch("/group_users", {
+        method: "POST",
+        body: data,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.errors) {
+            console.log(data.errors);
+            // setErrorMessage(data.errors[0]);
+            // setTimeout(() => {
+            //   setErrorMessage(null);
+            // }, 5000);
+          } else if (data.error) {
+            console.log(data.error);
+            // console.log(data);
+            // setErrorMessage("A Profile Picture is required");
+            // setTimeout(() => {
+            //   setErrorMessage(null);
+            // }, 5000);
+          } else {
+            console.log(data);
+          }
+        })
+        .catch((error) => console.error(error));
+    }
+  }
 
   return (
     <Modal
@@ -91,16 +63,16 @@ export default function JoinModal({
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div id="sign_up_form" name="sign_up_form">
-          <div id="first_last">
-            <input
+        <div id="join_form" name="join_form">
+          <div id="join_btn">
+            <button
               type="button"
-              className="sign_up_button"
-              id="sign_up_btn"
-              name="sign_up_btn"
-              onClick={(e) => SetShowJoinModal(false)}
-              value="Join"
-            />
+              id="join_btn"
+              name="join_btn"
+              onClick={(e) => handleSumbit(e)}
+            >
+              Join {groupName}
+            </button>
           </div>
         </div>
       </Modal.Body>

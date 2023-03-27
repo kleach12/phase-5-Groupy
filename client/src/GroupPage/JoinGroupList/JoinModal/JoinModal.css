@@ -1,0 +1,10 @@
+#join_form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#join_btn{
+  align-items: center;
+  justify-content: center;
+}
