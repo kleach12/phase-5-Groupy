@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { Navigate } from "react-router-dom";
 
-export default function GroupPage({ groupSearch, setGroupSearch }) {
+export default function GroupPage({ groupSearch, setGroupSearch, user }) {
   const [groups, setGroups] = useState([]);
   const [query, setQuery] = useState("");
   const [searchParam] = useState(["name"]);
   useEffect(() => {
-    fetch("/groups")
+    fetch(`/filtered_groups/${user.username}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {

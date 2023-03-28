@@ -48,7 +48,7 @@ function App() {
         />
         <Route
           path="/GroupPage"
-          element={<GroupPage groupSearch={groupSearch} setGroupSearch={setGroupSearch} />}
+          element={<GroupPage groupSearch={groupSearch} setGroupSearch={setGroupSearch} user = {user}/>}
         />
         <Route
           path="/"

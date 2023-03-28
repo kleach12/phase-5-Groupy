@@ -6,7 +6,6 @@ class GroupsController < ApplicationController
   end
 
   def create 
-    # return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
     group = Group.create(group_params)
     user  = user_in_session
     if group
@@ -18,6 +17,12 @@ class GroupsController < ApplicationController
     
   end
 
+  def user_group_search
+    user = User.find_by(search_params)
+    groups = Group.where(city: user.city)
+    render json: groups
+  end
+
   private 
 
   def user_in_session
@@ -26,6 +31,10 @@ class GroupsController < ApplicationController
 
   def group_params
     params.permit(:name, :city, :group_pic).merge({admin_id: session[:user_id]})
+  end
+
+  def search_params
+    params.permit(:username)
   end
 
 end
