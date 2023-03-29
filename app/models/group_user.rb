@@ -1,2 +1,0 @@
-class GroupUser < ApplicationRecord
-end

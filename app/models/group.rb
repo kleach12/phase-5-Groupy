@@ -4,8 +4,4 @@ class Group < ApplicationRecord
   validates :name, uniqueness: true
   validates :city, length: {minimum:1}
 
-  # has_many :groupusers
-  # has_many :users, through: :groupsusers
-
-  
 end

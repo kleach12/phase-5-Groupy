@@ -20,7 +20,7 @@ export default function JoinModal({
 
     function submitToAPI(data, e) {
       e.preventDefault();
-      fetch("/group_users", {
+      fetch("/groupusers", {
         method: "POST",
         body: data,
       })

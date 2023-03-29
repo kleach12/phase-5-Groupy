@@ -2,6 +2,7 @@ class GroupSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
   attributes :name, :city, :group_pic, :id
 
+  # has_many :groupusers
   # has_many :users
 
   def group_pic
