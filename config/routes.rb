@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
   post "/users/avatar", to: "users#add_avatar"
   get "/filtered_groups", to: "groups#user_group_search"
+  get "/filtered_groups/:username", to: "groups#user_group_search_practice"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

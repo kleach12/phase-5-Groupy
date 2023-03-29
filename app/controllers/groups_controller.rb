@@ -18,7 +18,15 @@ class GroupsController < ApplicationController
 
   def user_group_search
     user = user_in_session
-    groups = Group.where(city: user.city)
+    joined_groups = user.group_users.map { |groups| groups.group_id }
+    groups = Group.where(city: user.city).where.not(id:joined_groups)
+    render json: groups
+  end
+
+  def user_group_search_practice
+    user = User.find_by(search_params)
+    joined_groups = user.group_users.map { |groups| groups.group_id }
+    groups = Group.where(city: user.city).where.not(id:joined_groups)
     render json: groups
   end
 
