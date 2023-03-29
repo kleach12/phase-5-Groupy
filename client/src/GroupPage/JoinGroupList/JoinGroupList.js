@@ -13,7 +13,6 @@ export default function JoinGroupList({
   // const mappedUsersPic = users.map((user) => <img key = {user.username}src = {user.prof_pic} alt = {user.username} className = 'card_prof_pic'/> )
   // need to make user authentication so I can move forward onClick={() => <Navigate to = {"/GroupRoom"}/>
   const [showJoinModal, SetShowJoinModal] = useState(false);
-
   return (
     <div className="group_card" >
       <div className={"card_group"} onClick={() => SetShowJoinModal(true)}>

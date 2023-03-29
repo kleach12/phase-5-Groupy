@@ -14,11 +14,10 @@ class GroupsController < ApplicationController
     else 
       render json: {errors: group.errors.full_messages}
     end
-    
   end
 
   def user_group_search
-    user = User.find_by(search_params)
+    user = user_in_session
     groups = Group.where(city: user.city)
     render json: groups
   end

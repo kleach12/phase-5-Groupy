@@ -8,8 +8,9 @@ export default function GroupPage({ groupSearch, setGroupSearch, user }) {
   const [groups, setGroups] = useState([]);
   const [query, setQuery] = useState("");
   const [searchParam] = useState(["name"]);
+
   useEffect(() => {
-    fetch(`/filtered_groups/${user.username}`)
+    fetch(`/filtered_groups`)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
@@ -40,6 +41,7 @@ export default function GroupPage({ groupSearch, setGroupSearch, user }) {
     });
 }
 
+if (groups){
   if (groups.length > 0) {
     return (
       <div id="group_page">
@@ -79,4 +81,5 @@ export default function GroupPage({ groupSearch, setGroupSearch, user }) {
       </div>
     );
   }
+}
 }
