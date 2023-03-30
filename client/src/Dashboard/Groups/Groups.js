@@ -5,9 +5,8 @@ import { BsPlusLg } from "react-icons/bs";
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import NewGroup from "./NewGroup/NewGroup";
-import { redirect } from "react-router-dom";
 
-export default function Groups({ inGroup, setInGroup, setGroupSearch, groupSearch }) {
+export default function Groups({ inGroup, setInGroup, setGroupSearch, groupSearch,user }) {
   const [show, setShow] = useState(false);
 
   const noUserGroupsArr = [];
@@ -34,18 +33,17 @@ export default function Groups({ inGroup, setInGroup, setGroupSearch, groupSearc
     });
   }
 
-  const mappedGroups = noUserGroupsArr.map((group, index) => {
-    return (
-      <GroupList
-        key={group.groupName}
-        groupName={group.groupName}
-        numOfUsers={group.numOfUsers}
-        users={group.users}
-        index={index}
-        setInGroup={setInGroup}
-      />
-    );
-  });
+  // const mappedGroups = user.groups.map((group, index) => {
+  //   return (
+  //     <GroupList
+  //       key={group.name}
+  //       groupName={group.name}
+  //       numOfUsers={group.numOfUsers}
+  //       index={index}
+  //       setInGroup={setInGroup}
+  //     />
+  //   );
+  // });
 
   if (inGroup) {
     return <Navigate to="/GroupRoom" />;
@@ -54,6 +52,19 @@ export default function Groups({ inGroup, setInGroup, setGroupSearch, groupSearc
   if (groupSearch){
     return <Navigate to='/GroupPage'/>;
   }
+if (user){
+
+  const mappedGroups = user.groups.map((group, index) => {
+    return (
+      <GroupList
+        key={group.name}
+        groupName={group.name}
+        numOfUsers={group.numOfUsers}
+        index={index}
+        setInGroup={setInGroup}
+      />
+    );
+  });
 
   return (
     <div id="groups">
@@ -88,4 +99,5 @@ export default function Groups({ inGroup, setInGroup, setGroupSearch, groupSearc
       </div>
     </div>
   );
+}
 }

@@ -24,7 +24,7 @@ export default function Dashboard({
         signedIn={signedIn}
         setSignedIn={setSignedIn}
       />
-      <Groups inGroup={inGroup} setInGroup={setInGroup} groupSearch={groupSearch} setGroupSearch = {setGroupSearch} />
+      <Groups inGroup={inGroup} setInGroup={setInGroup} groupSearch={groupSearch} setGroupSearch = {setGroupSearch} user = {user}/>
       <FriendsNav />
     </div>
   );

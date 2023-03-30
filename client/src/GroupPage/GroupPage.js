@@ -80,6 +80,48 @@ if (groups){
         </div>
       </div>
     );
+
+
   }
+  return (
+    <div id="group_page">
+      <div id="filter">
+        <BsFillArrowLeftSquareFill
+          id="back_btn"
+          onClick={() => setGroupSearch(false)}
+        />
+        <div id="filter_bar">
+          <label id="filter_label">Search</label>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            id="group_filter"
+          />
+        </div>
+      </div>
+      <div id="list">
+        <h2> No groups to join  </h2>
+
+        {/* {search(groups).map((group) => {
+          return (
+            <JoingGroupList
+              key={group.name}
+              groupName={group.name}
+              groupImage={group.image}
+              groupId = {group.id}
+              // numOfUsers={group.numOfUsers}
+              // users={group.users}
+              // index={index}
+              // setInGroup={setInGroup}
+            />
+          );
+        })} */}
+      </div>
+    </div>
+  );
+}
+else{
+  return(<h2>Loading...</h2>)
 }
 }

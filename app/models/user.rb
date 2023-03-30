@@ -13,4 +13,5 @@ class User < ApplicationRecord
   validates :username, format: { with: /\A[A-Za-z0-9#@$%^&+=]+\z/, message: "only allows letters, numbers, and symbols #@$%^&+=" }
 
   has_many :group_users
+  has_many :groups, through: :group_users
 end
