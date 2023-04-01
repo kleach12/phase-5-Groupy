@@ -1,11 +1,16 @@
 import "./GroupList.css";
 // import { Navigate } from "react-router-dom";
 
-export default function GroupList({ groupName, numOfUsers, users ,index,setInGroup}) {
+export default function GroupList({ groupName, numOfUsers, users ,index,setInGroup,setViewingGroup,group}) {
   // const mappedUsersPic = users.map((user) => <img key = {user.username}src = {user.prof_pic} alt = {user.username} className = 'card_prof_pic'/> )
   // need to make user authentication so I can move forward onClick={() => <Navigate to = {"/GroupRoom"}/>
+
+  function handleViewGroup(){
+    setInGroup(true)
+    setViewingGroup(group)
+  }
   return (
-    <div className="group_card" onClick={() => setInGroup(true)}>
+    <div className="group_card" onClick={() => handleViewGroup()}>
       <div  className={'card_group'}>
         <div className="left_card">
           <h2 className="group_title">{groupName}</h2>

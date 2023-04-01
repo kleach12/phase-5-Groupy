@@ -6,7 +6,7 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import NewGroup from "./NewGroup/NewGroup";
 
-export default function Groups({ inGroup, setInGroup, setGroupSearch, groupSearch,user }) {
+export default function Groups({ inGroup, setInGroup, setGroupSearch, groupSearch,user,setViewingGroup }) {
   const [show, setShow] = useState(false);
 
   const noUserGroupsArr = [];
@@ -33,18 +33,6 @@ export default function Groups({ inGroup, setInGroup, setGroupSearch, groupSearc
     });
   }
 
-  // const mappedGroups = user.groups.map((group, index) => {
-  //   return (
-  //     <GroupList
-  //       key={group.name}
-  //       groupName={group.name}
-  //       numOfUsers={group.numOfUsers}
-  //       index={index}
-  //       setInGroup={setInGroup}
-  //     />
-  //   );
-  // });
-
   if (inGroup) {
     return <Navigate to="/GroupRoom" />;
   }
@@ -62,6 +50,9 @@ if (user){
         numOfUsers={group.numOfUsers}
         index={index}
         setInGroup={setInGroup}
+        setViewingGroup={setViewingGroup}
+        group={group}
+        
       />
     );
   });

@@ -8,7 +8,8 @@ import {
   BsTwitter,
 } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
-export default function GroupNav({ inGroup, setInGroup }) {
+export default function GroupNav({ inGroup, setInGroup,viewingGroup }) {
+  console.log(viewingGroup)
   if (inGroup === false) {
     return <Navigate to="/Dashboard" />;
   }
@@ -16,8 +17,8 @@ export default function GroupNav({ inGroup, setInGroup }) {
     <div id="group_nav">
       <Avatar
         className="profile_pic"
-        // src={user.image}
-        name="Group 1"
+        src={viewingGroup.group_pic}
+        name={viewingGroup.name}
         // onClick={() => setShowPicture(true)}
       />
       {/* <PictureModal

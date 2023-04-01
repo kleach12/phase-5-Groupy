@@ -13,6 +13,7 @@ export default function Dashboard({
   setInGroup,
   setGroupSearch,
   groupSearch,
+  setViewingGroup
 }) {
   // Add a modal for user who just signed up so they have an Idea of what they are doing
   return (
@@ -24,7 +25,7 @@ export default function Dashboard({
         signedIn={signedIn}
         setSignedIn={setSignedIn}
       />
-      <Groups inGroup={inGroup} setInGroup={setInGroup} groupSearch={groupSearch} setGroupSearch = {setGroupSearch} user = {user}/>
+      <Groups inGroup={inGroup} setInGroup={setInGroup} groupSearch={groupSearch} setGroupSearch = {setGroupSearch} user = {user} setViewingGroup = {setViewingGroup}/>
       <FriendsNav />
     </div>
   );

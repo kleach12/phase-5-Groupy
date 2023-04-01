@@ -11,6 +11,7 @@ function App() {
   const [inGroup, setInGroup] = useState(false);
   const [groupSearch, setGroupSearch] = useState(false);
   const [groups, setGroups] = useState([]);
+  const [viewingGroup, setViewingGroup] = useState([])
 
   useEffect(() => {
     fetch("/me")
@@ -30,7 +31,7 @@ function App() {
       <Routes>
         <Route
           path="/GroupRoom"
-          element={<GroupRoom inGroup={inGroup} setInGroup={setInGroup} />}
+          element={<GroupRoom inGroup={inGroup} setInGroup={setInGroup} viewingGroup ={viewingGroup} />}
         />
         <Route
           path="/Dashboard"
@@ -44,12 +45,13 @@ function App() {
               setInGroup={setInGroup}
               groupSearch={groupSearch}
               setGroupSearch={setGroupSearch}
+              setViewingGroup = {setViewingGroup}
             />
           }
         />
         <Route
           path="/GroupPage"
-          element={<GroupPage groupSearch={groupSearch} setGroupSearch={setGroupSearch} user = {user} groups  = {groups}/>}
+          element={<GroupPage groupSearch={groupSearch} setGroupSearch={setGroupSearch} user = {user} groups  = {groups} />}
         />
         <Route
           path="/"
