@@ -21,7 +21,7 @@ export default function GroupList({
         if (data.error) {
           console.log(data.errors);
         } else {
-          console.log(data);
+          // console.log(data);
           setInGroup(true);
           setViewingGroup(data);
         }

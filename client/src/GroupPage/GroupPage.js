@@ -16,12 +16,11 @@ export default function GroupPage({ groupSearch, setGroupSearch, user }) {
         if (data.error) {
           console.log(data.error);
         } else {
-          console.log(data);
+          // console.log(data);
           setGroups(data);
         }
       });
   }, []);
-  console.log(groups);
 
   if (groupSearch === false) {
     return <Navigate to="/dashboard" />;

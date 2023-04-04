@@ -10,12 +10,10 @@ import EditModal from "./EditModal/EditModal";
 export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
   const [showEdit, setShowEdit] = useState(false);
   // const [showPictureEdit, setShowPicture] = useState(false);
-  console.log(user);
   function handleSignOut() {
     fetch("/logout", {
       method: "DELETE",
     }).then((res) => {
-      console.log(res);
       setSignedIn(false);
       setUser(null);
     });

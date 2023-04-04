@@ -6,13 +6,17 @@ import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import NewGroup from "./NewGroup/NewGroup";
 
-export default function Groups({ inGroup, setInGroup, setGroupSearch, groupSearch,user,setViewingGroup }) {
+export default function Groups({
+  inGroup,
+  setInGroup,
+  setGroupSearch,
+  groupSearch,
+  user,
+  setViewingGroup,
+}) {
   const [show, setShow] = useState(false);
 
   const noUserGroupsArr = [];
-
-  console.log(inGroup);
-
 
   for (let i = 0; i < 5; i++) {
     noUserGroupsArr.push({
@@ -37,58 +41,56 @@ export default function Groups({ inGroup, setInGroup, setGroupSearch, groupSearc
     return <Navigate to="/GroupRoom" />;
   }
 
-  if (groupSearch){
-    return <Navigate to='/GroupPage'/>;
+  if (groupSearch) {
+    return <Navigate to="/GroupPage" />;
   }
-if (user){
+  if (user) {
+    const mappedGroups = user.groups.map((group, index) => {
+      return (
+        <GroupList
+          key={group.name}
+          groupName={group.name}
+          numOfUsers={group.numOfUsers}
+          index={index}
+          setInGroup={setInGroup}
+          setViewingGroup={setViewingGroup}
+          group={group}
+        />
+      );
+    });
 
-  const mappedGroups = user.groups.map((group, index) => {
     return (
-      <GroupList
-        key={group.name}
-        groupName={group.name}
-        numOfUsers={group.numOfUsers}
-        index={index}
-        setInGroup={setInGroup}
-        setViewingGroup={setViewingGroup}
-        group={group}
-        
-      />
+      <div id="groups">
+        <div id="groups_top">
+          <h2 id="groups_title"> Groups </h2>
+          <Dropdown>
+            <Dropdown.Toggle
+              id="dropdown-basic"
+              className="dropdown-dash_button "
+            >
+              <BsPlusLg />
+            </Dropdown.Toggle>
+            <Dropdown.Menu className="dropdown-menu-custom">
+              <Dropdown.Item
+                className="dropdown-item-custom"
+                onClick={() => setShow(true)}
+              >
+                Create Group
+              </Dropdown.Item>
+              <Dropdown.Item
+                className="dropdown-item-custom"
+                onClick={() => setGroupSearch(true)}
+              >
+                Join Group
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+        <div className="overflow">
+          {mappedGroups}
+          <NewGroup show={show} setShow={setShow} />
+        </div>
+      </div>
     );
-  });
-
-  return (
-    <div id="groups">
-      <div id="groups_top">
-        <h2 id="groups_title"> Groups </h2>
-        <Dropdown>
-          <Dropdown.Toggle
-            id="dropdown-basic"
-            className="dropdown-dash_button "
-          >
-            <BsPlusLg />
-          </Dropdown.Toggle>
-          <Dropdown.Menu className="dropdown-menu-custom">
-            <Dropdown.Item
-              className="dropdown-item-custom"
-              onClick={() => setShow(true)}
-            >
-              Create Group
-            </Dropdown.Item>
-            <Dropdown.Item
-              className="dropdown-item-custom"
-              onClick={() => setGroupSearch(true)}
-            >
-              Join Group
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </div>
-      <div className="overflow">
-        {mappedGroups}
-        <NewGroup show={show} setShow={setShow} />
-      </div>
-    </div>
-  );
-}
+  }
 }
