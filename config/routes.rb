@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :user_chats
+  resources :messages
   resources :group_users
   resources :groups
   # resources :avatars
