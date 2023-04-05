@@ -22,7 +22,7 @@ export default function SignInModal({
   const [errorMessage, setErrorMessage] = useState(null);
   const [profileImage, setProfileImage] = useState("");
 
-  function handleSumbit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     const data = new FormData();
     data.append("image", profileImage);
@@ -173,7 +173,7 @@ export default function SignInModal({
               className="sign_up_button"
               id="sign_up_btn"
               name="sign_up_btn"
-              onClick={(e) => handleSumbit(e)}
+              onClick={(e) => handleSubmit(e)}
               value="Sign up"
             />
             {/* {" "}

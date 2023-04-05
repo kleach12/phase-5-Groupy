@@ -5,8 +5,7 @@ import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import GroupChatMessage from "./GroupChatMessage/GroupChatMessage";
 import "./GroupChat.css";
 
-export default function GroupChat() {
-  // const text = useRef('');
+export default function GroupChat({ viewingGroup }) {
   const formRef = useRef();
   const [message, setMessage] = useState("");
 
@@ -15,14 +14,43 @@ export default function GroupChat() {
     setMessage(evt.target.value);
   };
 
-  // const handleBlur = () => {
-  //   setMessage(text.current);
-  // };
-
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(message);
-    setMessage("");
+    const data = new FormData();
+    data.append("comment", message);
+    data.append("group_id", viewingGroup.id);
+
+    submitToAPI(data, e);
+    // Use an appropriate url
+    // bkl
+    function submitToAPI(data, e) {
+      e.preventDefault();
+      fetch("/messages", {
+        method: "POST",
+        body: data,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.errors) {
+            console.log(data.errors);
+            // setErrorMessage(data.errors[0]);
+            // setTimeout(() => {
+            //   setErrorMessage(null);
+            // }, 5000);
+          } else if (data.error) {
+            console.log(data.error);
+            console.log(data);
+            // setErrorMessage("A Profile Picture is required");
+            // setTimeout(() => {
+            //   setErrorMessage(null);
+            // }, 5000);
+          } else {
+            console.log(data);
+            setMessage("");
+          }
+        })
+        .catch((error) => console.error(error));
+    }
   }
 
   return (
@@ -39,7 +67,7 @@ export default function GroupChat() {
           // onBlur={handleBlur}
           onChange={handleChange}
         />
-        <BsFillArrowRightSquareFill className="send_message_btn" />
+        <button> <BsFillArrowRightSquareFill className="send_message_btn" /> </button>
       </form>
       <div className="overflow"></div>
     </div>
