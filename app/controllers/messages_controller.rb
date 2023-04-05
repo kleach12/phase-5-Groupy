@@ -14,6 +14,11 @@ class MessagesController < ApplicationController
   end
   end
 
+  def group_messages
+    message  = Message.where(group_id: message_params[:group_id])
+    render json: message
+  end
+
   private 
 
 

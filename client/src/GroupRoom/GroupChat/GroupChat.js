@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // import Button from "react-bootstrap/esm/Button";
 import ContentEditable from "react-contenteditable";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
@@ -8,11 +8,25 @@ import "./GroupChat.css";
 export default function GroupChat({ viewingGroup }) {
   const formRef = useRef();
   const [message, setMessage] = useState("");
-
+  const [groupMessages, setGroupMessages] = useState([])
+  console.log(viewingGroup)
   const handleChange = (evt) => {
     // console.log(evt.target.value)
     setMessage(evt.target.value);
   };
+
+  useEffect(() => {
+    fetch(`/group_messages/${viewingGroup.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.error) {
+          console.log(data.error);
+        } else {
+          console.log(data)
+          setGroupMessages(data)
+        }
+      });
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -53,11 +67,18 @@ export default function GroupChat({ viewingGroup }) {
     }
   }
 
+  const mappedMessages = groupMessages.map((message) => {
+    return(
+      <GroupChatMessage message = {message}/>
+    )
+  })
+
   return (
     <div id="group_chat">
-      <div id="groups_top">
-        <GroupChatMessage />
+      <div id="groups_top" className="overflow">
+      {mappedMessages}
       </div>
+      <div className="fixed_pos">  
       <form id="bottom_chat" onSubmit={(e) => handleSubmit(e)} ref={formRef}>
         {/* <button> </button> */}
         <ContentEditable
@@ -69,6 +90,7 @@ export default function GroupChat({ viewingGroup }) {
         />
         <button> <BsFillArrowRightSquareFill className="send_message_btn" /> </button>
       </form>
+      </div>   
       <div className="overflow"></div>
     </div>
   );

@@ -4,6 +4,7 @@ class GroupSerializer < ActiveModel::Serializer
 
   has_many :group_users
   has_many :users
+  has_many :messages
 
   def group_pic
     rails_blob_path(object.group_pic, only_path: true) if object.group_pic.attached?
