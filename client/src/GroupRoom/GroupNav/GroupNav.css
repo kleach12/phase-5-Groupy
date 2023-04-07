@@ -1,5 +1,5 @@
 #group_nav{
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Inter', sans-serif;
   background-color: #ffffff;
   color:#000000;
   padding: 1% 2%;
@@ -8,14 +8,24 @@
   text-align: center;
   align-items: center;
   border-right: 5px solid #F2F3F5;
+  width: 17%; */
+
+  font-family: 'Inter', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 1% 2%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  border-right: 5px solid #F2F3F5;
   width: 17%;
 }
 
-.profile_pic{
-  /* padding: 15% 0% 0% 0% !important; */
+.group_pic{
   border-radius: 50% !important; 
-  width: 25vh !important;
-  height: 25vh  !important;
+  width: 200px !important;
+  height: 200px   !important;
   margin-bottom: 5% !important;
   background-color: #000000 !important;
 }
@@ -67,7 +77,7 @@
 
 .exit_group{
   font-size: 20px;
-  align-self: baseline;
+  /* align-self: baseline; */
   width: 100%;
   background-color: #000000;
   color:#ffffff;
@@ -84,4 +94,13 @@
 
 #group_bio{
   flex-grow: 1;
+}
+
+
+
+@media screen and (max-width: 1400px) {
+  .group_pic{
+    width: 150px !important;
+    height: 150px   !important;
+  }
 }

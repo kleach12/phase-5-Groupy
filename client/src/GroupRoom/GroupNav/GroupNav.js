@@ -8,28 +8,23 @@ import {
   BsTwitter,
 } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
-export default function GroupNav({ inGroup, setInGroup,viewingGroup }) {
+export default function GroupNav({ inGroup, setInGroup, viewingGroup }) {
   if (inGroup === false) {
     return <Navigate to="/Dashboard" />;
   }
   return (
     <div id="group_nav">
       <Avatar
-        className="profile_pic"
+        className="group_pic"
         src={viewingGroup.group_pic}
         name={viewingGroup.name}
         // onClick={() => setShowPicture(true)}
       />
-      {/* <PictureModal
-        showPictureEdit={showPictureEdit}
-        setShowPicture={setShowPicture}
-      /> */}
       <div>
         <h3 id="at"> </h3>
       </div>
 
-      
-        <span id="group_bio"> Bio </span>
+      <span id="group_bio"> Bio </span>
 
       <div className="social_icons">
         <a
@@ -65,8 +60,10 @@ export default function GroupNav({ inGroup, setInGroup,viewingGroup }) {
           <FaTiktok className="socials" />{" "}
         </a>
       </div>
-      <button className="exit_group"  onClick={() => setInGroup(false)}
-      > Leave </button>
+      <button className="exit_group" onClick={() => setInGroup(false)}>
+        {" "}
+        Leave{" "}
+      </button>
       {/* <BsFillArrowLeftSquareFill className="exit_button"/> */}
     </div>
   );

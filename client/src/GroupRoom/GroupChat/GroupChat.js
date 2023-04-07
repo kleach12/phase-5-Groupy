@@ -9,6 +9,8 @@ export default function GroupChat({ viewingGroup }) {
   const formRef = useRef();
   const [message, setMessage] = useState("");
   const [groupMessages, setGroupMessages] = useState([])
+  const [rerender, setRerender] = useState(false);
+
   console.log(viewingGroup)
   const handleChange = (evt) => {
     // console.log(evt.target.value)
@@ -24,9 +26,10 @@ export default function GroupChat({ viewingGroup }) {
         } else {
           console.log(data)
           setGroupMessages(data)
+          // setRerender(!rerender)
         }
       });
-  }, []);
+  }, [rerender]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -61,6 +64,7 @@ export default function GroupChat({ viewingGroup }) {
           } else {
             console.log(data);
             setMessage("");
+            setRerender(!rerender)
           }
         })
         .catch((error) => console.error(error));
@@ -75,12 +79,16 @@ export default function GroupChat({ viewingGroup }) {
 
   return (
     <div id="group_chat">
-      <div id="groups_top" className="overflow">
+      <div>
+        <h2> {viewingGroup.name} </h2>
+      </div>
+      <div id="group_top" className="overflow">
       {mappedMessages}
       </div>
       <div className="fixed_pos">  
       <form id="bottom_chat" onSubmit={(e) => handleSubmit(e)} ref={formRef}>
         {/* <button> </button> */}
+        {/* <div className="wrapper"> */}
         <ContentEditable
           html={message}
           className="chat_box"
@@ -88,6 +96,8 @@ export default function GroupChat({ viewingGroup }) {
           // onBlur={handleBlur}
           onChange={handleChange}
         />
+        {/* </div> */}
+        
         <button> <BsFillArrowRightSquareFill className="send_message_btn" /> </button>
       </form>
       </div>   

@@ -12,12 +12,11 @@
 }
 
 .profile_pic{
-  /* padding: 15% 0% 0% 0% !important; */
   border-radius: 50% !important; 
-  width: 25vh !important;
-  height: 25vh  !important;
+  width: 100% !important;
+  height: auto !important;
   margin-bottom: 5% !important;
-  background-color: #000000 !important;
+  
 }
 
 #title{

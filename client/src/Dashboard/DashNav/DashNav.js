@@ -27,15 +27,12 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
     <div id="dash_nav">
       <h1 id="title"> IRL </h1>
       <Avatar
+        // round={true}
         className="profile_pic"
         src={user.image}
         name={user.full_name}
         // onClick={() => setShowPicture(true)}
       />
-      {/* <PictureModal
-        showPictureEdit={showPictureEdit}
-        setShowPicture={setShowPicture}
-      /> */}
       <div>
         <h3 id="at"> @{user.username}</h3>
       </div>

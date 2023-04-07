@@ -7,6 +7,9 @@
   padding: 1%;
   width: 100%;
 }
+.message:last-of-type{
+  margin-bottom: 5%;
+}
 
 .mem_pic{
   width: 40px;
