@@ -8,10 +8,10 @@ import "./GroupChat.css";
 export default function GroupChat({ viewingGroup }) {
   const formRef = useRef();
   const [message, setMessage] = useState("");
-  const [groupMessages, setGroupMessages] = useState([])
+  const [groupMessages, setGroupMessages] = useState([]);
   const [rerender, setRerender] = useState(false);
 
-  console.log(viewingGroup)
+  console.log(viewingGroup);
   const handleChange = (evt) => {
     // console.log(evt.target.value)
     setMessage(evt.target.value);
@@ -24,8 +24,8 @@ export default function GroupChat({ viewingGroup }) {
         if (data.error) {
           console.log(data.error);
         } else {
-          console.log(data)
-          setGroupMessages(data)
+          console.log(data);
+          setGroupMessages(data);
           // setRerender(!rerender)
         }
       });
@@ -64,7 +64,7 @@ export default function GroupChat({ viewingGroup }) {
           } else {
             console.log(data);
             setMessage("");
-            setRerender(!rerender)
+            setRerender(!rerender);
           }
         })
         .catch((error) => console.error(error));
@@ -72,36 +72,33 @@ export default function GroupChat({ viewingGroup }) {
   }
 
   const mappedMessages = groupMessages.map((message) => {
-    return(
-      <GroupChatMessage message = {message}/>
-    )
-  })
+    return <GroupChatMessage message={message} className="overflow" />;
+  });
 
   return (
     <div id="group_chat">
-      <div>
+      <div id="group_top">
         <h2> {viewingGroup.name} </h2>
       </div>
-      <div id="group_top" className="overflow">
+      <div className="overflow">
       {mappedMessages}
       </div>
-      <div className="fixed_pos">  
-      <form id="bottom_chat" onSubmit={(e) => handleSubmit(e)} ref={formRef}>
-        {/* <button> </button> */}
-        {/* <div className="wrapper"> */}
-        <ContentEditable
-          html={message}
-          className="chat_box"
-          suppressContentEditableWarning={true}
-          // onBlur={handleBlur}
-          onChange={handleChange}
-        />
-        {/* </div> */}
-        
-        <button> <BsFillArrowRightSquareFill className="send_message_btn" /> </button>
-      </form>
-      </div>   
-      <div className="overflow"></div>
+      <div className="fixed_pos">
+        <form id="bottom_chat" onSubmit={(e) => handleSubmit(e)} ref={formRef}>
+          <ContentEditable
+            html={message}
+            className="chat_box"
+            suppressContentEditableWarning={true}
+            // onBlur={handleBlur}
+            onChange={handleChange}
+          />
+
+          <button>
+            {" "}
+            <BsFillArrowRightSquareFill className="send_message_btn" />{" "}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
