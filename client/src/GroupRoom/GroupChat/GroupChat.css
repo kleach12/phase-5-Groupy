@@ -116,3 +116,11 @@
 .wrapper{
   display: inline-block;
 }
+
+#group_title{
+  float: left;
+  font-family: 'Inter', sans-serif;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 900;
+}

@@ -26,22 +26,55 @@ export default function GroupPage({ groupSearch, setGroupSearch, user }) {
     return <Navigate to="/dashboard" />;
   }
 
-
   function search(items) {
     return items.filter((item) => {
-        return searchParam.some((newItem) => {
-            return (
-                item[newItem]
-                    .toString()
-                    .toLowerCase()
-                    .indexOf(query.toLowerCase()) > -1
-            );
-        });
+      return searchParam.some((newItem) => {
+        return (
+          item[newItem].toString().toLowerCase().indexOf(query.toLowerCase()) >
+          -1
+        );
+      });
     });
-}
+  }
 
-if (groups){
-  if (groups.length > 0) {
+  if (groups) {
+    if (groups.length > 0) {
+      return (
+        <div id="group_page">
+          <div id="filter">
+            <BsFillArrowLeftSquareFill
+              id="back_btn"
+              onClick={() => setGroupSearch(false)}
+            />
+            <div id="filter_bar">
+              <label id="filter_label">Search</label>
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                id="group_filter"
+              />
+            </div>
+          </div>
+          <div id="list">
+            {search(groups).map((group) => {
+              return (
+                <JoingGroupList
+                  key={group.name}
+                  groupName={group.name}
+                  groupImage={group.image}
+                  groupId={group.id}
+                  // numOfUsers={group.numOfUsers}
+                  // users={group.users}
+                  // index={index}
+                  // setInGroup={setInGroup}
+                />
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
     return (
       <div id="group_page">
         <div id="filter">
@@ -59,68 +92,16 @@ if (groups){
             />
           </div>
         </div>
-        <div id="list">
-
-
-          {search(groups).map((group) => {
-            return (
-              <JoingGroupList
-                key={group.name}
-                groupName={group.name}
-                groupImage={group.image}
-                groupId = {group.id}
-                // numOfUsers={group.numOfUsers}
-                // users={group.users}
-                // index={index}
-                // setInGroup={setInGroup}
-              />
-            );
-          })}
+        <div id="no_list">
+          <img
+            src={`https://media3.giphy.com/media/ISOckXUybVfQ4/giphy.gif`}
+            id="lonely_gif"
+          />
+          <h2 id="lonely_comment"> Sorry but there are no groups you can join right now </h2>
         </div>
       </div>
     );
-
-
+  } else {
+    return <h2>Loading...</h2>;
   }
-  return (
-    <div id="group_page">
-      <div id="filter">
-        <BsFillArrowLeftSquareFill
-          id="back_btn"
-          onClick={() => setGroupSearch(false)}
-        />
-        <div id="filter_bar">
-          <label id="filter_label">Search</label>
-          <input
-            type="text"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            id="group_filter"
-          />
-        </div>
-      </div>
-      <div id="list">
-        <h2> No groups to join  </h2>
-
-        {/* {search(groups).map((group) => {
-          return (
-            <JoingGroupList
-              key={group.name}
-              groupName={group.name}
-              groupImage={group.image}
-              groupId = {group.id}
-              // numOfUsers={group.numOfUsers}
-              // users={group.users}
-              // index={index}
-              // setInGroup={setInGroup}
-            />
-          );
-        })} */}
-      </div>
-    </div>
-  );
-}
-else{
-  return(<h2>Loading...</h2>)
-}
 }

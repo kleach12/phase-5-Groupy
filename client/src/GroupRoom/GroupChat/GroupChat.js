@@ -78,7 +78,7 @@ export default function GroupChat({ viewingGroup }) {
   return (
     <div id="group_chat">
       <div id="group_top">
-        <h2> {viewingGroup.name} </h2>
+        <h2 id ="group_title"> {viewingGroup.name} </h2>
       </div>
       <div className="overflow">
       {mappedMessages}

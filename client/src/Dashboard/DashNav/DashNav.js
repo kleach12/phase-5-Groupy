@@ -6,8 +6,15 @@ import { useState } from "react";
 import Avatar from "react-avatar";
 import EditModal from "./EditModal/EditModal";
 // import PictureModal from "./PictureModal/PictureModal";
-
-export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
+import { BsFillTrashFill } from "react-icons/bs";
+export default function DashNav({
+  user,
+  setUser,
+  signedIn,
+  setSignedIn,
+  deleteUser,
+  setDeleteUser,
+}) {
   const [showEdit, setShowEdit] = useState(false);
   // const [showPictureEdit, setShowPicture] = useState(false);
   function handleSignOut() {
@@ -21,6 +28,10 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
 
   if (signedIn === false) {
     return <Navigate to="/" />;
+  }
+
+  if (deleteUser === true) {
+    return <Navigate to="/DeleteAccount" />;
   }
 
   return (
@@ -37,7 +48,7 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
         <h3 id="at"> @{user.username}</h3>
       </div>
 
-      <div>
+      <div className="grow">
         <h3 id="bio"> {user.bio} </h3>
       </div>
       <div className="social_icons">
@@ -87,6 +98,7 @@ export default function DashNav({ user, setUser, signedIn, setSignedIn }) {
       <h3 className="dashnav_text" onClick={handleSignOut}>
         Sign out
       </h3>
+      <BsFillTrashFill id="delete_btn" onClick={() => setDeleteUser(true)} />
     </div>
   );
 }

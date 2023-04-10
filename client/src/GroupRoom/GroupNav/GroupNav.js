@@ -24,7 +24,7 @@ export default function GroupNav({ inGroup, setInGroup, viewingGroup }) {
         <h3 id="at"> </h3>
       </div>
 
-      <span id="group_bio"> Bio </span>
+      <span id="group_bio">  </span>
 
       <div className="social_icons">
         <a
