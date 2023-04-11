@@ -76,6 +76,8 @@ function App() {
             <DeleteAccount
               deleteUser={deleteUser}
               setDeleteUser={setDeleteUser}
+              signedIn={signedIn}
+              setSignedIn={setSignedIn}
             />
           }
         />

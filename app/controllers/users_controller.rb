@@ -37,6 +37,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    user = user_in_session
+    if user
+      user.destroy
+      head :no_content
+    else
+      render json: {error: "This User is not logged in"}
+    end
+  end
+
 
   private 
 

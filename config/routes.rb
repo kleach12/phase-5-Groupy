@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :group_users
   resources :groups
   # resources :avatars
-  resources :users, :only => [:index, :create, :show, :destroy]
+  resources :users, :only => [:index, :create, :show]
   put "/users", to: "users#update"
   patch "/users", to: "users#update"
   # put "/user/:username", to: "users#update_profile"
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "/filtered_groups", to: "groups#user_group_search"
   get "/filtered_groups/:username", to: "groups#user_group_search_practice"
   get "/group_messages/:group_id", to: "messages#group_messages"
+  delete "/delete_user", to: "users#destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
