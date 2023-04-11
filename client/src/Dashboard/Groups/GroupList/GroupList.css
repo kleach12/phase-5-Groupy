@@ -28,7 +28,7 @@
 }
 .card_group:hover {
   background-color: #000000;
-  color: #ffffff;
+  /* color: #ffffff; */
   box-shadow: 0 0 30px #000000;
 }
 .group_title{
@@ -83,3 +83,4 @@
 .card_prof_pic {
   width: 40px;
 }
+

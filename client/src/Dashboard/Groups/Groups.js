@@ -16,27 +16,6 @@ export default function Groups({
 }) {
   const [show, setShow] = useState(false);
 
-  const noUserGroupsArr = [];
-
-  for (let i = 0; i < 5; i++) {
-    noUserGroupsArr.push({
-      groupName: `Groups_${i}`,
-      numOfUsers: 2,
-      users: [
-        {
-          username: "Kleach12",
-          prof_pic:
-            "https://preview.redd.it/oc4d5zck25f71.png?width=516&format=png&auto=webp&s=7973d616398483a47a711f373339e0da970b30a6",
-        },
-        {
-          username: "CC2714",
-          prof_pic:
-            "https://images.wagwalkingweb.com/media/breed/chihuahua/appearance/chihuahua.png",
-        },
-      ],
-    });
-  }
-
   if (inGroup) {
     return <Navigate to="/GroupRoom" />;
   }
@@ -49,8 +28,6 @@ export default function Groups({
       return (
         <GroupList
           key={group.name}
-          groupName={group.name}
-          numOfUsers={group.numOfUsers}
           index={index}
           setInGroup={setInGroup}
           setViewingGroup={setViewingGroup}

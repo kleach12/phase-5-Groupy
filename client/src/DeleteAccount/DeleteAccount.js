@@ -9,6 +9,7 @@ export default function DeleteAccount({deleteUser,setDeleteUser,signedIn, setSig
     }).then((res) => {
       console.log(res);
       setSignedIn(false);
+      setDeleteUser(false)
     });
   }
   if (deleteUser === false){
