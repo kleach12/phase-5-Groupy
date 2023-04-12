@@ -5,7 +5,7 @@ class Group < ApplicationRecord
   validates :city, length: {minimum:1}
 
 
-  has_many :group_users
+  has_many :group_users, dependent: :destroy
   has_many :users, through: :group_users
-  has_many :messages
+  has_many :messages, dependent: :destroy
 end

@@ -60,21 +60,6 @@
   cursor: pointer !important;
 } */
 
-.social_icons{
-  display: flex;
-}
-
-.socials{
-  color: #b2b2b2;
-  font-size: 20px;
-  margin: 3px
-}
-
-.socials:hover{
-  color: #000000;
-  cursor: pointer;
-}
-
 .exit_group{
   font-size: 20px;
   /* align-self: baseline; */

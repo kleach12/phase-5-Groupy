@@ -12,8 +12,7 @@ const HoverColor = styled.div`
 
 export default function GroupList({ setInGroup, setViewingGroup, group }) {
   const colors = ["#F06C9B", "#256EFF", "#FFE74C", "#33CA7F", "#EF6054"];
-  const [hoverColor, setHoverColor] = useState("");
-  const randColor = colors[Math.floor(Math.random() * colors.length)];
+  const [hovercolor, setHoverColor] = useState("");
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
@@ -53,14 +52,14 @@ export default function GroupList({ setInGroup, setViewingGroup, group }) {
 
   useEffect(() => {
     setRandomColor(colors[Math.floor(Math.random() * colors.length)]);
-  }, [hoverColor]);
+  }, [hovercolor]);
 
   return (
     <div className="group_card">
       <HoverColor
         className={"card_group"}
         color={randomColor}
-        hoverColor={hoverColor}
+        hovercolor={hovercolor}
         onMouseEnter={handleHover}
         onMouseLeave={handleLeave}
         onClick={(e) => handleViewGroup(e)}

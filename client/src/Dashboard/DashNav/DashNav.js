@@ -2,11 +2,20 @@ import "./DashNav.css";
 import { Navigate } from "react-router-dom";
 import { BsInstagram, BsFacebook, BsTwitter } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Avatar from "react-avatar";
 import EditModal from "./EditModal/EditModal";
-// import PictureModal from "./PictureModal/PictureModal";
 import { BsFillTrashFill } from "react-icons/bs";
+import styled from "styled-components";
+import SocialIcons from "./SocialIcons/SocialIcons";
+const HoverColorH3 = styled.h3`
+  color: black;
+
+  &:hover {
+    color: ${(props) => props.color} !important;
+  }
+`;
+
 export default function DashNav({
   user,
   setUser,
@@ -16,7 +25,23 @@ export default function DashNav({
   setDeleteUser,
 }) {
   const [showEdit, setShowEdit] = useState(false);
-  // const [showPictureEdit, setShowPicture] = useState(false);
+  const colors = ["#F06C9B", "#256EFF", "#FFE74C", "#33CA7F", "#EF6054"];
+  const [hovercolor, setHoverColor] = useState("");
+  const [randomColor, setRandomColor] = useState(
+    colors[Math.floor(Math.random() * colors.length)]
+  );
+
+  function handleHover() {
+    let newColor = randomColor;
+    while (newColor === randomColor) {
+      newColor = colors[Math.floor(Math.random() * colors.length)];
+    }
+    setHoverColor(newColor);
+  }
+
+  function handleLeave() {
+    setHoverColor("");
+  }
   function handleSignOut() {
     fetch("/logout", {
       method: "DELETE",
@@ -25,6 +50,10 @@ export default function DashNav({
       setUser(null);
     });
   }
+
+  useEffect(() => {
+    setRandomColor(colors[Math.floor(Math.random() * colors.length)]);
+  }, [hovercolor]);
 
   if (signedIn === false) {
     return <Navigate to="/" />;
@@ -37,67 +66,51 @@ export default function DashNav({
   return (
     <div id="dash_nav">
       <h1 id="title"> IRL </h1>
-      <Avatar
-        // round={true}
-        className="profile_pic"
-        src={user.image}
-        name={user.full_name}
-        // onClick={() => setShowPicture(true)}
-      />
+      <Avatar className="profile_pic" src={user.image} name={user.full_name} />
       <div>
-        <h3 id="at"> @{user.username}</h3>
+        <HoverColorH3
+          id="at"
+          color={randomColor}
+          hovercolor={hovercolor}
+          onMouseEnter={handleHover}
+          onMouseLeave={handleLeave}
+        >
+          {" "}
+          @{user.username}
+        </HoverColorH3>
       </div>
 
       <div className="grow">
         <h3 id="bio"> {user.bio} </h3>
       </div>
-      <div className="social_icons">
-        <a
-          href={user.insta ? user.insta : null}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {" "}
-          <BsInstagram className="socials" />{" "}
-        </a>
-        <a
-          href={user.facebook ? user.facebook : null}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {" "}
-          <BsFacebook className="socials" />{" "}
-        </a>
-        <a
-          href={user.twitter ? user.twitter : null}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {" "}
-          <BsTwitter className="socials" />{" "}
-        </a>
-        <a
-          href={user.tiktok ? user.tiktok : null}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {" "}
-          <FaTiktok className="socials" />{" "}
-        </a>
-      </div>
-      <h3 className="dashnav_text" onClick={() => setShowEdit(true)}>
+      <SocialIcons user ={user}/>
+      <HoverColorH3
+        color={randomColor}
+        hovercolor={hovercolor}
+        onMouseEnter={handleHover}
+        onMouseLeave={handleLeave}
+        className="dashnav_text"
+        onClick={() => setShowEdit(true)}
+      >
         {" "}
         Edit Profile{" "}
-      </h3>
+      </HoverColorH3>
       <EditModal
         user={user}
         setUser={setUser}
         showEdit={showEdit}
         setShowEdit={setShowEdit}
       />
-      <h3 className="dashnav_text" onClick={handleSignOut}>
+      <HoverColorH3
+        color={randomColor}
+        hovercolor={hovercolor}
+        onMouseEnter={handleHover}
+        onMouseLeave={handleLeave}
+        className="dashnav_text"
+        onClick={handleSignOut}
+      >
         Sign out
-      </h3>
+      </HoverColorH3>
       <BsFillTrashFill id="delete_btn" onClick={() => setDeleteUser(true)} />
     </div>
   );

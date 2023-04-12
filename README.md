@@ -31,3 +31,9 @@ Orix Creative
 
 Start Postgres
 sudo service postgresql start
+
+Cyclamen F06C9B
+Brandeis Blue 256EFF
+Maize FFE74C
+Emerald 33CA7F
+Red (crayola) EF6054
