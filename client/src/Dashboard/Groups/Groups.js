@@ -2,10 +2,10 @@ import "./Groups.css";
 import GroupList from "./GroupList/GroupList";
 import Dropdown from "react-bootstrap/Dropdown";
 import { BsPlusLg } from "react-icons/bs";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import NewGroup from "./NewGroup/NewGroup";
-
+import { ThemeContext } from "../../ThemeContext";
 export default function Groups({
   inGroup,
   setInGroup,
@@ -15,7 +15,8 @@ export default function Groups({
   setViewingGroup,
 }) {
   const [show, setShow] = useState(false);
-
+  const theme = useContext(ThemeContext)
+  
   if (inGroup) {
     return <Navigate to="/GroupRoom" />;
   }
@@ -37,9 +38,9 @@ export default function Groups({
     });
 
     return (
-      <div id="groups">
+      <div id={"groups_" + theme}>
         <div id="groups_top">
-          <h2 id="groups_title"> Groups </h2>
+          <h2 id={"groups_title_" + theme}> Groups </h2>
           <Dropdown>
             <Dropdown.Toggle
               id="dropdown-basic"

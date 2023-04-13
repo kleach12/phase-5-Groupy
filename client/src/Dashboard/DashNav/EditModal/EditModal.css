@@ -1,6 +1,54 @@
-#edit_profile{
+#edit_modal_light{
+  width: 500px;
+}
+
+#edit_modal_dark{
+  width: 500px;
+}
+
+.modal_header_light{
+  background-color: #ffffff;
+}
+
+.modal_header_dark{
+  background-color: #000000;
+  color: #ffffff !important;
+}
+
+.edit_modal_title_light{
+  font-size: 30px !important;
+  font-weight: 700 !important;
+}
+
+.edit_modal_title_dark{
+  font-size: 30px !important;
+  font-weight: 700 !important;
+  color: #ffffff;
+}
+#modal_body__light{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+#modal_body__dark{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #000000;
+}
+
+#edit_profile_light{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#edit_profile_dark{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #000000;
 }
 
 .edit_input_text{

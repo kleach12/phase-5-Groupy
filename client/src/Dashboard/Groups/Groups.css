@@ -1,13 +1,22 @@
-#groups {
+#groups_light {
   font-family: "Inter", sans-serif;
-  border-radius: 1vh;
   display: flex;
   flex-direction: column;
   text-align: center;
   flex-grow: 1;
   padding-top: 1%;
-  border-right: 5px solid #F2F3F5;
 }
+
+#groups_dark {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  flex-grow: 1;
+  padding-top: 1%;
+  background-color: #000000;
+}
+
 #groups_top {
   align-items: center;
   justify-content: space-between;
@@ -39,12 +48,28 @@
   display: none !important; 
 }
 
-#groups_title {
+#groups_title_light {
   float: left;
   font-size: 40px;
   font-weight: 900;
   margin-left: 1%;
   color: #000000;
+}
+
+#groups_title_light {
+  float: left;
+  font-size: 40px;
+  font-weight: 900;
+  margin-left: 1%;
+  color: #000000;
+}
+
+#groups_title_dark {
+  float: left;
+  font-size: 40px;
+  font-weight: 900;
+  margin-left: 1%;
+  color: #ffffff;
 }
 
 .dropdown-menu-custom {

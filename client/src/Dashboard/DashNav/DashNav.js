@@ -35,7 +35,7 @@ export default function DashNav({
 
 const theme = useContext(ThemeContext)
 console.log(theme)
-const themeButton = theme === 'light' ? <BsFillMoonFill onClick={() => setTheme('dark')}/> :  <BsBrightnessHigh onClick={() => setTheme('light')}/>
+const themeButton = theme === 'light' ? <BsFillMoonFill className = {'theme_button_'  + theme} onClick={() => setTheme('dark')}/> :  <BsBrightnessHigh className = {'theme_button_'  + theme} onClick={() => setTheme('light')}/>
 
   function handleHover() {
     let newColor = randomColor;
@@ -70,12 +70,12 @@ const themeButton = theme === 'light' ? <BsFillMoonFill onClick={() => setTheme(
   }
 
   return (
-    <div id="dash_nav">
-      <h1 id="title"> IRL </h1>
+    <div id={"dash_nav_" + theme}>
+      <h1 id={"title_" + theme}> IRL </h1>
       <Avatar className="profile_pic" src={user.image} name={user.full_name} />
       <div>
         <HoverColorH3
-          id="at"
+          id={"at_" + theme}
           color={randomColor}
           hovercolor={hovercolor}
           onMouseEnter={handleHover}
@@ -87,7 +87,7 @@ const themeButton = theme === 'light' ? <BsFillMoonFill onClick={() => setTheme(
       </div>
 
       <div className="grow">
-        <h3 id="bio"> {user.bio} </h3>
+        <h3 id={"bio_" + theme}> {user.bio} </h3>
       </div>
       <SocialIcons user={user} />
       <HoverColorH3
@@ -95,7 +95,7 @@ const themeButton = theme === 'light' ? <BsFillMoonFill onClick={() => setTheme(
         hovercolor={hovercolor}
         onMouseEnter={handleHover}
         onMouseLeave={handleLeave}
-        className="dashnav_text"
+        className={"dashnav_text_" + theme}
         onClick={() => setShowEdit(true)}
       >
         {" "}
@@ -112,13 +112,13 @@ const themeButton = theme === 'light' ? <BsFillMoonFill onClick={() => setTheme(
         hovercolor={hovercolor}
         onMouseEnter={handleHover}
         onMouseLeave={handleLeave}
-        className="dashnav_text"
+        className={"dashnav_text_" + theme}
         onClick={handleSignOut}
       >
         Sign out
       </HoverColorH3>
       {themeButton}
-      <BsFillTrashFill id="delete_btn" onClick={() => setDeleteUser(true)} />
+      <BsFillTrashFill id={"delete_btn_" + theme} onClick={() => setDeleteUser(true)} />
     </div>
   );
 }

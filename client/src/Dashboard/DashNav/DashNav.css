@@ -1,4 +1,4 @@
-#dash_nav{
+#dash_nav_light{
   font-family: 'Inter', sans-serif;
   background-color: #ffffff;
   color:#000000;
@@ -11,6 +11,19 @@
   width: 17%;
 }
 
+#dash_nav_dark{
+  font-family: 'Inter', sans-serif;
+  background-color: #000000;
+  color:#ffffff;
+  padding: 1% 2%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  border-right: 5px solid #262627;
+  width: 17%;
+}
+
 .profile_pic{
   border-radius: 50% !important; 
   width: 100% !important;
@@ -19,7 +32,7 @@
   
 }
 
-#title{
+#title_light{
   font-family: 'Inter', sans-serif;
   color: #000000;
   font-size: 50px;
@@ -28,7 +41,16 @@
   margin-bottom: 30%;
 }
 
-#at{
+#title_dark{
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+  font-size: 50px;
+  font-weight: 900;
+  padding-top: 25px;
+  margin-bottom: 30%;
+}
+
+#at_light{
   color: #000000;;
   font-size: 20px;
   font-weight: 700;
@@ -36,11 +58,15 @@
   cursor: pointer !important;
 }
 
-/* #at:hover{
-  color: #000000;
-} */
+#at_dark{
+  color: #ffffff;;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15%;
+  cursor: pointer !important;
+}
 
-#bio{
+#bio_light{
   color: #000000;;
   font-size: 15px;
   font-weight: 700;
@@ -48,17 +74,35 @@
   cursor: pointer !important;
 }
 
-.dashnav_text{
+#bio_dark{
+  color: #ffffff;;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 15%;
+  cursor: pointer !important;
+}
+
+.dashnav_text_light{
   font-size: 20px;
   font-family: 'Inter', sans-serif;
-  /* margin-bottom: 10%; */
-  /* margin-top: 10%; */
   color: #000000;
   font-weight: 700;
   cursor: pointer !important;
 }
 
-.dashnav_text:first-of-type{
+.dashnav_text_dark{
+  font-size: 20px;
+  font-family: 'Inter', sans-serif;
+  color: #ffffff !important;;
+  font-weight: 700;
+  cursor: pointer !important;
+}
+
+.dashnav_text_light:first-of-type{
+  margin-top: 20%;
+}
+
+.dashnav_text_dark:first-of-type{
   margin-top: 20%;
 }
 
@@ -66,8 +110,12 @@
   color: #000000;
 }
 
-#delete_btn{
+#delete_btn_light{
   color: #000000;
+}
+
+#delete_btn_dark{
+  color: #ffffff;
 }
 
 #delete_btn:hover{
@@ -77,4 +125,16 @@
 
 .grow{
   flex-grow: 1;
+}
+
+.theme_button_dark{
+  margin-top: 10%;
+  margin-bottom: 10%;
+  color: #ffffff;
+}
+
+.theme_button_light{
+  color: #000000;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }

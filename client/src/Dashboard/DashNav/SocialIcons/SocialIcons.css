@@ -3,8 +3,15 @@
   flex-direction: column;
 }
 
-.socials{
-  color: #b2b2b2;
+
+.socials_light{
+  color: #000000;
+  font-size: 20px;
+  margin: 3px;
+}
+
+.socials_dark{
+  color: #ffffff;
   font-size: 20px;
   margin: 3px;
 }

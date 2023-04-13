@@ -1,13 +1,26 @@
-.message{
+.message_light{
   display: flex;
   align-self: flex-end;
-  /* flex-grow: 1; */
   border-top: 5px solid #F2F3F5;
   border-bottom: 5px solid #F2F3F5 ;
   padding: 1%;
   width: 100%;
 }
-.message:last-of-type{
+
+.message_dark{
+  display: flex;
+  align-self: flex-end;
+  border-top: 5px solid #262627;
+  border-bottom: 5px solid #262627 ;
+  padding: 1%;
+  width: 100%;
+}
+
+.message_light:last-of-type{
+  margin-bottom: 5%;
+}
+
+.message_dark:last-of-type{
   margin-bottom: 5%;
 }
 

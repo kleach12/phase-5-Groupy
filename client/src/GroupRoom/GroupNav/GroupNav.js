@@ -3,16 +3,12 @@ import Avatar from "react-avatar";
 import { Navigate } from "react-router-dom";
 import SocialIcons from "../../Dashboard/DashNav/SocialIcons/SocialIcons";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "../../ThemeContext";
 const HoverColorButton = styled.button`
-color: white;
+color: black;
 border-radius: 1vh;
-
-  &:hover {
-    color: ${(props) => props.color} !important;
-    background-color: black;
-  }
+background-color: ${(props) => props.color} !important;
 `;
 
 export default function GroupNav({ inGroup, setInGroup, viewingGroup }) {
@@ -21,6 +17,7 @@ export default function GroupNav({ inGroup, setInGroup, viewingGroup }) {
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
+  const theme = useContext(ThemeContext)
 
   function handleHover() {
     let newColor = randomColor;
@@ -41,17 +38,13 @@ export default function GroupNav({ inGroup, setInGroup, viewingGroup }) {
     return <Navigate to="/Dashboard" />;
   }
   return (
-    <div id="group_nav">
+    <div id={"group_nav_" + theme}>
       <Avatar
-        className="group_pic"
+        className={"group_pic_" + theme}
         src={viewingGroup.group_pic}
         name={viewingGroup.name}
         // onClick={() => setShowPicture(true)}
       />
-      <div>
-        <h3 id="at"> </h3>
-      </div>
-
       <span id="group_bio"> </span>
       <SocialIcons user={viewingGroup} />
       <HoverColorButton

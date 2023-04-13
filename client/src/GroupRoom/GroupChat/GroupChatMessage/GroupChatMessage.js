@@ -1,14 +1,13 @@
 import "./GroupChatMessage.css";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
-
+import { useState, useEffect, useContext } from "react";
+import { ThemeContext } from "../../../ThemeContext";
 const HoverColorSpan = styled.span`
-  color: black;
   border-radius: 1vh;
+  // background-color: ${(props) => props.color} !important;
+  &:hover{
+    background-color: ${(props) => props.color} !important;
 
-  &:hover {
-    color: ${(props) => props.color} !important;
-    background-color: black;
   }
 `;
 export default function GroupChatMessage({ message }) {
@@ -17,6 +16,7 @@ export default function GroupChatMessage({ message }) {
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
+  const theme = useContext(ThemeContext)
 
   function handleHover() {
     let newColor = randomColor;
@@ -35,7 +35,7 @@ export default function GroupChatMessage({ message }) {
 
   return (
     <HoverColorSpan
-      className="message"
+      className={"message_" + theme}
       color={randomColor}
       hovercolor={hovercolor}
       onMouseEnter={handleHover}

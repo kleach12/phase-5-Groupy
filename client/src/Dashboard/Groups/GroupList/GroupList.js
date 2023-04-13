@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import "./GroupList.css";
+import { ThemeContext } from "../../../ThemeContext";
 import styled from "styled-components";
 // import { Navigate } from "react-router-dom";
 const HoverColor = styled.div`
   color: black;
-
-  &:hover {
-    color: ${(props) => props.color};
+  background-color:${(props) => props.color};
+  box-shadow: 0 0 10px ${(props) => props.color};;
+  &:hover{
+    box-shadow: 0 0 30px ${(props) => props.color};;
   }
 `;
 
@@ -16,6 +18,7 @@ export default function GroupList({ setInGroup, setViewingGroup, group }) {
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
+  const theme = useContext(ThemeContext)
 
   const numberOfMembers =
     group.num_of_mem <= 1
@@ -57,7 +60,7 @@ export default function GroupList({ setInGroup, setViewingGroup, group }) {
   return (
     <div className="group_card">
       <HoverColor
-        className={"card_group"}
+        className={"card_group_" + theme }
         color={randomColor}
         hovercolor={hovercolor}
         onMouseEnter={handleHover}

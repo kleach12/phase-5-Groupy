@@ -1,15 +1,11 @@
 import "./GroupChatList.css";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
-
+import { useState, useEffect,useContext } from "react";
+import { ThemeContext } from "../../../ThemeContext";
 const HoverColorDiv = styled.div`
   color: black;
-  border-radius: 1vh;
+  background-color: ${(props) => props.color} !important;
 
-  &:hover {
-    color: ${(props) => props.color} !important;
-    background-color: black;
-  }
 `;
 export default function GroupChatList({ username, image }) {
   const colors = ["#F06C9B", "#256EFF", "#FFE74C", "#33CA7F", "#EF6054"];
@@ -17,6 +13,7 @@ export default function GroupChatList({ username, image }) {
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
+  const theme = useContext(ThemeContext)
 
   function handleHover() {
     let newColor = randomColor;
@@ -35,7 +32,7 @@ export default function GroupChatList({ username, image }) {
 
   return (
     <HoverColorDiv
-      className="members_list"
+      className={"members_list_" + theme}
       color={randomColor}
       hovercolor={hovercolor}
       onMouseEnter={handleHover}

@@ -1,7 +1,9 @@
 import "./EditModal.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "../../../ThemeContext";
+
 export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   const [errorMessage, setErrorMessage] = useState(null);
   const [bio, setBio] = useState(user.bio);
@@ -10,6 +12,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   const [tiktok, setTiktok] = useState(user.tiktok);
   const [twitter, setTwitter] = useState(user.twitter);
   // const [charCount, setCharCount] = useState(0)
+  const theme = useContext(ThemeContext)
 
   function handleEdit(e) {
     e.preventDefault();
@@ -64,16 +67,16 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      id="sign_up_modal"
-      backdrop="static"
+      id={"edit_modal_" + theme}
+      // backdrop="static"
     >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter" className="modal_title">
+      <Modal.Header className={"modal_header_" + theme}>
+        <Modal.Title id="contained-modal-title-vcenter" className={"edit_modal_title_" + theme}>
           Edit Profile
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <form id="edit_profile"  name="edit_profile">
+      <Modal.Body id = {'edit_profile_' + theme}>
+        <form id={"edit_profile_" + theme } name="edit_profile">
           <textarea
             id="bio_box"
             className="edit_input_text"

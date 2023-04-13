@@ -1,4 +1,4 @@
-.members_list {
+.members_list_light {
   display: flex;
   align-items: center;
   font-family: "Inter", sans-serif;
@@ -10,9 +10,18 @@
   border-bottom: 2px solid #F2F3F5;
   cursor: pointer !important;
 }
-.members_list:hover{
-  color: #ffffff;
-  background-color: #000000;
+
+.members_list_dark {
+  display: flex;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 2% 0%;
+  border-top: 2px solid #262627;
+  border-bottom: 2px solid #262627;
+  cursor: pointer !important;
 }
 
 .members_list_prof_pic {

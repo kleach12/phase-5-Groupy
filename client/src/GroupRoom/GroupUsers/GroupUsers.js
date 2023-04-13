@@ -1,8 +1,10 @@
 import './GroupUsers.css'
 import GroupChatList from './GroupChatList/GroupChatList';
-export default function GroupUsers({viewingGroup}){
-  // console.log(viewingGroup)
+import { useContext } from 'react';
+import { ThemeContext } from '../../ThemeContext';
 
+export default function GroupUsers({viewingGroup}){
+const theme = useContext(ThemeContext)
 
   if(viewingGroup.users){
   const mappedGroups = viewingGroup.users.map((member) => {
@@ -17,9 +19,9 @@ export default function GroupUsers({viewingGroup}){
   });
 
   return (
-    <div id="friends_nav">
+    <div id={"group_user_list_" + theme}>
       <div>
-        <h2 id="friends_title"> Members</h2>
+        <h2 id={"group_user_title_" + theme}> Members</h2>
       </div>
       <div className = "overflow">{mappedGroups}</div>
     </div>

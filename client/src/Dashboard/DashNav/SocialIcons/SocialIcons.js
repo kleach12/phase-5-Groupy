@@ -1,11 +1,10 @@
 import "./SocialIcons.css";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext } from "react";
 import { BsInstagram, BsFacebook, BsTwitter } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
-
+import { ThemeContext } from "../../../ThemeContext";
 const HoverIcon  = styled.a`
-  color: black;
 
   &:hover {
     color: ${(props) => props.color} !important;
@@ -18,6 +17,7 @@ export default function SocialIcons({ user }) {
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
+  const theme = useContext(ThemeContext)
 
   function handleHover() {
     let newColor = randomColor;
@@ -41,7 +41,7 @@ export default function SocialIcons({ user }) {
       href={user.insta ? user.insta : null}
       target="_blank"
       rel="noreferrer"
-    >
+      className={"socials_" + theme}    >
       {" "}
       <BsInstagram  />{" "}
     </HoverIcon>
@@ -56,6 +56,7 @@ export default function SocialIcons({ user }) {
       href={user.insta ? user.insta : null}
       target="_blank"
       rel="noreferrer"
+      className={"socials_" + theme}
     >
       {" "}
       <BsTwitter />{" "}
@@ -71,7 +72,7 @@ export default function SocialIcons({ user }) {
       href={user.insta ? user.insta : null}
       target="_blank"
       rel="noreferrer"
-    >
+      className={"socials_" + theme}    >
       {" "}
       <BsFacebook  />{" "}
     </HoverIcon>
@@ -86,7 +87,7 @@ export default function SocialIcons({ user }) {
       href={user.insta ? user.insta : null}
       target="_blank"
       rel="noreferrer"
-    >
+      className={"socials_" + theme}    >
       {" "}
       <FaTiktok  />{" "}
     </HoverIcon>
