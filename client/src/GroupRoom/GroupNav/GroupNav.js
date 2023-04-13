@@ -1,14 +1,42 @@
 import "./GroupNav.css";
 import Avatar from "react-avatar";
 import { Navigate } from "react-router-dom";
-import {
-  BsFillArrowLeftSquareFill,
-  BsInstagram,
-  BsFacebook,
-  BsTwitter,
-} from "react-icons/bs";
-import { FaTiktok } from "react-icons/fa";
+import SocialIcons from "../../Dashboard/DashNav/SocialIcons/SocialIcons";
+import styled from "styled-components";
+import { useState, useEffect } from "react";
+
+const HoverColorButton = styled.button`
+color: white;
+border-radius: 1vh;
+
+  &:hover {
+    color: ${(props) => props.color} !important;
+    background-color: black;
+  }
+`;
+
 export default function GroupNav({ inGroup, setInGroup, viewingGroup }) {
+  const colors = ["#F06C9B", "#256EFF", "#FFE74C", "#33CA7F", "#EF6054"];
+  const [hovercolor, setHoverColor] = useState("");
+  const [randomColor, setRandomColor] = useState(
+    colors[Math.floor(Math.random() * colors.length)]
+  );
+
+  function handleHover() {
+    let newColor = randomColor;
+    while (newColor === randomColor) {
+      newColor = colors[Math.floor(Math.random() * colors.length)];
+    }
+    setHoverColor(newColor);
+  }
+
+  function handleLeave() {
+    setHoverColor("");
+  }
+  useEffect(() => {
+    setRandomColor(colors[Math.floor(Math.random() * colors.length)]);
+  }, [hovercolor]);
+
   if (inGroup === false) {
     return <Navigate to="/Dashboard" />;
   }
@@ -24,47 +52,19 @@ export default function GroupNav({ inGroup, setInGroup, viewingGroup }) {
         <h3 id="at"> </h3>
       </div>
 
-      <span id="group_bio">  </span>
-
-      <div className="social_icons">
-        <a
-          // href={user.insta ? user.insta : null}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {" "}
-          <BsInstagram className="socials" />{" "}
-        </a>
-        <a
-          // href={user.facebook ? user.facebook : null}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {" "}
-          <BsFacebook className="socials" />{" "}
-        </a>
-        <a
-          // href={user.twitter ? user.twitter : null}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {" "}
-          <BsTwitter className="socials" />{" "}
-        </a>
-        <a
-          // href={user.tiktok ? user.tiktok : null}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {" "}
-          <FaTiktok className="socials" />{" "}
-        </a>
-      </div>
-      <button className="exit_group" onClick={() => setInGroup(false)}>
+      <span id="group_bio"> </span>
+      <SocialIcons user={viewingGroup} />
+      <HoverColorButton
+        className="exit_group"
+        onClick={() => setInGroup(false)}
+        color={randomColor}
+        hovercolor={hovercolor}
+        onMouseEnter={handleHover}
+        onMouseLeave={handleLeave}
+      >
         {" "}
         Leave{" "}
-      </button>
-      {/* <BsFillArrowLeftSquareFill className="exit_button"/> */}
+      </HoverColorButton>
     </div>
   );
 }

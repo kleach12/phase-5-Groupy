@@ -1,8 +1,18 @@
 import "./SignInModal.css";
 import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import CityDropdown from "../../CityDropdown/CityDropdown";
+import styled from "styled-components";
+const HoverColorInput = styled.input`
+  color: black;
+  border-radius: 1vh;
+
+  &:hover {
+    color: ${(props) => props.color} !important;
+    background-color: black;
+  }
+`;
 
 export default function SignInModal({
   show,
@@ -21,6 +31,27 @@ export default function SignInModal({
   const [userCity, setUserCity] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const [profileImage, setProfileImage] = useState("");
+  const colors = ["#F06C9B", "#256EFF", "#FFE74C", "#33CA7F", "#EF6054"];
+  const [hovercolor, setHoverColor] = useState("");
+  const [randomColor, setRandomColor] = useState(
+    colors[Math.floor(Math.random() * colors.length)]
+  );
+
+  function handleHover() {
+    let newColor = randomColor;
+    while (newColor === randomColor) {
+      newColor = colors[Math.floor(Math.random() * colors.length)];
+    }
+    setHoverColor(newColor);
+  }
+
+  function handleLeave() {
+    setHoverColor("");
+  }
+
+  useEffect(() => {
+    setRandomColor(colors[Math.floor(Math.random() * colors.length)]);
+  }, [hovercolor]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -151,11 +182,6 @@ export default function SignInModal({
             onChange={(e) => setDateOfBirth(e.target.value)}
           />
           <CityDropdown setCity={setUserCity} />
-          {/* <CoStCi
-            setuserCounty={setuserCounty}
-            setUserState={setUserState}
-            setUserCity={setUserCity}
-          /> */}
           <label id="file_label"> Profile Picture </label>
           <input
             className="edit_input_text"
@@ -168,17 +194,18 @@ export default function SignInModal({
             <h2 className="error_message">
               {errorMessage ? errorMessage : null}
             </h2>
-            <input
+            <HoverColorInput
               type="button"
               className="sign_up_button"
               id="sign_up_btn"
               name="sign_up_btn"
               onClick={(e) => handleSubmit(e)}
               value="Sign up"
+              color={randomColor}
+              hovercolor={hovercolor}
+              onMouseEnter={handleHover}
+              onMouseLeave={handleLeave}
             />
-            {/* {" "}
-              Sign Up{" "}
-            </input> */}
           </div>
         </div>
       </Modal.Body>

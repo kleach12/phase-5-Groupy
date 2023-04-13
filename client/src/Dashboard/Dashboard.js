@@ -30,7 +30,7 @@ export default function Dashboard({
         setDeleteUser =  {setDeleteUser}
       />
       <Groups inGroup={inGroup} setInGroup={setInGroup} groupSearch={groupSearch} setGroupSearch = {setGroupSearch} user = {user} setViewingGroup = {setViewingGroup}/>
-      <FriendsNav />
+      {/* <FriendsNav /> */}
     </div>
   );
 }

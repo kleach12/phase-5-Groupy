@@ -1,21 +1,52 @@
 import "./NewGroup.css";
 import Modal from "react-bootstrap/Modal";
 // import Select from "react-select";
-import { useState } from "react";
-import CityDropdown
- from "../../../CityDropdown/CityDropdown";
+import { useState, useEffect } from "react";
+import CityDropdown from "../../../CityDropdown/CityDropdown";
+import styled from "styled-components";
+const HoverColorInput = styled.input`
+  color: black;
+  border-radius: 1vh;
+
+  &:hover {
+    color: ${(props) => props.color} !important;
+    background-color: black;
+  }
+`;
+
 export default function NewGroup({ show, setShow }) {
   const [groupName, setGroupName] = useState("");
   const [groupCity, setGroupCity] = useState("");
   const [groupImage, setGroupImage] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
+  const colors = ["#F06C9B", "#256EFF", "#FFE74C", "#33CA7F", "#EF6054"];
+  const [hovercolor, setHoverColor] = useState("");
+  const [randomColor, setRandomColor] = useState(
+    colors[Math.floor(Math.random() * colors.length)]
+  );
+
+  function handleHover() {
+    let newColor = randomColor;
+    while (newColor === randomColor) {
+      newColor = colors[Math.floor(Math.random() * colors.length)];
+    }
+    setHoverColor(newColor);
+  }
+
+  function handleLeave() {
+    setHoverColor("");
+  }
+
+  useEffect(() => {
+    setRandomColor(colors[Math.floor(Math.random() * colors.length)]);
+  }, [hovercolor]);
 
   function handleSumbit(e) {
     e.preventDefault();
     const data = new FormData();
     data.append("name", groupName);
     data.append("city", groupCity);
-    data.append("group_pic", groupImage)
+    data.append("group_pic", groupImage);
 
     submitToAPI(data, e);
 
@@ -41,7 +72,7 @@ export default function NewGroup({ show, setShow }) {
               setErrorMessage(null);
             }, 5000);
           } else {
-            setShow(false)
+            setShow(false);
             console.log(data);
             setGroupCity("");
             setGroupName("");
@@ -75,16 +106,7 @@ export default function NewGroup({ show, setShow }) {
             value={groupName}
             onChange={(e) => setGroupName(e.target.value)}
           />
-          <CityDropdown setCity = {setGroupCity}/>
-          {/* <Select
-            id="city"
-            name="city"
-            label="city"
-            className="sign_up_select"
-            options={cities}
-            onChange={(e) => setGroupCity(e.value)}
-            placeholder={<div>Select city...</div>}
-          /> */}
+          <CityDropdown setCity={setGroupCity} />
           <label id="file_label"> Group Picture </label>
           <input
             className="edit_input_text"
@@ -93,14 +115,19 @@ export default function NewGroup({ show, setShow }) {
             accept="image/*"
             onChange={(e) => setGroupImage(e.target.files[0])}
           />
-          <input
+          <HoverColorInput
             type="button"
             className="create_group_btn"
             id="create_group_btn"
             name="create_group_btnn"
             onClick={(e) => handleSumbit(e)}
             value="Create Group"
+            color={randomColor}
+            hovercolor={hovercolor}
+            onMouseEnter={handleHover}
+            onMouseLeave={handleLeave}
           />
+          
           <h2 className="error_message">
             {errorMessage ? errorMessage : null}
           </h2>

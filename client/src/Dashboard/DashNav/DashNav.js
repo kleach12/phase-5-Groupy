@@ -24,8 +24,9 @@ export default function DashNav({
   deleteUser,
   setDeleteUser,
 }) {
-  const [showEdit, setShowEdit] = useState(false);
   const colors = ["#F06C9B", "#256EFF", "#FFE74C", "#33CA7F", "#EF6054"];
+  
+  const [showEdit, setShowEdit] = useState(false);
   const [hovercolor, setHoverColor] = useState("");
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]

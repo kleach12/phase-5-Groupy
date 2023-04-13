@@ -124,3 +124,8 @@
   font-size: 40px;
   font-weight: 900;
 }
+
+#submit_message{
+  border: none;
+  background-color: white;
+}

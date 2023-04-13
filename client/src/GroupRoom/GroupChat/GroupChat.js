@@ -93,7 +93,7 @@ export default function GroupChat({ viewingGroup }) {
             onChange={handleChange}
           />
 
-          <button>
+          <button id ="submit_message">
             {" "}
             <BsFillArrowRightSquareFill className="send_message_btn" />{" "}
           </button>
