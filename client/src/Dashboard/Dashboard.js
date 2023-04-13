@@ -3,6 +3,8 @@ import "./DashNav/DashNav";
 import DashNav from "./DashNav/DashNav";
 import Groups from "./Groups/Groups";
 import FriendsNav from "./FriendsNav/FriendsNav";
+import { useContext } from "react";
+
 
 export default function Dashboard({
   user,
@@ -15,9 +17,12 @@ export default function Dashboard({
   groupSearch,
   setViewingGroup,
   deleteUser,
-  setDeleteUser
+  setDeleteUser,
+  setTheme
 }) {
   // Add a modal for user who just signed up so they have an Idea of what they are doing
+
+
   return (
     <div id="dashboard">
       <div id="bg_background"></div>
@@ -28,6 +33,7 @@ export default function Dashboard({
         setSignedIn={setSignedIn}
         deleteUser = {deleteUser}
         setDeleteUser =  {setDeleteUser}
+        setTheme = {setTheme}
       />
       <Groups inGroup={inGroup} setInGroup={setInGroup} groupSearch={groupSearch} setGroupSearch = {setGroupSearch} user = {user} setViewingGroup = {setViewingGroup}/>
       {/* <FriendsNav /> */}

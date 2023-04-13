@@ -1,13 +1,14 @@
 import "./DashNav.css";
 import { Navigate } from "react-router-dom";
-import { BsInstagram, BsFacebook, BsTwitter } from "react-icons/bs";
-import { FaTiktok } from "react-icons/fa";
-import { useState, useEffect } from "react";
+import { BsFillMoonFill, BsBrightnessHigh } from "react-icons/bs";
+import { useState, useEffect,useContext } from "react";
 import Avatar from "react-avatar";
 import EditModal from "./EditModal/EditModal";
 import { BsFillTrashFill } from "react-icons/bs";
-import styled from "styled-components";
+import styled  from "styled-components";
 import SocialIcons from "./SocialIcons/SocialIcons";
+import { ThemeContext } from "../../ThemeContext";
+
 const HoverColorH3 = styled.h3`
   color: black;
 
@@ -23,14 +24,18 @@ export default function DashNav({
   setSignedIn,
   deleteUser,
   setDeleteUser,
+  setTheme
 }) {
   const colors = ["#F06C9B", "#256EFF", "#FFE74C", "#33CA7F", "#EF6054"];
-  
   const [showEdit, setShowEdit] = useState(false);
   const [hovercolor, setHoverColor] = useState("");
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
+
+const theme = useContext(ThemeContext)
+console.log(theme)
+const themeButton = theme === 'light' ? <BsFillMoonFill onClick={() => setTheme('dark')}/> :  <BsBrightnessHigh onClick={() => setTheme('light')}/>
 
   function handleHover() {
     let newColor = randomColor;
@@ -84,7 +89,7 @@ export default function DashNav({
       <div className="grow">
         <h3 id="bio"> {user.bio} </h3>
       </div>
-      <SocialIcons user ={user}/>
+      <SocialIcons user={user} />
       <HoverColorH3
         color={randomColor}
         hovercolor={hovercolor}
@@ -112,6 +117,7 @@ export default function DashNav({
       >
         Sign out
       </HoverColorH3>
+      {themeButton}
       <BsFillTrashFill id="delete_btn" onClick={() => setDeleteUser(true)} />
     </div>
   );

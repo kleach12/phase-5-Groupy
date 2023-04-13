@@ -6,7 +6,11 @@ import SignInUp from "./SignInUp/SignInUp";
 import { useEffect, useState } from "react";
 import GroupPage from "./GroupPage/GroupPage";
 import DeleteAccount from "./DeleteAccount/DeleteAccount";
+import { ThemeContext } from "./ThemeContext";
+
+
 function App() {
+  const [theme, setTheme] = useState('light');
   const [user, setUser] = useState(null);
   const [signedIn, setSignedIn] = useState(false);
   const [inGroup, setInGroup] = useState(false);
@@ -29,7 +33,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <ThemeContext.Provider value={theme}>
       <Routes>
         <Route
           path="/GroupRoom"
@@ -56,6 +60,7 @@ function App() {
               setViewingGroup={setViewingGroup}
               deleteUser={deleteUser}
               setDeleteUser={setDeleteUser}
+              setTheme ={setTheme}
             />
           }
         />
@@ -92,7 +97,7 @@ function App() {
           }
         />
       </Routes>
-    </div>
+    </ThemeContext.Provider>
   );
 }
 

@@ -31,7 +31,6 @@ export default function SocialIcons({ user }) {
     setHoverColor("");
   }
 
-  console.log(user);
 
   const instagram = user.insta ? (
     <HoverIcon 
