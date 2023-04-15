@@ -36,18 +36,18 @@ export default function DashNav() {
     setDeleteUser,
   } = useContext(AllContext);
 
-  const themeButton =
-    theme === "light" ? (
-      <BsFillMoonFill
-        className={"theme_button_" + theme}
-        onClick={() => setTheme("dark")}
-      />
-    ) : (
-      <BsBrightnessHigh
-        className={"theme_button_" + theme}
-        onClick={() => setTheme("light")}
-      />
-    );
+  // const themeButton =
+  //   theme === "light" ? (
+  //     <BsFillMoonFill
+  //       className={"theme_button_" + theme}
+  //       onClick={() => setTheme("dark")}
+  //     />
+  //   ) : (
+  //     <BsBrightnessHigh
+  //       className={"theme_button_" + theme}
+  //       onClick={() => setTheme("light")}
+  //     />
+  //   );
 
   function handleHover() {
     let newColor = randomColor;
@@ -60,6 +60,50 @@ export default function DashNav() {
   function handleLeave() {
     setHoverColor("");
   }
+
+  function handleChangeTheme(e,color) {
+    e.preventDefault();
+    setTheme(color)
+
+    const updateData = new FormData();
+    updateData.append("theme", color);
+    handleUpdate(updateData, e);
+    // Use an appropriate url
+    // bkl
+
+    function handleUpdate(data, e) {
+      e.preventDefault();
+      fetch("/users", {
+        method: "PATCH",
+        body: data,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.errors) {
+            console.log(data.errors);
+          } else {
+            console.log(data);
+            setUser(data);
+            setShowEdit(false);
+          }
+        })
+        .catch((error) => console.error(error));
+    }
+  }
+
+  const themeButton =
+  theme === "light" ? (
+    <BsFillMoonFill
+      className={"theme_button_" + theme}
+      onClick={(e) => handleChangeTheme(e,"dark")}
+    />
+  ) : (
+    <BsBrightnessHigh
+      className={"theme_button_" + theme}
+      onClick={(e) => handleChangeTheme(e, "light")}
+    />
+  );
+
   function handleSignOut() {
     fetch("/logout", {
       method: "DELETE",

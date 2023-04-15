@@ -1,4 +1,4 @@
-#create_group_btn{
+.create_group_btn_light{
   align-self: center;
   font-family: "Inter", sans-serif;
   background-color: #000000;
@@ -8,6 +8,21 @@
   margin: 2%;
   border-radius: 1vh;
   font-weight: 700;
+  border:none;
+  /* width: 95%; */
+}
+
+.create_group_btn_dark{
+  align-self: center;
+  font-family: "Inter", sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 20px;
+  padding: 1%;
+  margin: 2%;
+  border-radius: 1vh;
+  font-weight: 700;
+  border: 5px solid #ffffff;
   /* width: 95%; */
 }
 
@@ -61,4 +76,29 @@
   padding: 1%;
   border: .5px solid #ffffff;
   border-radius: .5vh;
+}
+
+#file_label_light{
+  flex-grow: 1;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 1%;
+    border-radius: 1vh;
+}
+
+#file_label_dark{
+  flex-grow: 1;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 1%;
+    border-radius: 1vh;
+    color: #ffffff;
+}
+
+.create_group_btn_light{
+
+}
+
+.create_group_btn_dark{
+
 }

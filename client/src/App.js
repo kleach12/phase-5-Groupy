@@ -27,6 +27,7 @@ function App() {
         } else {
           setUser(data);
           setSignedIn(true);
+          setTheme(data.theme)
         }
       });
   }, []);

@@ -65,6 +65,7 @@ export default function SignInModal({
     data.append("dob", dateOfBirth);
     data.append("city", userCity);
     data.append("bio", "");
+    data.append("theme", "light")
 
     submitToAPI(data, e);
     // Use an appropriate url

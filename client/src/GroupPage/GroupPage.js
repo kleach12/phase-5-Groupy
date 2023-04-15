@@ -1,14 +1,15 @@
 import "./GroupPage.css";
 import JoingGroupList from "./JoinGroupList/JoinGroupList";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { Navigate } from "react-router-dom";
-
+import { AllContext } from "../AllContext";
 export default function GroupPage({ groupSearch, setGroupSearch, user }) {
   const [groups, setGroups] = useState([]);
   const [query, setQuery] = useState("");
   const [searchParam] = useState(["name"]);
-
+  const {theme} = useContext(AllContext)
+  
   useEffect(() => {
     fetch(`/filtered_groups`)
       .then((res) => res.json())
@@ -38,38 +39,8 @@ export default function GroupPage({ groupSearch, setGroupSearch, user }) {
   }
 
   if (groups) {
-    if (groups.length > 0) {
-      return (
-        <div>
-          <div id="filter">
-            <BsFillArrowLeftSquareFill
-              id="back_btn"
-              onClick={() => setGroupSearch(false)}
-            />
-            <div id="filter_bar">
-              <label id="filter_label">Search</label>
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                id="group_filter"
-              />
-            </div>
-          </div>
-          <div id="list">
-            {search(groups).map((group) => {
-              return (
-                <JoingGroupList
-                  key={group.name}
-                  group = {group}
-                  
-                />
-              );
-            })}
-          </div>
-        </div>
-      );
-    }
+    if (groups.length === 0) {
+
     return (
       <div id="group_page">
         <div id="filter">
@@ -96,7 +67,41 @@ export default function GroupPage({ groupSearch, setGroupSearch, user }) {
         </div>
       </div>
     );
-  } else {
-    return <h2>Loading...</h2>;
-  }
+  } 
+
+  return (
+    <div className={"bg_color_" + theme}>
+      <div id={"filter_" + theme}>
+        <BsFillArrowLeftSquareFill
+          id={"back_btn_" + theme}
+          onClick={() => setGroupSearch(false)}
+        />
+        <div id="filter_bar">
+          <label id="filter_label">Search</label>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            id="group_filter"
+          />
+        </div>
+      </div>
+      <div id="list">
+        {search(groups).map((group) => {
+          return (
+            <JoingGroupList
+              key={group.name}
+              group = {group}
+              
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+
+
+
 }

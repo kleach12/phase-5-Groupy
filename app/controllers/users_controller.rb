@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   end
 
   def user_updated_params
-    params.permit(:bio, :facebook, :insta, :tiktok, :twitter, :image)
+    params.permit(:bio, :facebook, :insta, :tiktok, :twitter, :image, :theme)
   end
 
   def user_in_session

@@ -7,12 +7,10 @@ import { AllContext } from "../../../AllContext";
 
 import styled from "styled-components";
 const HoverColorInput = styled.input`
-  color: black;
   border-radius: 1vh;
 
   &:hover {
     color: ${(props) => props.color} !important;
-    background-color: black;
   }
 `;
 
@@ -110,7 +108,7 @@ export default function NewGroup({ show, setShow }) {
             onChange={(e) => setGroupName(e.target.value)}
           />
           <CityDropdown setCity={setGroupCity} className={"create_input_text_" + theme}/>
-          <label id="file_label"> Group Picture </label>
+          <label id={"file_label_" + theme}> Group Picture </label>
           <input
             className={"create_input_text_" + theme}
             type="file"
@@ -120,7 +118,7 @@ export default function NewGroup({ show, setShow }) {
           />
           <HoverColorInput
             type="button"
-            className="create_group_btn"
+            className={"create_group_btn_" + theme}
             id="create_group_btn"
             name="create_group_btnn"
             onClick={(e) => handleSumbit(e)}

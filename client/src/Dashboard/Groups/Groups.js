@@ -41,7 +41,7 @@ export default function Groups() {
 
     return (
       <div id={"groups_" + theme}>
-        <div id="groups_top">
+        <div id={"groups_top_" + theme}>
           <h2 id={"groups_title_" + theme}> Groups </h2>
           <Dropdown>
             <Dropdown.Toggle
@@ -50,15 +50,15 @@ export default function Groups() {
             >
               <BsPlusLg />
             </Dropdown.Toggle>
-            <Dropdown.Menu className="dropdown-menu-custom">
+            <Dropdown.Menu className={"dropdown-menu-custom-" + theme}>
               <Dropdown.Item
-                className="dropdown-item-custom"
+                className={"dropdown-item-custom-" + theme}
                 onClick={() => setShow(true)}
               >
                 Create Group
               </Dropdown.Item>
               <Dropdown.Item
-                className="dropdown-item-custom"
+                className={"dropdown-item-custom-" + theme}
                 onClick={() => setGroupSearch(true)}
               >
                 Join Group
