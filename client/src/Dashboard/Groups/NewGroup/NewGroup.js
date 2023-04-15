@@ -1,8 +1,10 @@
 import "./NewGroup.css";
 import Modal from "react-bootstrap/Modal";
 // import Select from "react-select";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import CityDropdown from "../../../CityDropdown/CityDropdown";
+import { AllContext } from "../../../AllContext";
+
 import styled from "styled-components";
 const HoverColorInput = styled.input`
   color: black;
@@ -24,6 +26,7 @@ export default function NewGroup({ show, setShow }) {
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
+  const {theme} = useContext(AllContext)
 
   function handleHover() {
     let newColor = randomColor;
@@ -89,27 +92,27 @@ export default function NewGroup({ show, setShow }) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      id="sign_up_modal"
-      backdrop="static"
+      id="create_modal"
+      
     >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter" className="modal_title">
+      <Modal.Header className={"modal_header_" + theme} >
+        <Modal.Title id="contained-modal-title-vcenter" className={"modal_title_" + theme}>
           New Group
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <div id="sign_up_form" name="sign_up_form">
+      <Modal.Body id={"create_group_" + theme} >
+        <div id="sign_up_form" name="sign_up_form" >
           <input
-            className="sign_up_text"
+           className={"create_input_text_" + theme}
             type="type"
             placeholder="Group Name"
             value={groupName}
             onChange={(e) => setGroupName(e.target.value)}
           />
-          <CityDropdown setCity={setGroupCity} />
+          <CityDropdown setCity={setGroupCity} className={"create_input_text_" + theme}/>
           <label id="file_label"> Group Picture </label>
           <input
-            className="edit_input_text"
+            className={"create_input_text_" + theme}
             type="file"
             name="image"
             accept="image/*"

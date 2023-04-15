@@ -5,7 +5,6 @@ import { Navigate } from "react-router-dom";
 import CityDropdown from "../../CityDropdown/CityDropdown";
 import styled from "styled-components";
 const HoverColorInput = styled.input`
-  color: black;
   border-radius: 1vh;
 
   &:hover {

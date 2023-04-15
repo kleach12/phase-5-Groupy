@@ -2,17 +2,17 @@ import "./EditModal.css";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useState, useContext } from "react";
-import { ThemeContext } from "../../../ThemeContext";
+import { AllContext } from "../../../AllContext";
 
 export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   const [errorMessage, setErrorMessage] = useState(null);
   const [bio, setBio] = useState(user.bio);
   const [facebook, setFaceBook] = useState(user.facebook);
-  const [insta, setInsta] = useState(user.insta );
+  const [insta, setInsta] = useState(user.insta);
   const [tiktok, setTiktok] = useState(user.tiktok);
   const [twitter, setTwitter] = useState(user.twitter);
   // const [charCount, setCharCount] = useState(0)
-  const theme = useContext(ThemeContext)
+  const { theme } = useContext(AllContext);
 
   function handleEdit(e) {
     e.preventDefault();
@@ -71,14 +71,17 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
       // backdrop="static"
     >
       <Modal.Header className={"modal_header_" + theme}>
-        <Modal.Title id="contained-modal-title-vcenter" className={"edit_modal_title_" + theme}>
+        <Modal.Title
+          id="contained-modal-title-vcenter"
+          className={"edit_modal_title_" + theme}
+        >
           Edit Profile
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body id = {'edit_profile_' + theme}>
-        <form id={"edit_profile_" + theme } name="edit_profile">
+      <Modal.Body id={"edit_profile_" + theme}>
+        <form id={"edit_profile_" + theme} name="edit_profile">
           <textarea
-            id="bio_box"
+            id={"bio_box_" + theme}
             className="edit_input_text"
             type="textarea"
             placeholder="Bio"
@@ -87,7 +90,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
           />
           {charCount}
           <input
-            className="edit_input_text"
+            className={"edit_input_text_" + theme}
             type="text"
             placeholder="Instagram"
             value={insta}
@@ -96,7 +99,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
             }}
           />
           <input
-            className="edit_input_text"
+            className={"edit_input_text_" + theme}
             type="text"
             placeholder="Facebook"
             value={facebook}
@@ -105,7 +108,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
             }}
           />
           <input
-            className="edit_input_text"
+            className={"edit_input_text_" + theme}
             type="text"
             placeholder="Twitter"
             value={twitter}
@@ -114,7 +117,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
             }}
           />
           <input
-            className="edit_input_text"
+            className={"edit_input_text_" + theme}
             type="text"
             placeholder="TikTok"
             value={tiktok}
@@ -122,15 +125,17 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
               setTiktok(e.target.value);
             }}
           />
-          <button
-            className="sign_up_button"
-            type="button"
-            name="edit_submit"
-            id="edit_submit"
-            onClick={(e) => handleEdit(e)}
-          >
-            Save
-          </button>
+          <div className="modal_bottom">
+            <button
+              className={"edit_button_" + theme}
+              type="button"
+              name="edit_submit"
+              id="edit_submit"
+              onClick={(e) => handleEdit(e)}
+            >
+              Save
+            </button>
+          </div>
         </form>
       </Modal.Body>
     </Modal>

@@ -5,18 +5,20 @@ import { BsPlusLg } from "react-icons/bs";
 import { useState, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import NewGroup from "./NewGroup/NewGroup";
-import { ThemeContext } from "../../ThemeContext";
-export default function Groups({
-  inGroup,
-  setInGroup,
-  setGroupSearch,
-  groupSearch,
-  user,
-  setViewingGroup,
-}) {
+import { AllContext } from "../../AllContext";
+
+export default function Groups() {
   const [show, setShow] = useState(false);
-  const theme = useContext(ThemeContext)
-  
+  const {
+    theme,
+    inGroup,
+    setInGroup,
+    groupSearch,
+    setGroupSearch,
+    setViewingGroup,
+  } = useContext(AllContext);
+  const { user } = useContext(AllContext);
+
   if (inGroup) {
     return <Navigate to="/GroupRoom" />;
   }

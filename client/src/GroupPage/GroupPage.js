@@ -40,7 +40,7 @@ export default function GroupPage({ groupSearch, setGroupSearch, user }) {
   if (groups) {
     if (groups.length > 0) {
       return (
-        <div id="group_page">
+        <div>
           <div id="filter">
             <BsFillArrowLeftSquareFill
               id="back_btn"
@@ -61,13 +61,8 @@ export default function GroupPage({ groupSearch, setGroupSearch, user }) {
               return (
                 <JoingGroupList
                   key={group.name}
-                  groupName={group.name}
-                  groupImage={group.image}
-                  groupId={group.id}
-                  // numOfUsers={group.numOfUsers}
-                  // users={group.users}
-                  // index={index}
-                  // setInGroup={setInGroup}
+                  group = {group}
+                  
                 />
               );
             })}

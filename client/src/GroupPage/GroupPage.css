@@ -1,6 +1,7 @@
 #group_page {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 #back_btn{
@@ -46,6 +47,8 @@
   font-family: "Inter", sans-serif !important;
   padding-top: 10px;
   text-align: center;
+  top: 0;
+  position: fixed
 }
 #filter_label{
 font-weight: 800;
@@ -56,6 +59,9 @@ margin-right: 10px;
 
 #list{
   margin-top:5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #filter_bar{

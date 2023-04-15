@@ -6,7 +6,6 @@ import { Navigate } from "react-router-dom";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import styled from "styled-components";
 const HoverColorInput = styled.input`
-  color: black;
   border-radius: 1vh;
 
   &:hover {
@@ -15,7 +14,6 @@ const HoverColorInput = styled.input`
   }
 `;
 const HoverColorButton = styled.button`
-  color: black;
   border-radius: 1vh;
 
   &:hover {

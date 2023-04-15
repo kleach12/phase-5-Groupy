@@ -1,11 +1,10 @@
 import "./SocialIcons.css";
 import styled from "styled-components";
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { BsInstagram, BsFacebook, BsTwitter } from "react-icons/bs";
 import { FaTiktok } from "react-icons/fa";
-import { ThemeContext } from "../../../ThemeContext";
-const HoverIcon  = styled.a`
-
+import { AllContext } from "../../../AllContext";
+const HoverIcon = styled.a`
   &:hover {
     color: ${(props) => props.color} !important;
   }
@@ -17,7 +16,7 @@ export default function SocialIcons({ user }) {
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
-  const theme = useContext(ThemeContext)
+  const {theme} = useContext(AllContext);
 
   function handleHover() {
     let newColor = randomColor;
@@ -31,9 +30,8 @@ export default function SocialIcons({ user }) {
     setHoverColor("");
   }
 
-
   const instagram = user.insta ? (
-    <HoverIcon 
+    <HoverIcon
       color={randomColor}
       hovercolor={hovercolor}
       onMouseEnter={handleHover}
@@ -41,14 +39,15 @@ export default function SocialIcons({ user }) {
       href={user.insta ? user.insta : null}
       target="_blank"
       rel="noreferrer"
-      className={"socials_" + theme}    >
+      className={"socials_" + theme}
+    >
       {" "}
-      <BsInstagram  />{" "}
+      <BsInstagram />{" "}
     </HoverIcon>
   ) : null;
 
   const twitter = user.twitter ? (
-    <HoverIcon 
+    <HoverIcon
       color={randomColor}
       hovercolor={hovercolor}
       onMouseEnter={handleHover}
@@ -64,7 +63,7 @@ export default function SocialIcons({ user }) {
   ) : null;
 
   const facebook = user.facebook ? (
-    <HoverIcon 
+    <HoverIcon
       color={randomColor}
       hovercolor={hovercolor}
       onMouseEnter={handleHover}
@@ -72,14 +71,15 @@ export default function SocialIcons({ user }) {
       href={user.insta ? user.insta : null}
       target="_blank"
       rel="noreferrer"
-      className={"socials_" + theme}    >
+      className={"socials_" + theme}
+    >
       {" "}
-      <BsFacebook  />{" "}
+      <BsFacebook />{" "}
     </HoverIcon>
   ) : null;
 
   const tiktok = user.tiktok ? (
-    <HoverIcon 
+    <HoverIcon
       color={randomColor}
       hovercolor={hovercolor}
       onMouseEnter={handleHover}
@@ -87,9 +87,10 @@ export default function SocialIcons({ user }) {
       href={user.insta ? user.insta : null}
       target="_blank"
       rel="noreferrer"
-      className={"socials_" + theme}    >
+      className={"socials_" + theme}
+    >
       {" "}
-      <FaTiktok  />{" "}
+      <FaTiktok />{" "}
     </HoverIcon>
   ) : null;
 

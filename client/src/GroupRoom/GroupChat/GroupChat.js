@@ -4,15 +4,15 @@ import ContentEditable from "react-contenteditable";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import GroupChatMessage from "./GroupChatMessage/GroupChatMessage";
 import "./GroupChat.css";
-import { ThemeContext } from "../../ThemeContext";
+import { AllContext } from "../../AllContext";
 export default function GroupChat({ viewingGroup }) {
   const formRef = useRef();
   const [message, setMessage] = useState("");
   const [groupMessages, setGroupMessages] = useState([]);
   const [rerender, setRerender] = useState(false);
-  const theme = useContext(ThemeContext)
+  const {theme} = useContext(AllContext);
 
-  console.log(viewingGroup);
+
   const handleChange = (evt) => {
     // console.log(evt.target.value)
     setMessage(evt.target.value);
@@ -25,7 +25,6 @@ export default function GroupChat({ viewingGroup }) {
         if (data.error) {
           console.log(data.error);
         } else {
-          console.log(data);
           setGroupMessages(data);
           // setRerender(!rerender)
         }
@@ -57,13 +56,11 @@ export default function GroupChat({ viewingGroup }) {
             // }, 5000);
           } else if (data.error) {
             console.log(data.error);
-            console.log(data);
             // setErrorMessage("A Profile Picture is required");
             // setTimeout(() => {
             //   setErrorMessage(null);
             // }, 5000);
           } else {
-            console.log(data);
             setMessage("");
             setRerender(!rerender);
           }
@@ -73,19 +70,21 @@ export default function GroupChat({ viewingGroup }) {
   }
 
   const mappedMessages = groupMessages.map((message) => {
-    return <GroupChatMessage message={message} className="overflow" />;
+    return <GroupChatMessage key = {message.id} message={message} className="overflow" />;
   });
 
   return (
     <div id={"group_chat_" + theme}>
       <div id="group_top">
-        <h2 id ={"group_title_" + theme}> {viewingGroup.name} </h2>
+        <h2 id={"group_title_" + theme}> {viewingGroup.name} </h2>
       </div>
-      <div className="overflow">
-      {mappedMessages}
-      </div>
+      <div className="overflow">{mappedMessages}</div>
       <div className="fixed_pos">
-        <form id={"bottom_chat_" + theme} onSubmit={(e) => handleSubmit(e)} ref={formRef}>
+        <form
+          id={"bottom_chat_" + theme}
+          onSubmit={(e) => handleSubmit(e)}
+          ref={formRef}
+        >
           <ContentEditable
             html={message}
             className="chat_box"
@@ -94,9 +93,11 @@ export default function GroupChat({ viewingGroup }) {
             onChange={handleChange}
           />
 
-          <button id ={"submit_message_" + theme}>
+          <button id={"submit_message_" + theme}>
             {" "}
-            <BsFillArrowRightSquareFill className={"send_message_btn_" + theme} />{" "}
+            <BsFillArrowRightSquareFill
+              className={"send_message_btn_" + theme}
+            />{" "}
           </button>
         </form>
       </div>

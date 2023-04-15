@@ -1,13 +1,13 @@
 import "./DashNav.css";
 import { Navigate } from "react-router-dom";
 import { BsFillMoonFill, BsBrightnessHigh } from "react-icons/bs";
-import { useState, useEffect,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import Avatar from "react-avatar";
 import EditModal from "./EditModal/EditModal";
 import { BsFillTrashFill } from "react-icons/bs";
-import styled  from "styled-components";
+import styled from "styled-components";
 import SocialIcons from "./SocialIcons/SocialIcons";
-import { ThemeContext } from "../../ThemeContext";
+import { AllContext } from "../../AllContext";
 
 const HoverColorH3 = styled.h3`
   color: black;
@@ -17,15 +17,7 @@ const HoverColorH3 = styled.h3`
   }
 `;
 
-export default function DashNav({
-  user,
-  setUser,
-  signedIn,
-  setSignedIn,
-  deleteUser,
-  setDeleteUser,
-  setTheme
-}) {
+export default function DashNav() {
   const colors = ["#F06C9B", "#256EFF", "#FFE74C", "#33CA7F", "#EF6054"];
   const [showEdit, setShowEdit] = useState(false);
   const [hovercolor, setHoverColor] = useState("");
@@ -33,9 +25,29 @@ export default function DashNav({
     colors[Math.floor(Math.random() * colors.length)]
   );
 
-const theme = useContext(ThemeContext)
-console.log(theme)
-const themeButton = theme === 'light' ? <BsFillMoonFill className = {'theme_button_'  + theme} onClick={() => setTheme('dark')}/> :  <BsBrightnessHigh className = {'theme_button_'  + theme} onClick={() => setTheme('light')}/>
+  const {
+    theme,
+    setTheme,
+    user,
+    setUser,
+    signedIn,
+    setSignedIn,
+    deleteUser,
+    setDeleteUser,
+  } = useContext(AllContext);
+
+  const themeButton =
+    theme === "light" ? (
+      <BsFillMoonFill
+        className={"theme_button_" + theme}
+        onClick={() => setTheme("dark")}
+      />
+    ) : (
+      <BsBrightnessHigh
+        className={"theme_button_" + theme}
+        onClick={() => setTheme("light")}
+      />
+    );
 
   function handleHover() {
     let newColor = randomColor;
@@ -118,7 +130,10 @@ const themeButton = theme === 'light' ? <BsFillMoonFill className = {'theme_butt
         Sign out
       </HoverColorH3>
       {themeButton}
-      <BsFillTrashFill id={"delete_btn_" + theme} onClick={() => setDeleteUser(true)} />
+      <BsFillTrashFill
+        id={"delete_btn_" + theme}
+        onClick={() => setDeleteUser(true)}
+      />
     </div>
   );
 }

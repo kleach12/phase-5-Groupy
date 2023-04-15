@@ -1,7 +1,25 @@
+import { redirect } from 'react-router-dom';
 import './CityDropdown.css'
 import Select from "react-select";
+import { AllContext } from '../AllContext';
+import { useContext } from 'react';
 
 export default function CityDropdown({setCity,}){
+  const {theme} =  useContext(AllContext)
+  
+  if (theme){
+  const colorStyles =  theme === 'light' ? {
+    control: styles => ({ ...styles, backgroundColor: 'white', color:'black',borderColor: 'black', padding: 0 }),
+    option: styles => ({ ...styles, backgroundColor: 'white', color:'black', flexGrow: 1}),
+
+  }
+ : {
+    control: styles => ({ ...styles, backgroundColor: 'black', color:'white' }),
+    option: styles => ({ ...styles, backgroundColor: 'black', color:'white', }),
+
+  };
+
+  
   const cities = [
     {
       label: "Los Angeles",
@@ -34,6 +52,8 @@ export default function CityDropdown({setCity,}){
             options={cities}
             onChange={(e) => setCity(e.value)}
             placeholder={<div>Select city...</div>}
+            styles= {colorStyles}
           />
   )
+  }
 }

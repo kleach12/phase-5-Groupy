@@ -4,11 +4,11 @@ import { Navigate } from "react-router-dom";
 import SocialIcons from "../../Dashboard/DashNav/SocialIcons/SocialIcons";
 import styled from "styled-components";
 import { useState, useEffect, useContext } from "react";
-import { ThemeContext } from "../../ThemeContext";
+import { AllContext } from "../../AllContext";
 const HoverColorButton = styled.button`
-color: black;
-border-radius: 1vh;
-background-color: ${(props) => props.color} !important;
+  color: black;
+  border-radius: 1vh;
+  background-color: ${(props) => props.color} !important;
 `;
 
 export default function GroupNav({ inGroup, setInGroup, viewingGroup }) {
@@ -17,7 +17,7 @@ export default function GroupNav({ inGroup, setInGroup, viewingGroup }) {
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
-  const theme = useContext(ThemeContext)
+  const {theme} = useContext(AllContext);
 
   function handleHover() {
     let newColor = randomColor;
