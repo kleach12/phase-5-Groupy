@@ -1,6 +1,6 @@
 import "./JoinModal.css";
 import Modal from "react-bootstrap/Modal";
-import { useContext, useState } from "react";
+import { useContext, useReducer, useState } from "react";
 import { Navigate } from "react-router-dom";
 // import CityDropdown from "../../CityDropdown/CityDropdown";
 import { AllContext } from "../../../AllContext";
@@ -10,7 +10,15 @@ export default function JoinModal({
   groupName,
   groupId,
 }) {
-  const { setViewingGroup, inGroup, setInGroup } = useContext(AllContext);
+  const {
+    setViewingGroup,
+    inGroup,
+    setInGroup,
+    theme,
+    setGroupSearch,
+    userGroups,
+    setUserGroups
+  } = useContext(AllContext);
 
   function handleSumbit(e) {
     e.preventDefault();
@@ -42,7 +50,9 @@ export default function JoinModal({
             // }, 5000);
           } else {
             console.log(data);
+            setUserGroups([...userGroups, data])
             setInGroup(true);
+            setGroupSearch(false);
             setViewingGroup(data);
           }
         })
@@ -62,21 +72,23 @@ export default function JoinModal({
       aria-labelledby="contained-modal-title-vcenter"
       centered
       id="sign_up_modal"
-      backdrop="static"
     >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter" className="modal_title">
+      <Modal.Header className={"join_header_" + theme}>
+        <Modal.Title
+          id="contained-modal-title-vcenter"
+          className={"modal_title_" + theme}
+        >
           Join Group
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className={"join_header_" + theme}>
         <div id="join_form" name="join_form">
-          <div id="join_btn">
+          <div>
             <button
               type="button"
-              id="join_btn"
               name="join_btn"
               onClick={(e) => handleSumbit(e)}
+              id={"join_btn_" + theme}
             >
               Join {groupName}
             </button>

@@ -4,7 +4,7 @@
 
 .bg_color_dark{
   background-color: #000000 !important;
-  height: 100vh;
+  height: 100% !important;
 }
 
 #group_page{
@@ -115,6 +115,7 @@ margin-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 #filter_bar{

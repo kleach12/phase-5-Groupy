@@ -4,7 +4,33 @@
   justify-content: center;
 }
 
-#join_btn{
+#join_btn_light{
   align-items: center;
   justify-content: center;
+  background-color: #000000;
+  font-family: "Inter", sans-serif !important;
+  border: #ffffff 1px solid !important;
+  font-size: 25px;
+  border-radius: 0.5vh;
+  font-weight: 700 !important;
+  color: #ffffff;
+}
+
+#join_btn_dark{
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  font-family: "Inter", sans-serif !important;
+  border: #000000 1px solid !important;
+  font-size: 25px;
+  border-radius: 0.5vh;
+  font-weight: 700 !important;
+}
+
+.join_header_light{
+  background-color: #ffffff;
+}
+
+.join_header_dark{
+  background-color: #000000;
 }

@@ -17,7 +17,7 @@ function App() {
   const [groups, setGroups] = useState([]);
   const [viewingGroup, setViewingGroup] = useState([]);
   const [deleteUser, setDeleteUser] = useState(false);
-
+  const [userGroups, setUserGroups] = useState([])
   useEffect(() => {
     fetch("/me")
       .then((res) => res.json())
@@ -25,9 +25,12 @@ function App() {
         if (data.error) {
           console.log(data.error);
         } else {
+          console.log(data)
           setUser(data);
           setSignedIn(true);
           setTheme(data.theme);
+          setUserGroups(data.groups)
+          
         }
       });
   }, []);
@@ -49,6 +52,11 @@ function App() {
         setViewingGroup,
         deleteUser,
         setDeleteUser,
+        setGroupSearch,
+        groups,
+        setGroups,
+        userGroups,
+        setUserGroups
       }}
     >
       <Routes>
@@ -62,7 +70,7 @@ function App() {
             />
           }
         />
-        <Route path="/Dashboard" element={<Dashboard/>} />
+        <Route path="/Dashboard" element={<Dashboard />} />
         <Route
           path="/GroupPage"
           element={

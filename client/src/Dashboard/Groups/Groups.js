@@ -16,6 +16,7 @@ export default function Groups() {
     groupSearch,
     setGroupSearch,
     setViewingGroup,
+    userGroups
   } = useContext(AllContext);
   const { user } = useContext(AllContext);
 
@@ -27,7 +28,7 @@ export default function Groups() {
     return <Navigate to="/GroupPage" />;
   }
   if (user) {
-    const mappedGroups = user.groups.map((group, index) => {
+    const mappedGroups = userGroups.map((group, index) => {
       return (
         <GroupList
           key={group.name}
