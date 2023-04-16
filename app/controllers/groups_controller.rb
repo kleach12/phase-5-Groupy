@@ -19,6 +19,7 @@ class GroupsController < ApplicationController
     user  = user_in_session
     if group
       group.admin_id = user.id
+      GroupUser.create(group_id:group.id, user_id: user.id)
       render json: group
     else 
       render json: {errors: group.errors.full_messages}

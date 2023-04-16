@@ -6,6 +6,7 @@ import CityDropdown from "../../../CityDropdown/CityDropdown";
 import { AllContext } from "../../../AllContext";
 
 import styled from "styled-components";
+import { Navigate } from "react-router-dom";
 const HoverColorInput = styled.input`
   border-radius: 1vh;
 
@@ -24,7 +25,15 @@ export default function NewGroup({ show, setShow }) {
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
-  const {theme} = useContext(AllContext)
+  const {
+    theme,
+    userGroups,
+    setUserGroups,
+    inGroup,
+    setInGroup,
+    viewingGroup,
+    setViewingGroup,
+  } = useContext(AllContext);
 
   function handleHover() {
     let newColor = randomColor;
@@ -73,6 +82,9 @@ export default function NewGroup({ show, setShow }) {
               setErrorMessage(null);
             }, 5000);
           } else {
+            setUserGroups([...userGroups, data]);
+            setViewingGroup(data);
+            setInGroup(true);
             setShow(false);
             console.log(data);
             setGroupCity("");
@@ -83,6 +95,10 @@ export default function NewGroup({ show, setShow }) {
     }
   }
 
+  if (inGroup) {
+    <Navigate to="/GroupRoom" />;
+  }
+
   return (
     <Modal
       show={show}
@@ -91,23 +107,28 @@ export default function NewGroup({ show, setShow }) {
       aria-labelledby="contained-modal-title-vcenter"
       centered
       id="create_modal"
-      
     >
-      <Modal.Header className={"modal_header_" + theme} >
-        <Modal.Title id="contained-modal-title-vcenter" className={"modal_title_" + theme}>
+      <Modal.Header className={"modal_header_" + theme}>
+        <Modal.Title
+          id="contained-modal-title-vcenter"
+          className={"modal_title_" + theme}
+        >
           New Group
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body id={"create_group_" + theme} >
-        <div id="sign_up_form" name="sign_up_form" >
+      <Modal.Body id={"create_group_" + theme}>
+        <div id="sign_up_form" name="sign_up_form">
           <input
-           className={"create_input_text_" + theme}
+            className={"create_input_text_" + theme}
             type="type"
             placeholder="Group Name"
             value={groupName}
             onChange={(e) => setGroupName(e.target.value)}
           />
-          <CityDropdown setCity={setGroupCity} className={"create_input_text_" + theme}/>
+          <CityDropdown
+            setCity={setGroupCity}
+            className={"create_input_text_" + theme}
+          />
           <label id={"file_label_" + theme}> Group Picture </label>
           <input
             className={"create_input_text_" + theme}
@@ -128,7 +149,7 @@ export default function NewGroup({ show, setShow }) {
             onMouseEnter={handleHover}
             onMouseLeave={handleLeave}
           />
-          
+
           <h2 className="error_message">
             {errorMessage ? errorMessage : null}
           </h2>
