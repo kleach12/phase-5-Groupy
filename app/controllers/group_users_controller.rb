@@ -16,6 +16,17 @@ class GroupUsersController < ApplicationController
       end
   end
 
+  def destroy
+    user = user_in_session
+    group_user = GroupUser.find_by(group_user_params)
+    if group_user
+      group_user.destroy
+      head :no_content
+    else
+      render json: {error:' Does not exsist'}
+    end
+  end
+
   private
 
   def user_in_session

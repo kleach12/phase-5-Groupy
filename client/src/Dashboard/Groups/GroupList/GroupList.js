@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import "./GroupList.css";
 import styled from "styled-components";
 import { AllContext } from "../../../AllContext";
+import LeaveGroup from "./LeaveGroup/LeaveGroup";
 // import { Navigate } from "react-router-dom";
 const HoverColor = styled.div`
   color: black;
@@ -71,7 +72,9 @@ export default function GroupList({ setInGroup, setViewingGroup, group }) {
           <h2 className="group_title">{group.name}</h2>
           <h3 className="num_mem"> {numberOfMembers}</h3>
         </div>
-        <div className="right_card"></div>
+        <div className="right_card">
+          <LeaveGroup group = {group}/>
+        </div>
       </HoverColor>
       <div></div>
     </div>

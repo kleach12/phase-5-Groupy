@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :user_chats
   resources :messages
-  resources :group_users
+  resources :group_users,:only => [:index, :create]
   resources :groups
   # resources :avatars
   resources :users, :only => [:index, :create, :show]
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "/filtered_groups/:username", to: "groups#user_group_search_practice"
   get "/group_messages/:group_id", to: "messages#group_messages"
   delete "/delete_user", to: "users#destroy"
+  delete "/delete_group_user/:group_id", to: "group_users#destroy"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

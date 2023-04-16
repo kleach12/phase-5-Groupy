@@ -1,0 +1,19 @@
+.leave_group_light{
+  font-family: "Inter", sans-serif !important;
+  background-color: #ffffff !important;
+  border: #ffffff 1px solid !important;
+  color: #000000;
+  font-size: 25px;
+  border-radius: 0.5vh;
+  font-weight: 700 !important;
+}
+
+.leave_group_dark{
+  font-family: "Inter", sans-serif !important;
+  background-color: #000000 !important;
+  border: #000000 1px solid !important;
+  color: #ffffff;
+  font-size: 25px;
+  border-radius: 0.5vh;
+  font-weight: 700 !important;
+}
