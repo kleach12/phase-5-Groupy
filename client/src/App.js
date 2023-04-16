@@ -27,7 +27,7 @@ function App() {
         } else {
           setUser(data);
           setSignedIn(true);
-          setTheme(data.theme)
+          setTheme(data.theme);
         }
       });
   }, []);
@@ -48,8 +48,7 @@ function App() {
         viewingGroup,
         setViewingGroup,
         deleteUser,
-        setDeleteUser
-
+        setDeleteUser,
       }}
     >
       <Routes>
@@ -63,20 +62,7 @@ function App() {
             />
           }
         />
-        <Route
-          path="/Dashboard"
-          element={
-            <Dashboard
-              inGroup={inGroup}
-              setInGroup={setInGroup}
-              groupSearch={groupSearch}
-              setGroupSearch={setGroupSearch}
-              setViewingGroup={setViewingGroup}
-              deleteUser={deleteUser}
-              setDeleteUser={setDeleteUser}
-            />
-          }
-        />
+        <Route path="/Dashboard" element={<Dashboard/>} />
         <Route
           path="/GroupPage"
           element={

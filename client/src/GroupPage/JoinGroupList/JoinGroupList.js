@@ -29,7 +29,6 @@ export default function JoinGroupList({ group }) {
       ? `${group.num_of_mem} Member`
       : `${group.num_of_mem} Members`;
 
-  console.log(group);
   function handleHover() {
     let newColor = randomColor;
     while (newColor === randomColor) {

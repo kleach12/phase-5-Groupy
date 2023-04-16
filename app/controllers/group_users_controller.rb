@@ -9,7 +9,8 @@ class GroupUsersController < ApplicationController
     user = user_in_session 
     groupuser = GroupUser.create(group_user_params)
       if groupuser.valid?
-        render json: groupuser
+        group = Group.find_by(id: groupuser.group.id)
+        render json: group
       # else
       #   render json: {errors: groupuser.errors.full_messages}
       end

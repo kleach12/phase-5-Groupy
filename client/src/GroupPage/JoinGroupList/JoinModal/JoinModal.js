@@ -1,15 +1,16 @@
 import "./JoinModal.css";
 import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 // import CityDropdown from "../../CityDropdown/CityDropdown";
-
+import { AllContext } from "../../../AllContext";
 export default function JoinModal({
   showJoinModal,
   SetShowJoinModal,
   groupName,
-  groupId
+  groupId,
 }) {
+  const { setViewingGroup, inGroup, setInGroup } = useContext(AllContext);
 
   function handleSumbit(e) {
     e.preventDefault();
@@ -41,10 +42,16 @@ export default function JoinModal({
             // }, 5000);
           } else {
             console.log(data);
+            setInGroup(true);
+            setViewingGroup(data);
           }
         })
         .catch((error) => console.error(error));
     }
+  }
+
+  if (inGroup) {
+    return <Navigate to="/GroupRoom" />;
   }
 
   return (

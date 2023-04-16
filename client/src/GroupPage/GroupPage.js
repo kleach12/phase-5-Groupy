@@ -42,10 +42,10 @@ export default function GroupPage({ groupSearch, setGroupSearch, user }) {
     if (groups.length === 0) {
 
     return (
-      <div id="group_page">
-        <div id="filter">
+      <div className={"bg_color_" + theme}>
+        <div id={"filter_" + theme}>
           <BsFillArrowLeftSquareFill
-            id="back_btn"
+            id={"back_btn_" + theme}
             onClick={() => setGroupSearch(false)}
           />
           <div id="filter_bar">
@@ -63,7 +63,7 @@ export default function GroupPage({ groupSearch, setGroupSearch, user }) {
             src={`https://media3.giphy.com/media/ISOckXUybVfQ4/giphy.gif`}
             id="lonely_gif"
           />
-          <h2 id="lonely_comment"> Sorry but there are no groups you can join right now </h2>
+          <h2 id={"lonely_comment_" + theme}> Sorry but there are no groups you can join right now </h2>
         </div>
       </div>
     );

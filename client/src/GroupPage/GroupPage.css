@@ -138,9 +138,16 @@ margin-right: 10px;
   padding-top: 20%;
   /* border-radius: 100vh; */
 }
-#lonely_comment{
+#lonely_comment_light{
   font-family: 'Inter', sans-serif;
   color: #000000;
+  font-size: 40px;
+  font-weight: 900;
+}
+
+#lonely_comment_dark{
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
   font-size: 40px;
   font-weight: 900;
 }
