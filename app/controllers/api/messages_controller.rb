@@ -1,4 +1,4 @@
-class Api:MessagesController < ApplicationController
+class Api::MessagesController < ApplicationController
 
   def create 
   user = user_in_session

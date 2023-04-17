@@ -19,7 +19,7 @@ export default function GroupChat() {
   };
 
   useEffect(() => {
-    fetch(`/group_messages/${viewingGroup.id}`)
+    fetch(`/api/group_messages/${viewingGroup.id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
@@ -42,7 +42,7 @@ export default function GroupChat() {
     // bkl
     function submitToAPI(data, e) {
       e.preventDefault();
-      fetch("/messages", {
+      fetch("/api/messages", {
         method: "POST",
         body: data,
       })

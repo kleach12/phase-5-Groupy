@@ -61,7 +61,7 @@ export default function DashNav() {
 
     function handleUpdate(data, e) {
       e.preventDefault();
-      fetch("/users", {
+      fetch("/api/users", {
         method: "PATCH",
         body: data,
       })
@@ -93,7 +93,7 @@ export default function DashNav() {
   );
 
   function handleSignOut() {
-    fetch("/logout", {
+    fetch("/api/logout", {
       method: "DELETE",
     }).then((res) => {
       setTheme('light')

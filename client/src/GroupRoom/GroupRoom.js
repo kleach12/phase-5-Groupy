@@ -2,7 +2,7 @@ import "./GroupRoom.css";
 import GroupNav from "./GroupNav/GroupNav";
 import GroupChat from "./GroupChat/GroupChat";
 import GroupUsers from "./GroupUsers/GroupUsers";
-export default function GroupRoom({ inGroup, setInGroup, viewingGroup }) {
+export default function GroupRoom() {
   return (
     <div id="group_room">
       <GroupNav />
