@@ -4,11 +4,11 @@ import { useContext, useEffect, useState } from "react";
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { Navigate } from "react-router-dom";
 import { AllContext } from "../AllContext";
-export default function GroupPage({ groupSearch, setGroupSearch, user }) {
+export default function GroupPage() {
   const [groups, setGroups] = useState([]);
   const [query, setQuery] = useState("");
   const [searchParam] = useState(["name"]);
-  const { theme } = useContext(AllContext);
+  const { theme, groupSearch, setGroupSearch } = useContext(AllContext);
 
   useEffect(() => {
     fetch(`/filtered_groups`)
@@ -41,7 +41,7 @@ export default function GroupPage({ groupSearch, setGroupSearch, user }) {
   if (groups) {
     if (groups.length === 0) {
       return (
-        <div className={"bg_color_" + theme}>
+        <div id={"bg_color_" + theme}>
           <div id={"filter_" + theme}>
             <BsFillArrowLeftSquareFill
               id={"back_btn_" + theme}
@@ -72,7 +72,7 @@ export default function GroupPage({ groupSearch, setGroupSearch, user }) {
     }
 
     return (
-      <div className={"bg_color_" + theme}>
+      <div id={"bg_color_" + theme} className="overflow">
         <div id={"filter_" + theme}>
           <BsFillArrowLeftSquareFill
             id={"back_btn_" + theme}

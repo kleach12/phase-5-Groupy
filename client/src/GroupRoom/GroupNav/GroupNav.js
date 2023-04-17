@@ -11,13 +11,13 @@ const HoverColorButton = styled.button`
   background-color: ${(props) => props.color} !important;
 `;
 
-export default function GroupNav({ inGroup, setInGroup, viewingGroup }) {
+export default function GroupNav() {
   const colors = ["#F06C9B", "#256EFF", "#FFE74C", "#33CA7F", "#EF6054"];
   const [hovercolor, setHoverColor] = useState("");
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
-  const {theme} = useContext(AllContext);
+  const {theme,inGroup,setInGroup,viewingGroup} = useContext(AllContext);
 
   function handleHover() {
     let newColor = randomColor;

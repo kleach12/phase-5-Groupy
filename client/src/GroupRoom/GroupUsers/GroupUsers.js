@@ -3,9 +3,8 @@ import GroupChatList from "./GroupChatList/GroupChatList";
 import { useContext } from "react";
 import { AllContext } from "../../AllContext";
 
-export default function GroupUsers({ viewingGroup }) {
-  const {theme} = useContext(AllContext);
-
+export default function GroupUsers() {
+  const {theme,viewingGroup} = useContext(AllContext);
   if (viewingGroup.users) {
     const mappedGroups = viewingGroup.users.map((member) => {
       return (

@@ -1,11 +1,11 @@
-.bg_color_light{
+#bg_color_light{
   background-color: #ffffff;
-  height: 100% !important;
+  height: 100vh;
 }
 
-.bg_color_dark{
+#bg_color_dark{
   background-color: #000000 !important;
-  height: 100% !important;
+  height: 100vh
 }
 
 #group_page{
@@ -115,8 +115,8 @@ margin-right: 10px;
   margin-top:5%;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
+  height: 100vh;
 }
 
 #filter_bar{
@@ -152,4 +152,9 @@ margin-right: 10px;
   color: #ffffff;
   font-size: 40px;
   font-weight: 900;
+}
+
+.overflow{
+  overflow: auto;
+  -ms-overflow-style: none;
 }

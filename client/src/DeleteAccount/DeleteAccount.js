@@ -1,8 +1,10 @@
 import { Navigate } from 'react-router-dom';
 import './DeleteAccount.css'
 import { BsFillArrowLeftSquareFill } from "react-icons/bs";
-export default function DeleteAccount({deleteUser,setDeleteUser,signedIn, setSignedIn}){
-
+import { useContext } from 'react';
+import { AllContext } from '../AllContext';
+export default function DeleteAccount(){
+const {deleteUser, setDeleteUser, signedIn, setSignedIn} = useContext(AllContext)
   function handleDeleteUser() {
     fetch(`/delete_user`, {
       method: "DELETE",

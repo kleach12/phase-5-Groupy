@@ -1,10 +1,10 @@
 import "./SignInUp.css";
 import SignInModal from "./SingInModal/SignInModal";
-import Button from "react-bootstrap/Button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import styled from "styled-components";
+import { AllContext } from "../AllContext";
 const HoverColorInput = styled.input`
   border-radius: 1vh;
 
@@ -21,7 +21,7 @@ const HoverColorButton = styled.button`
     background-color: black;
   }
 `;
-export default function SignInUp({ setUser, setSignedIn, signedIn }) {
+export default function SignInUp() {
   const [show, setShow] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +32,8 @@ export default function SignInUp({ setUser, setSignedIn, signedIn }) {
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
-
+  const { setUser, setTheme, setUserGroups, setSignedIn, signedIn } =
+    useContext(AllContext);
   function handleHover() {
     let newColor = randomColor;
     while (newColor === randomColor) {
@@ -80,9 +81,11 @@ export default function SignInUp({ setUser, setSignedIn, signedIn }) {
             setErrorMessage(null);
           }, 5000);
         } else {
+          setUserGroups(data.groups);
+          setTheme(data.theme);
+          setUser(data);
           console.log(data);
           setSignedIn(true);
-          setUser(data);
         }
       });
   }
@@ -161,13 +164,7 @@ export default function SignInUp({ setUser, setSignedIn, signedIn }) {
             Create New Account
           </HoverColorButton>
 
-          <SignInModal
-            show={show}
-            setShow={setShow}
-            setUser={setUser}
-            setSignedIn={setSignedIn}
-            signedIn={signedIn}
-          />
+          <SignInModal />
         </div>
       </div>
     </div>

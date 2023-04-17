@@ -5,13 +5,13 @@ import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import GroupChatMessage from "./GroupChatMessage/GroupChatMessage";
 import "./GroupChat.css";
 import { AllContext } from "../../AllContext";
-export default function GroupChat({ viewingGroup }) {
+export default function GroupChat() {
   const formRef = useRef();
   const [message, setMessage] = useState("");
   const [groupMessages, setGroupMessages] = useState([]);
   const [rerender, setRerender] = useState(false);
   const {theme} = useContext(AllContext);
-
+  const {viewingGroup} = useContext(AllContext)
 
   const handleChange = (evt) => {
     // console.log(evt.target.value)

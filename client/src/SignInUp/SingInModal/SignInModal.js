@@ -1,9 +1,10 @@
 import "./SignInModal.css";
 import Modal from "react-bootstrap/Modal";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import CityDropdown from "../../CityDropdown/CityDropdown";
 import styled from "styled-components";
+import { AllContext } from "../../AllContext";
 const HoverColorInput = styled.input`
   border-radius: 1vh;
 
@@ -13,13 +14,7 @@ const HoverColorInput = styled.input`
   }
 `;
 
-export default function SignInModal({
-  show,
-  setShow,
-  setSignedIn,
-  setUser,
-  signedIn,
-}) {
+export default function SignInModal() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
@@ -35,7 +30,7 @@ export default function SignInModal({
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
-
+    const {show, setShow, setSignedIn, setUser, signedIn} = useContext(AllContext)
   function handleHover() {
     let newColor = randomColor;
     while (newColor === randomColor) {
@@ -73,8 +68,8 @@ export default function SignInModal({
 
 
     submitToAPI(data, e);
-    // Use an appropriate url
-    // bkl
+
+    
     function submitToAPI(data, e) {
       e.preventDefault();
       fetch("/users", {

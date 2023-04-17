@@ -52,7 +52,7 @@ export default function SocialIcons({ user }) {
       hovercolor={hovercolor}
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
-      href={user.insta ? user.insta : null}
+      href={user.twitter}
       target="_blank"
       rel="noreferrer"
       className={"socials_" + theme}
@@ -68,7 +68,7 @@ export default function SocialIcons({ user }) {
       hovercolor={hovercolor}
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
-      href={user.insta ? user.insta : null}
+      href={user.facebook}
       target="_blank"
       rel="noreferrer"
       className={"socials_" + theme}
@@ -84,7 +84,7 @@ export default function SocialIcons({ user }) {
       hovercolor={hovercolor}
       onMouseEnter={handleHover}
       onMouseLeave={handleLeave}
-      href={user.insta ? user.insta : null}
+      href={user.tiktok}
       target="_blank"
       rel="noreferrer"
       className={"socials_" + theme}

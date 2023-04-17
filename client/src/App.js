@@ -17,7 +17,8 @@ function App() {
   const [groups, setGroups] = useState([]);
   const [viewingGroup, setViewingGroup] = useState([]);
   const [deleteUser, setDeleteUser] = useState(false);
-  const [userGroups, setUserGroups] = useState([])
+  const [userGroups, setUserGroups] = useState([]);
+
   useEffect(() => {
     fetch("/me")
       .then((res) => res.json())
@@ -25,12 +26,11 @@ function App() {
         if (data.error) {
           console.log(data.error);
         } else {
-          console.log(data)
+          console.log(data);
           setUser(data);
           setSignedIn(true);
           setTheme(data.theme);
-          setUserGroups(data.groups)
-          
+          setUserGroups(data.groups);
         }
       });
   }, []);
@@ -56,53 +56,15 @@ function App() {
         groups,
         setGroups,
         userGroups,
-        setUserGroups
+        setUserGroups,
       }}
     >
       <Routes>
-        <Route
-          path="/GroupRoom"
-          element={
-            <GroupRoom
-              inGroup={inGroup}
-              setInGroup={setInGroup}
-              viewingGroup={viewingGroup}
-            />
-          }
-        />
+        <Route path="/GroupRoom" element={<GroupRoom />} />
         <Route path="/Dashboard" element={<Dashboard />} />
-        <Route
-          path="/GroupPage"
-          element={
-            <GroupPage
-              groupSearch={groupSearch}
-              setGroupSearch={setGroupSearch}
-              user={user}
-              groups={groups}
-            />
-          }
-        />
-        <Route
-          path="/DeleteAccount"
-          element={
-            <DeleteAccount
-              deleteUser={deleteUser}
-              setDeleteUser={setDeleteUser}
-              signedIn={signedIn}
-              setSignedIn={setSignedIn}
-            />
-          }
-        />
-        <Route
-          path="/"
-          element={
-            <SignInUp
-              setUser={setUser}
-              signedIn={signedIn}
-              setSignedIn={setSignedIn}
-            />
-          }
-        />
+        <Route path="/GroupPage" element={<GroupPage />} />
+        <Route path="/DeleteAccount" element={<DeleteAccount />} />
+        <Route path="/" element={<SignInUp />} />
       </Routes>
     </AllContext.Provider>
   );
