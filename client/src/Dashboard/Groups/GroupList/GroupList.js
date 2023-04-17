@@ -40,7 +40,7 @@ export default function GroupList({ setInGroup, setViewingGroup, group }) {
 
   function handleViewGroup(e) {
     e.preventDefault();
-    fetch(`/groups/${group.id}`)
+    fetch(`/api/groups/${group.id}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {

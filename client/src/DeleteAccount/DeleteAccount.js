@@ -6,7 +6,7 @@ import { AllContext } from '../AllContext';
 export default function DeleteAccount(){
 const {deleteUser, setDeleteUser, signedIn, setSignedIn} = useContext(AllContext)
   function handleDeleteUser() {
-    fetch(`/delete_user`, {
+    fetch(`/api/delete_user`, {
       method: "DELETE",
     }).then((res) => {
       console.log(res);

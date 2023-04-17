@@ -62,7 +62,7 @@ export default function NewGroup({ show, setShow }) {
 
     function submitToAPI(data, e) {
       e.preventDefault();
-      fetch("/groups", {
+      fetch("/api/groups", {
         method: "POST",
         body: data,
       })

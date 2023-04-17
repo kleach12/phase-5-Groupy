@@ -36,18 +36,6 @@ export default function DashNav() {
     setDeleteUser,
   } = useContext(AllContext);
 
-  // const themeButton =
-  //   theme === "light" ? (
-  //     <BsFillMoonFill
-  //       className={"theme_button_" + theme}
-  //       onClick={() => setTheme("dark")}
-  //     />
-  //   ) : (
-  //     <BsBrightnessHigh
-  //       className={"theme_button_" + theme}
-  //       onClick={() => setTheme("light")}
-  //     />
-  //   );
 
   function handleHover() {
     let newColor = randomColor;
@@ -108,8 +96,9 @@ export default function DashNav() {
     fetch("/logout", {
       method: "DELETE",
     }).then((res) => {
-      setSignedIn(false);
+      setTheme('light')
       setUser(null);
+      setSignedIn(false);
     });
   }
 

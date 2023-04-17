@@ -11,7 +11,7 @@ export default function GroupPage() {
   const { theme, groupSearch, setGroupSearch } = useContext(AllContext);
 
   useEffect(() => {
-    fetch(`/filtered_groups`)
+    fetch(`/api/filtered_groups`)
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {

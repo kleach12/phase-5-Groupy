@@ -65,7 +65,7 @@ export default function SignInUp() {
       password: password,
     };
 
-    fetch("/login", {
+    fetch("/api/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -164,7 +164,7 @@ export default function SignInUp() {
             Create New Account
           </HoverColorButton>
 
-          <SignInModal />
+          <SignInModal show={show} setShow={setShow} />
         </div>
       </div>
     </div>

@@ -29,7 +29,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
 
     function handleUpdate(data, e) {
       e.preventDefault();
-      fetch("/users", {
+      fetch("/api/users", {
         method: "PATCH",
         body: data,
       })

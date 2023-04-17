@@ -14,14 +14,14 @@ const HoverColorInput = styled.input`
   }
 `;
 
-export default function SignInModal() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+export default function SignInModal({show, setShow}) {
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
+  // const [dateOfBirth, setDateOfBirth] = useState("");
   const [userCity, setUserCity] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const [profileImage, setProfileImage] = useState("");
@@ -30,7 +30,7 @@ export default function SignInModal() {
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
-    const {show, setShow, setSignedIn, setUser, signedIn} = useContext(AllContext)
+    const {setSignedIn, setUser, signedIn} = useContext(AllContext)
   function handleHover() {
     let newColor = randomColor;
     while (newColor === randomColor) {
@@ -51,13 +51,13 @@ export default function SignInModal() {
     e.preventDefault();
     const data = new FormData();
     data.append("image", profileImage);
-    data.append("first_name", firstName);
-    data.append("last_name", lastName);
+    // data.append("first_name", firstName);
+    // data.append("last_name", lastName);
     data.append("username", username);
-    data.append("email", email);
+    // data.append("email", email);
     data.append("password", password);
     data.append("password_confirmation", passwordConfirm);
-    data.append("dob", dateOfBirth);
+    // data.append("dob", dateOfBirth);
     data.append("city", userCity);
     data.append("bio", "");
     data.append("theme", "light")
@@ -69,10 +69,10 @@ export default function SignInModal() {
 
     submitToAPI(data, e);
 
-    
+
     function submitToAPI(data, e) {
       e.preventDefault();
-      fetch("/users", {
+      fetch("/api/users", {
         method: "POST",
         body: data,
       })
@@ -95,13 +95,13 @@ export default function SignInModal() {
             console.log(data);
             setSignedIn(true);
             setUser(data);
-            setFirstName("");
-            setLastName("");
+            // setFirstName("");
+            // setLastName("");
             setUsername("");
-            setEmail("");
+            // setEmail("");
             setPassword("");
             setPasswordConfirm("");
-            setDateOfBirth("");
+            // setDateOfBirth("");
             setUserCity("");
           }
         })
@@ -129,7 +129,7 @@ export default function SignInModal() {
       </Modal.Header>
       <Modal.Body>
         <div id="sign_up_form" name="sign_up_form">
-          <div id="first_last">
+          {/* <div id="first_last">
             <input
               className="sign_up_text"
               type="type"
@@ -144,7 +144,7 @@ export default function SignInModal() {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
             />
-          </div>
+          </div> */}
           <input
             className="sign_up_text"
             type="type"
@@ -152,13 +152,13 @@ export default function SignInModal() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <input
+          {/* <input
             className="sign_up_text"
             type="type"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-          />
+          /> */}
           <input
             className="sign_up_text"
             type="password"
@@ -173,14 +173,14 @@ export default function SignInModal() {
             value={passwordConfirm}
             onChange={(e) => setPasswordConfirm(e.target.value)}
           />
-          <input
+          {/* <input
             type="date"
             id="birthday"
             name="birthday"
             className="sign_up_text"
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.target.value)}
-          />
+          /> */}
           <CityDropdown setCity={setUserCity} />
           <label id="file_label"> Profile Picture </label>
           <input

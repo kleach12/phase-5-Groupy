@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation  } from "react-router-dom";
 import Dashboard from "./Dashboard/Dashboard";
 import GroupRoom from "./GroupRoom/GroupRoom";
 import SignInUp from "./SignInUp/SignInUp";
@@ -18,9 +18,14 @@ function App() {
   const [viewingGroup, setViewingGroup] = useState([]);
   const [deleteUser, setDeleteUser] = useState(false);
   const [userGroups, setUserGroups] = useState([]);
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+
+  // nav(0)
 
   useEffect(() => {
-    fetch("/me")
+    fetch("/api/me")
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
@@ -31,10 +36,22 @@ function App() {
           setSignedIn(true);
           setTheme(data.theme);
           setUserGroups(data.groups);
+          navigate('/Dashboard');
         }
       });
   }, []);
 
+  // useEffect(() => {
+  //   window.addEventListener('load', () => {
+  //     navigate(location.pathname);
+  //   });
+  //   return () => {
+  //     window.removeEventListener('load', () => {
+  //       navigate(location.pathname);
+  //     });
+  //   };
+  // }, [location.pathname, navigate]);
+  console.log(location)
   return (
     <AllContext.Provider
       value={{
