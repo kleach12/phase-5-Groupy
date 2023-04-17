@@ -43,7 +43,7 @@ export default function Groups() {
     return (
       <div id={"groups_" + theme}>
         <div id={"groups_top_" + theme}>
-          {/* <h2 id={"groups_title_" + theme}> Groups </h2> */}
+          <h2 id={"groups_title_" + theme}> Groups </h2>
           <Dropdown>
             <Dropdown.Toggle
               id="dropdown-basic"
