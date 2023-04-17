@@ -66,6 +66,11 @@ export default function SignInModal({
     data.append("city", userCity);
     data.append("bio", "");
     data.append("theme", "light")
+    data.append("twitter", "")
+    data.append("insta", "")
+    data.append("facebook", "")
+    data.append("tiktok", "")
+
 
     submitToAPI(data, e);
     // Use an appropriate url

@@ -30,7 +30,7 @@ export default function SocialIcons({ user }) {
     setHoverColor("");
   }
 
-  const instagram = user.insta ? (
+  const instagram = user.insta  ? (
     <HoverIcon
       color={randomColor}
       hovercolor={hovercolor}
@@ -46,7 +46,7 @@ export default function SocialIcons({ user }) {
     </HoverIcon>
   ) : null;
 
-  const twitter = user.twitter ? (
+  const twitter = user.twitter  ? (
     <HoverIcon
       color={randomColor}
       hovercolor={hovercolor}
@@ -78,7 +78,7 @@ export default function SocialIcons({ user }) {
     </HoverIcon>
   ) : null;
 
-  const tiktok = user.tiktok ? (
+  const tiktok = user.tiktok? (
     <HoverIcon
       color={randomColor}
       hovercolor={hovercolor}

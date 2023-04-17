@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
   
   def user_params
-    params.permit(:username, :first_name, :last_name, :password, :password_confirmation, :dob, :email, :city, :bio, :facebook, :insta, :tiktok, :twitter, :image)
+    params.permit(:username, :first_name, :last_name, :password, :password_confirmation, :dob, :email, :city, :bio, :facebook, :insta, :tiktok, :twitter, :image, :theme)
   end
 
   def user_updated_params

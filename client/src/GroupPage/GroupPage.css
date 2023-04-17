@@ -1,5 +1,6 @@
 .bg_color_light{
   background-color: #ffffff;
+  height: 100% !important;
 }
 
 .bg_color_dark{
@@ -132,11 +133,11 @@ margin-right: 10px;
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 #lonely_gif{
-  padding-top: 20%;
+  padding-top: 15%;
   /* border-radius: 100vh; */
 }
 #lonely_comment_light{
