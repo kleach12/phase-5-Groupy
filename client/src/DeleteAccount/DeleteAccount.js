@@ -4,12 +4,13 @@ import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { useContext } from 'react';
 import { AllContext } from '../AllContext';
 export default function DeleteAccount(){
-const {deleteUser, setDeleteUser, signedIn, setSignedIn, setTheme} = useContext(AllContext)
+const {deleteUser, setDeleteUser, signedIn, setSignedIn, setTheme, setUserGroups} = useContext(AllContext)
   function handleDeleteUser() {
     fetch(`/api/delete_user`, {
       method: "DELETE",
     }).then((res) => {
       console.log(res);
+      setUserGroups([])
       setTheme('light')
       setSignedIn(false);
       setDeleteUser(false)
