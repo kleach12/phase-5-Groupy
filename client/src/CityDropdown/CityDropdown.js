@@ -4,7 +4,7 @@ import Select from "react-select";
 import { AllContext } from '../AllContext';
 import { useContext } from 'react';
 
-export default function CityDropdown({setCity,}){
+export default function CityDropdown({setCity, city}){
   const {theme, user} =  useContext(AllContext)
   
   if (theme){
@@ -53,7 +53,7 @@ export default function CityDropdown({setCity,}){
             onChange={(e) => setCity(e.value)}
             placeholder={user ? user.city : `Select city...`}
             styles= {colorStyles}
-            // value = {user.city}
+            value={city}
           />
   )
   }

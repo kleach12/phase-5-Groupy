@@ -11,10 +11,10 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   const [insta, setInsta] = useState(user.insta);
   const [tiktok, setTiktok] = useState(user.tiktok);
   const [twitter, setTwitter] = useState(user.twitter);
-  const [userCity, setUserCity] = useState("");
+  const [userCity, setUserCity] = useState(user.city);
   // const [charCount, setCharCount] = useState(0)
   const { theme } = useContext(AllContext);
-
+  console.log(userCity)
   function handleEdit(e) {
     e.preventDefault();
 
@@ -129,6 +129,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
           />
           <CityDropdown
             setCity={setUserCity}
+            userCity = {userCity}
             className={"edit_input_text_" + theme}
           />
           <div className="modal_bottom">
