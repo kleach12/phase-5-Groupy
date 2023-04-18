@@ -34,9 +34,8 @@ export default function DashNav() {
     setSignedIn,
     deleteUser,
     setDeleteUser,
-    setUserGroups
+    setUserGroups,
   } = useContext(AllContext);
-
 
   function handleHover() {
     let newColor = randomColor;
@@ -50,9 +49,9 @@ export default function DashNav() {
     setHoverColor("");
   }
 
-  function handleChangeTheme(e,color) {
+  function handleChangeTheme(e, color) {
     e.preventDefault();
-    setTheme(color)
+    setTheme(color);
 
     const updateData = new FormData();
     updateData.append("theme", color);
@@ -81,26 +80,26 @@ export default function DashNav() {
   }
 
   const themeButton =
-  theme === "light" ? (
-    <BsFillMoonFill
-      className={"theme_button_" + theme}
-      onClick={(e) => handleChangeTheme(e,"dark")}
-    />
-  ) : (
-    <BsBrightnessHigh
-      className={"theme_button_" + theme}
-      onClick={(e) => handleChangeTheme(e, "light")}
-    />
-  );
+    theme === "light" ? (
+      <BsFillMoonFill
+        className={"theme_button_" + theme}
+        onClick={(e) => handleChangeTheme(e, "dark")}
+      />
+    ) : (
+      <BsBrightnessHigh
+        className={"theme_button_" + theme}
+        onClick={(e) => handleChangeTheme(e, "light")}
+      />
+    );
 
   function handleSignOut() {
     fetch("/api/logout", {
       method: "DELETE",
     }).then((res) => {
-      setTheme('light')
+      setTheme("light");
       setUser(null);
       setSignedIn(false);
-      setUserGroups([])
+      setUserGroups([]);
     });
   }
 
@@ -113,62 +112,67 @@ export default function DashNav() {
   }
 
   if (deleteUser === true) {
-    return <Navigate to="/DeleteAccount" />;
+    return <Navigate to="/deleteaccount" />;
   }
+  if (user.image) {
+    return (
+      <div id={"dash_nav_" + theme}>
+        <h1 id={"title_" + theme}> IRL </h1>
+        <Avatar
+          className="profile_pic"
+          src={user.image}
+          name={user.full_name}
+        />
+        <div>
+          <HoverColorH3
+            id={"at_" + theme}
+            color={randomColor}
+            hovercolor={hovercolor}
+            onMouseEnter={handleHover}
+            onMouseLeave={handleLeave}
+          >
+            {" "}
+            @{user.username}
+          </HoverColorH3>
+        </div>
 
-  return (
-    <div id={"dash_nav_" + theme}>
-      <h1 id={"title_" + theme}> IRL </h1>
-      <Avatar className="profile_pic" src={user.image} name={user.full_name} />
-      <div>
+        <div className="grow">
+          <h3 id={"bio_" + theme}> {user.bio} </h3>
+        </div>
+        <SocialIcons user={user} />
         <HoverColorH3
-          id={"at_" + theme}
           color={randomColor}
           hovercolor={hovercolor}
           onMouseEnter={handleHover}
           onMouseLeave={handleLeave}
+          className={"dashnav_text_" + theme}
+          onClick={() => setShowEdit(true)}
         >
           {" "}
-          @{user.username}
+          Edit Profile{" "}
         </HoverColorH3>
+        <EditModal
+          user={user}
+          setUser={setUser}
+          showEdit={showEdit}
+          setShowEdit={setShowEdit}
+        />
+        <HoverColorH3
+          color={randomColor}
+          hovercolor={hovercolor}
+          onMouseEnter={handleHover}
+          onMouseLeave={handleLeave}
+          className={"dashnav_text_" + theme}
+          onClick={handleSignOut}
+        >
+          Sign out
+        </HoverColorH3>
+        {themeButton}
+        <BsFillTrashFill
+          id={"delete_btn_" + theme}
+          onClick={() => setDeleteUser(true)}
+        />
       </div>
-
-      <div className="grow">
-        <h3 id={"bio_" + theme}> {user.bio} </h3>
-      </div>
-      <SocialIcons user={user} />
-      <HoverColorH3
-        color={randomColor}
-        hovercolor={hovercolor}
-        onMouseEnter={handleHover}
-        onMouseLeave={handleLeave}
-        className={"dashnav_text_" + theme}
-        onClick={() => setShowEdit(true)}
-      >
-        {" "}
-        Edit Profile{" "}
-      </HoverColorH3>
-      <EditModal
-        user={user}
-        setUser={setUser}
-        showEdit={showEdit}
-        setShowEdit={setShowEdit}
-      />
-      <HoverColorH3
-        color={randomColor}
-        hovercolor={hovercolor}
-        onMouseEnter={handleHover}
-        onMouseLeave={handleLeave}
-        className={"dashnav_text_" + theme}
-        onClick={handleSignOut}
-      >
-        Sign out
-      </HoverColorH3>
-      {themeButton}
-      <BsFillTrashFill
-        id={"delete_btn_" + theme}
-        onClick={() => setDeleteUser(true)}
-      />
-    </div>
-  );
+    );
+  }
 }

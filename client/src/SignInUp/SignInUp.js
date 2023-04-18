@@ -104,7 +104,7 @@ export default function SignInUp() {
   );
 
   if (signedIn) {
-    return <Navigate to="/Dashboard" />;
+    return <Navigate to="/dashboard" />;
   }
 
   return (

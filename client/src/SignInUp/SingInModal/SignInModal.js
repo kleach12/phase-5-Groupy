@@ -110,7 +110,7 @@ export default function SignInModal({show, setShow}) {
   }
 
   if (signedIn) {
-    return <Navigate to="/Dashboard" />;
+    return <Navigate to="/dashboard" />;
   }
   return (
     <Modal

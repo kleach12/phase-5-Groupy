@@ -36,7 +36,7 @@ function App() {
           setSignedIn(true);
           setTheme(data.theme);
           setUserGroups(data.groups);
-          navigate('/Dashboard');
+          navigate('/dashboard');
         }
       });
   }, []);
@@ -77,10 +77,10 @@ function App() {
       }}
     >
       <Routes>
-        <Route path="/GroupRoom" element={<GroupRoom />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/GroupPage" element={<GroupPage />} />
-        <Route path="/DeleteAccount" element={<DeleteAccount />} />
+        <Route path="/grouproom" element={<GroupRoom />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/groupPage" element={<GroupPage />} />
+        <Route path="/deleteaccount" element={<DeleteAccount />} />
         <Route path="/" element={<SignInUp />} />
       </Routes>
     </AllContext.Provider>

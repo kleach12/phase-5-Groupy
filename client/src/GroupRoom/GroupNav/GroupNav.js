@@ -56,7 +56,7 @@ export default function GroupNav() {
         onMouseLeave={handleLeave}
       >
         {" "}
-        Leave{" "}
+        Dashboard{" "}
       </HoverColorButton>
     </div>
   );

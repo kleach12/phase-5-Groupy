@@ -17,7 +17,7 @@ const {deleteUser, setDeleteUser, signedIn, setSignedIn, setTheme, setUserGroups
     });
   }
   if (deleteUser === false){
-    return <Navigate to = "/Dashboard"/>
+    return <Navigate to = "/dashboard"/>
   }
 
   if (signedIn === false){
