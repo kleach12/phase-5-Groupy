@@ -2,7 +2,6 @@ import "./NewGroup.css";
 import Modal from "react-bootstrap/Modal";
 // import Select from "react-select";
 import { useState, useEffect, useContext } from "react";
-import CityDropdown from "../../../CityDropdown/CityDropdown";
 import { AllContext } from "../../../AllContext";
 
 import styled from "styled-components";
@@ -17,7 +16,6 @@ const HoverColorInput = styled.input`
 
 export default function NewGroup({ show, setShow }) {
   const [groupName, setGroupName] = useState("");
-  const [groupCity, setGroupCity] = useState("");
   const [groupImage, setGroupImage] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
   const colors = ["#F06C9B", "#256EFF", "#FFE74C", "#33CA7F", "#EF6054"];
@@ -33,6 +31,7 @@ export default function NewGroup({ show, setShow }) {
     setInGroup,
     viewingGroup,
     setViewingGroup,
+    user,
   } = useContext(AllContext);
 
   function handleHover() {
@@ -55,7 +54,7 @@ export default function NewGroup({ show, setShow }) {
     e.preventDefault();
     const data = new FormData();
     data.append("name", groupName);
-    data.append("city", groupCity);
+    data.append("city", user.city);
     data.append("group_pic", groupImage);
 
     submitToAPI(data, e);
@@ -87,7 +86,6 @@ export default function NewGroup({ show, setShow }) {
             setInGroup(true);
             setShow(false);
             console.log(data);
-            setGroupCity("");
             setGroupName("");
           }
         })
@@ -125,9 +123,12 @@ export default function NewGroup({ show, setShow }) {
             value={groupName}
             onChange={(e) => setGroupName(e.target.value)}
           />
-          <CityDropdown
-            setCity={setGroupCity}
+          <input
             className={"create_input_text_" + theme}
+            type="type"
+            placeholder="Group Name"
+            value={user.city}
+            disabled = {true}
           />
           <label id={"file_label_" + theme}> Group Picture </label>
           <input
@@ -149,7 +150,6 @@ export default function NewGroup({ show, setShow }) {
             onMouseEnter={handleHover}
             onMouseLeave={handleLeave}
           />
-
           <h2 className="error_message">
             {errorMessage ? errorMessage : null}
           </h2>

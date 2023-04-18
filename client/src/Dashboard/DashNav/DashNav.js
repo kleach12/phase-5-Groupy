@@ -34,6 +34,7 @@ export default function DashNav() {
     setSignedIn,
     deleteUser,
     setDeleteUser,
+    setUserGroups
   } = useContext(AllContext);
 
 
@@ -99,6 +100,7 @@ export default function DashNav() {
       setTheme('light')
       setUser(null);
       setSignedIn(false);
+      setUserGroups([])
     });
   }
 

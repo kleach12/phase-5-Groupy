@@ -5,7 +5,7 @@ import { AllContext } from '../AllContext';
 import { useContext } from 'react';
 
 export default function CityDropdown({setCity,}){
-  const {theme} =  useContext(AllContext)
+  const {theme, user} =  useContext(AllContext)
   
   if (theme){
   const colorStyles =  theme === 'light' ? {
@@ -51,8 +51,9 @@ export default function CityDropdown({setCity,}){
             className="sign_up_select"
             options={cities}
             onChange={(e) => setCity(e.value)}
-            placeholder={<div>Select city...</div>}
+            placeholder={user ? user.city : `Select city...`}
             styles= {colorStyles}
+            // value = {user.city}
           />
   )
   }

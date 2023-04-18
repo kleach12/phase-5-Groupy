@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useState, useContext } from "react";
 import { AllContext } from "../../../AllContext";
-
+import CityDropdown from "../../../CityDropdown/CityDropdown";
 export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   const [errorMessage, setErrorMessage] = useState(null);
   const [bio, setBio] = useState(user.bio);
@@ -11,6 +11,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   const [insta, setInsta] = useState(user.insta);
   const [tiktok, setTiktok] = useState(user.tiktok);
   const [twitter, setTwitter] = useState(user.twitter);
+  const [userCity, setUserCity] = useState("");
   // const [charCount, setCharCount] = useState(0)
   const { theme } = useContext(AllContext);
 
@@ -23,6 +24,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
     updateData.append("insta", insta);
     updateData.append("twitter", twitter);
     updateData.append("tiktok", tiktok);
+    updateData.append("city", userCity);
     handleUpdate(updateData, e);
     // Use an appropriate url
     // bkl
@@ -124,6 +126,10 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
             onChange={(e) => {
               setTiktok(e.target.value);
             }}
+          />
+          <CityDropdown
+            setCity={setUserCity}
+            className={"edit_input_text_" + theme}
           />
           <div className="modal_bottom">
             <button
