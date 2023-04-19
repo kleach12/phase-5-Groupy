@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 puts 'seeding...'
 
- cities = ['Sacramento', 'Los Angeles', 'San Diego', 'San Franscisco', 'San Jose']
+ cities = ['Sacramento', 'Los Angeles', 'San Diego', 'San Francisco', 'San Jose']
 
  # create some groups with random cities
 groups = []
