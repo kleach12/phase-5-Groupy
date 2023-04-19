@@ -39,7 +39,7 @@ end
 # create some messages
 users.each do |user|
   group = user.groups.sample
-  Message.create!(comment: " Hello, #{user.city}!", user: user, group: group)
+  Message.create!(comment: " Hello, #{user.city}! This is the starter Group. You can talk with other users in this group or join/create new groups!", user: user, group: group)
 end
 
 

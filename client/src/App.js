@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes, useNavigate, useLocation  } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation, Navigate  } from "react-router-dom";
 import Dashboard from "./Dashboard/Dashboard";
 import GroupRoom from "./GroupRoom/GroupRoom";
 import SignInUp from "./SignInUp/SignInUp";
@@ -81,6 +81,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/groupPage" element={<GroupPage />} />
         <Route path="/deleteaccount" element={<DeleteAccount />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
         <Route path="/" element={<SignInUp />} />
       </Routes>
     </AllContext.Provider>

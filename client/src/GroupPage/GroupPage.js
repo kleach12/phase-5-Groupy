@@ -64,7 +64,7 @@ export default function GroupPage() {
             />
             <h2 id={"lonely_comment_" + theme}>
               {" "}
-              Sorry but there are no groups you can join right now{" "}
+              Sorry but there are no groups you can join right now.You can create a group or try switching your city to find groups in nearby cities.{" "}
             </h2>
           </div>
         </div>
