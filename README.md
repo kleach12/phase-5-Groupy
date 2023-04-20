@@ -25,10 +25,10 @@ Notes on installation
   - run foreman start -f Procfile.dev and you should be good to go!
  
 <h2>Visuals</h2>
-<img src = "https://media1.giphy.com/media/gSNalQ94qedakEo7au/200w.webp" style="width: 400px; height: auto;"/>
-<img src = "https://media1.giphy.com/media/3eLjKYrnf5HKR3GISk/200w.webp" style="width: 400px; height: auto;"/>
-<img src = "https://media2.giphy.com/media/1GdBdnUKN5mURZ17au/200w.webp" style="width: 400px; height: auto;"/>
-<img src = "https://media1.giphy.com/media/jxjNmjgIfTmqKAQig5/200w.webp" style="width: 400px; height: auto;"/>
+<img src = "https://media3.giphy.com/media/UJqH7QvokoFXnuCIpQ/giphy.gif" style=/>
+<img src = "https://media4.giphy.com/media/3eLjKYrnf5HKR3GISk/giphy.gif" />
+<img src = "https://media1.giphy.com/media/jxjNmjgIfTmqKAQig5/giphy.gif" />
+<img src = "https://media2.giphy.com/media/1GdBdnUKN5mURZ17au/giphy.gif" />
 
 
 <h2>Authors and acknowledgment</h2>
