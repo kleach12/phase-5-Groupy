@@ -37,9 +37,15 @@ users.each do |user|
 end
 
 # create some messages
-users.each do |user|
-  group = user.groups.sample
-  Message.create!(comment: " Hello, #{user.city}! My name is #{user.username}", user: user, group: group)
+groups.each do |group|
+  group.users.each do |user|
+    fake_quote = Faker::Quote
+    if user === group.users[0]
+      Message.create!(comment: "Hello, My name is #{user.username}, What is your favorite movie", user: user, group: group)
+    else 
+      Message.create!(comment: "Hi My name is #{user.username}, and my favorite movie is #{Faker::Movie.title}.", user: user, group: group)
+    end
+  end
 end
 
 
