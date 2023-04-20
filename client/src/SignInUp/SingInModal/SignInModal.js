@@ -181,7 +181,7 @@ export default function SignInModal({show, setShow}) {
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.target.value)}
           /> */}
-          <CityDropdown setCity={setUserCity} />
+          <CityDropdown setCity={setUserCity} city = {userCity} />
           <label id="file_label"> Profile Picture </label>
           <input
             className="edit_input_text"
