@@ -21,11 +21,11 @@ export default function Groups() {
   const { user } = useContext(AllContext);
 
   if (inGroup) {
-    return <Navigate to="/grouproom" />;
+    return <Navigate to="/group-room" />;
   }
 
   if (groupSearch) {
-    return <Navigate to="/grouppage" />;
+    return <Navigate to="/group-page" />;
   }
   if (user) {
     const mappedGroups = userGroups.map((group, index) => {

@@ -61,7 +61,7 @@ export default function JoinModal({
   }
 
   if (inGroup) {
-    return <Navigate to="/GroupRoom" />;
+    return <Navigate to="/group-room" />;
   }
 
   return (

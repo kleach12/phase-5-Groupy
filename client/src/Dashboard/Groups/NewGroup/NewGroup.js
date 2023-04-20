@@ -94,7 +94,7 @@ export default function NewGroup({ show, setShow }) {
   }
 
   if (inGroup) {
-    <Navigate to="/grouproom" />;
+    <Navigate to="/group-room" />;
   }
 
   return (

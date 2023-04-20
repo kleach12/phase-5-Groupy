@@ -35,7 +35,7 @@ export default function GroupNav() {
   }, [hovercolor]);
 
   if (inGroup === false) {
-    return <Navigate to="/Dashboard" />;
+    return <Navigate to="/dashboard" />;
   }
   return (
     <div id={"group_nav_" + theme}>

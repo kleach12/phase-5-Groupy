@@ -19,7 +19,7 @@ development:
   encoding: unicode
   database: phase-5-project-Groupy_development
   pool: 5
-  username: kleach12
+  username: 
   password:
   timeout: 5000
  
@@ -49,7 +49,7 @@ test:
   encoding: unicode
   database: phase-5-project-Groupy_test
   pool: 5
-  username: kleach12
+  username: 
   password:
   timeout: 5000
 

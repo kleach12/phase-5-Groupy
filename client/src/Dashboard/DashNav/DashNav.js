@@ -112,7 +112,7 @@ export default function DashNav() {
   }
 
   if (deleteUser === true) {
-    return <Navigate to="/deleteaccount" />;
+    return <Navigate to="/delete-account" />;
   }
   if (user.image) {
     return (

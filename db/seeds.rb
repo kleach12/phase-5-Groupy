@@ -13,7 +13,7 @@ puts 'seeding...'
 groups = []
 cities.each do |city|
   group = Group.create!(city: city, name: "Welcome to Irl #{city}")
-  group.group_pic.attach(io: File.open("app/assests/images/group_default.png"), filename: "group_default.png", content_type: 'image/png')
+  group.group_pic.attach(io: File.open("app/assets/images/group_default.png"), filename: "group_default.png", content_type: 'image/png')
   groups << group
 end
 
@@ -26,7 +26,7 @@ users = []
     password_confirmation: '123456',
     city: cities.sample
   )
-  user.image.attach(io: File.open("app/assests/images/user_default_2.jpg"), filename: "user_default_2.jpg" ,content_type: 'image/jpg')
+  user.image.attach(io: File.open("app/assets/images/user_default_2.jpg"), filename: "user_default_2.jpg" ,content_type: 'image/jpg')
   users << user
 end
 
@@ -39,7 +39,7 @@ end
 # create some messages
 users.each do |user|
   group = user.groups.sample
-  Message.create!(comment: " Hello, #{user.city}! This is the starter Group. You can talk with other users in this group or join/create new groups!", user: user, group: group)
+  Message.create!(comment: " Hello, #{user.city}! My name is #{user.username}", user: user, group: group)
 end
 
 

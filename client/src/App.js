@@ -77,10 +77,10 @@ function App() {
       }}
     >
       <Routes>
-        <Route path="/grouproom" element={<GroupRoom />} />
+        <Route path="/group-room" element={<GroupRoom />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/groupPage" element={<GroupPage />} />
-        <Route path="/deleteaccount" element={<DeleteAccount />} />
+        <Route path="/group-page" element={<GroupPage />} />
+        <Route path="/delete-account" element={<DeleteAccount />} />
         <Route path="*" element={<Navigate to="/" replace />} />
         <Route path="/" element={<SignInUp />} />
       </Routes>
