@@ -11,6 +11,7 @@ const HoverIcon = styled.a`
 `;
 
 export default function SocialIcons({ user }) {
+  console.log(user)
   const colors = ["#F06C9B", "#256EFF", "#FFE74C", "#33CA7F", "#EF6054"];
   const [hovercolor, setHoverColor] = useState("");
   const [randomColor, setRandomColor] = useState(

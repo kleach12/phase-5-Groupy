@@ -47,6 +47,15 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def viewing_user
+    user = User.find_by(username: user_params[:username])
+    if user
+      render json: user
+    else 
+      render json: {error: 'This user does not exsist'}
+    end
+  end
+
 
   private 
 

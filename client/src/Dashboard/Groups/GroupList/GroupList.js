@@ -19,7 +19,7 @@ export default function GroupList({ setInGroup, setViewingGroup, group }) {
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
-  const {theme} = useContext(AllContext);
+  const {theme, viewingUser} = useContext(AllContext);
 
   const numberOfMembers =
     group.num_of_mem <= 1
@@ -58,6 +58,29 @@ export default function GroupList({ setInGroup, setViewingGroup, group }) {
     setRandomColor(colors[Math.floor(Math.random() * colors.length)]);
   }, [hovercolor]);
 
+  if (viewingUser){
+    return (
+      <div className="group_card">
+        <HoverColor
+          className={"card_group_" + theme}
+          color={randomColor}
+          hovercolor={hovercolor}
+          onMouseEnter={handleHover}
+          onMouseLeave={handleLeave}
+          // onClick={(e) => handleViewGroup(e)}
+        >
+          <div className="left_card">
+            <h2 className="group_title">{group.name}</h2>
+            <h3 className="num_mem"> {numberOfMembers}</h3>
+          </div>
+          <div className="right_card">
+            {/* <LeaveGroup group = {group}/> */}
+          </div>
+        </HoverColor>
+        <div></div>
+      </div>
+    );
+  }
   return (
     <div className="group_card">
       <HoverColor

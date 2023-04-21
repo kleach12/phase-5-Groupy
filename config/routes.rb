@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get "/group_messages/:group_id", to: "messages#group_messages"
     delete "/delete_user", to: "users#destroy"
     delete "/delete_group_user/:group_id", to: "group_users#destroy"
+    get "/viewing_user/:username", to: "users#viewing_user"
     # get '*path', to: 'react_app#index'
     # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -8,6 +8,7 @@ import { BsFillTrashFill } from "react-icons/bs";
 import styled from "styled-components";
 import SocialIcons from "./SocialIcons/SocialIcons";
 import { AllContext } from "../../AllContext";
+import { FaSleigh } from "react-icons/fa";
 
 const HoverColorH3 = styled.h3`
   color: black;
@@ -15,6 +16,12 @@ const HoverColorH3 = styled.h3`
   &:hover {
     color: ${(props) => props.color} !important;
   }
+`;
+
+const HoverColorButton = styled.button`
+  color: black;
+  border-radius: 1vh;
+  background-color: ${(props) => props.color} !important;
 `;
 
 export default function DashNav() {
@@ -35,6 +42,9 @@ export default function DashNav() {
     deleteUser,
     setDeleteUser,
     setUserGroups,
+    viewingUser,
+    setViewingUser,
+    viewedUser,
   } = useContext(AllContext);
 
   function handleHover() {
@@ -79,6 +89,7 @@ export default function DashNav() {
     }
   }
 
+
   const themeButton =
     theme === "light" ? (
       <BsFillMoonFill
@@ -114,7 +125,53 @@ export default function DashNav() {
   if (deleteUser === true) {
     return <Navigate to="/delete-account" />;
   }
-  if (user.image) {
+
+  // if (viewingUser === false){
+  //   return <Navigate to='dashboard'/>
+  // }
+
+  if (viewingUser) {
+    return (
+      <div id={"dash_nav_" + theme}>
+        <h1 id={"title_" + theme}> IRL </h1>
+        <Avatar
+          className="profile_pic"
+          src={viewedUser.image}
+          name={user.full_name}
+        />
+        <div>
+          <HoverColorH3
+            id={"at_" + theme}
+            color={randomColor}
+            hovercolor={hovercolor}
+            onMouseEnter={handleHover}
+            onMouseLeave={handleLeave}
+          >
+            {" "}
+            @{viewedUser.username}
+          </HoverColorH3>
+        </div>
+
+        <div className="grow">
+          <h3 id={"bio_" + theme}> {user.bio} </h3>
+        </div>
+        <SocialIcons user={viewedUser} />
+
+        <HoverColorButton
+          className="exit_group"
+          onClick={() => setViewingUser(false)}
+          color={randomColor}
+          hovercolor={hovercolor}
+          onMouseEnter={handleHover}
+          onMouseLeave={handleLeave}
+        >
+          {" "}
+          Dashboard{" "}
+        </HoverColorButton>
+      </div>
+    );
+  } 
+  
     return (
       <div id={"dash_nav_" + theme}>
         <h1 id={"title_" + theme}> IRL </h1>
@@ -174,5 +231,4 @@ export default function DashNav() {
         />
       </div>
     );
-  }
 }
