@@ -1,8 +1,7 @@
 class Group < ApplicationRecord
   has_one_attached :group_pic
-  validates :name, :city, presence: true
+  validates :name, :city, :group_pic, presence: true
   validates :name, uniqueness: true
-  validates :city, length: {minimum:1}
 
 
   has_many :group_users, dependent: :destroy

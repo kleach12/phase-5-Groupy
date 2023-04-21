@@ -67,16 +67,15 @@ export default function NewGroup({ show, setShow }) {
       })
         .then((response) => response.json())
         .then((data) => {
-          if (data.error) {
-            console.log(data.error);
-            // setErrorMessage(data.errors[0]);
+          if (data.errors) {
+            console.log(data);
+            setErrorMessage(data.errors);
             setTimeout(() => {
               setErrorMessage(null);
             }, 5000);
-          } else if (data.error) {
-            console.log(data.error);
+          } else if (data) {
             console.log(data);
-            setErrorMessage("A Profile Picture is required");
+            setErrorMessage(data.error);
             setTimeout(() => {
               setErrorMessage(null);
             }, 5000);
@@ -128,7 +127,7 @@ export default function NewGroup({ show, setShow }) {
             type="type"
             placeholder="Group Name"
             value={user.city}
-            disabled = {true}
+            disabled={true}
           />
           <label id={"file_label_" + theme}> Group Picture </label>
           <input
@@ -151,7 +150,7 @@ export default function NewGroup({ show, setShow }) {
             onMouseLeave={handleLeave}
           />
           <h2 className="error_message">
-            {errorMessage ? errorMessage : null}
+            {errorMessage}
           </h2>
         </div>
       </Modal.Body>

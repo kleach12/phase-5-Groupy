@@ -5,7 +5,7 @@ import { useState, useContext } from "react";
 import { AllContext } from "../../../AllContext";
 import CityDropdown from "../../../CityDropdown/CityDropdown";
 export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState([]);
   const [bio, setBio] = useState(user.bio);
   const [facebook, setFaceBook] = useState(user.facebook);
   const [insta, setInsta] = useState(user.insta);
@@ -39,7 +39,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
         .then((data) => {
           if (data.errors) {
             console.log(data.errors);
-            setErrorMessage(data.errors[0]);
+            setErrorMessage(data.errors);
             setTimeout(() => {
               setErrorMessage(null);
             }, 5000);
@@ -133,6 +133,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
             className={"edit_input_text_" + theme}
           />
           <div className="modal_bottom">
+            <h2 className="error_message">{errorMessage}</h2>
             <button
               className={"edit_button_" + theme}
               type="button"

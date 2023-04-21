@@ -17,12 +17,12 @@ class Api::GroupsController < ApplicationController
   def create 
     group = Group.create(group_params)
     user  = user_in_session
-    if group
+    if group.valid?
       group.admin_id = user.id
       GroupUser.create(group_id:group.id, user_id: user.id)
       render json: group
     else 
-      render json: {errors: group.errors.full_messages}
+      render json: {errors: group.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
