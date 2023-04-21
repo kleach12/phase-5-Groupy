@@ -153,7 +153,7 @@ export default function DashNav() {
         </div>
 
         <div className="grow">
-          <h3 id={"bio_" + theme}> {user.bio} </h3>
+          <h3 id={"bio_" + theme}> {viewedUser.bio} </h3>
         </div>
         <SocialIcons user={viewedUser} />
 
@@ -171,7 +171,7 @@ export default function DashNav() {
       </div>
     );
   } 
-  
+
     return (
       <div id={"dash_nav_" + theme}>
         <h1 id={"title_" + theme}> IRL </h1>
