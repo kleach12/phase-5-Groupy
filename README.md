@@ -14,6 +14,7 @@ Install
 - Step 2: cd into the client and run npm install for all dependencies 
 - Step 3: cd .. out of client folder
 - Step 4: If you would like you can run rails db:seeds to get you started with groups, users and messages or you can skip and create all of your own.
+  - Important make sure that you first delete :group_pic from presence validation after seeding add it back 
 - Step 5: cd .. out of client folder and enter sudo service postgresql start in your terminal to start your postgres server
 - Step 6: Then run foreman start -f Procfile.dev
 - Step 5: Now the app should be up and running and you can test it out
