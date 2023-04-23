@@ -49,7 +49,6 @@ export default function JoinModal({
             //   setErrorMessage(null);
             // }, 5000);
           } else {
-            console.log(data);
             setUserGroups([...userGroups, data])
             setInGroup(true);
             setGroupSearch(false);

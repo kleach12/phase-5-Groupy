@@ -31,7 +31,7 @@ export default function GroupChatList({ username, image }) {
           if (data.error) {
             console.log(data.error);
           } else {
-            console.log(data);
+            // console.log(data);
             setInGroup(false);
             setViewingUser(true);
             setViewedUser(data);

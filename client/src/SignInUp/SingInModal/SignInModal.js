@@ -79,7 +79,7 @@ export default function SignInModal({show, setShow}) {
         .then((response) => response.json())
         .then((data) => {
           if (data.errors) {
-            console.log(data.errors);
+            // console.log(data.errors);
             setErrorMessage(data.errors[0]);
             setTimeout(() => {
               setErrorMessage(null);

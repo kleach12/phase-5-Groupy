@@ -14,7 +14,6 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
   const [userCity, setUserCity] = useState(user.city);
   // const [charCount, setCharCount] = useState(0)
   const { theme } = useContext(AllContext);
-  console.log(userCity)
   function handleEdit(e) {
     e.preventDefault();
 
@@ -38,7 +37,7 @@ export default function EditModal({ showEdit, setShowEdit, user, setUser }) {
         .then((response) => response.json())
         .then((data) => {
           if (data.errors) {
-            console.log(data.errors);
+            // console.log(data.errors);
             setErrorMessage(data.errors);
             setTimeout(() => {
               setErrorMessage(null);

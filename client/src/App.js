@@ -37,9 +37,9 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
-          console.log(data.error);
+          // console.log(data.error);
         } else {
-          console.log(data);
+          // console.log(data);
           setUser(data);
           setSignedIn(true);
           setTheme(data.theme);
@@ -59,7 +59,6 @@ function App() {
   //     });
   //   };
   // }, [location.pathname, navigate]);
-  console.log(location);
   return (
     <AllContext.Provider
       value={{

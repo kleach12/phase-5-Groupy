@@ -24,6 +24,12 @@ users = []
     username: Faker::Lorem.unique.word,
     password: '123456',
     password_confirmation: '123456',
+    bio: '',
+    facebook: '',
+    insta: '',
+    twitter: '',
+    tiktok: '',
+    theme: 'light',
     city: cities.sample
   )
   user.image.attach(io: File.open("app/assets/images/user_default_2.jpg"), filename: "user_default_2.jpg" ,content_type: 'image/jpg')
