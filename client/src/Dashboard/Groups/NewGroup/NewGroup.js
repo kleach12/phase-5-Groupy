@@ -29,7 +29,6 @@ export default function NewGroup({ show, setShow }) {
     setUserGroups,
     inGroup,
     setInGroup,
-    viewingGroup,
     setViewingGroup,
     user,
   } = useContext(AllContext);
@@ -73,7 +72,7 @@ export default function NewGroup({ show, setShow }) {
             setTimeout(() => {
               setErrorMessage(null);
             }, 5000);
-          } else if (data) {
+          } else if (data.error) {
             console.log(data);
             setErrorMessage(data.error);
             setTimeout(() => {
@@ -83,9 +82,9 @@ export default function NewGroup({ show, setShow }) {
             setUserGroups([...userGroups, data]);
             setViewingGroup(data);
             setInGroup(true);
-            setShow(false);
-            console.log(data);
+            console.log(inGroup)
             setGroupName("");
+            setViewingGroup(data);
           }
         })
         .catch((error) => console.error(error));
@@ -93,7 +92,7 @@ export default function NewGroup({ show, setShow }) {
   }
 
   if (inGroup) {
-    <Navigate to="/group-room" />;
+    return <Navigate to="/group-room" />;
   }
 
   return (

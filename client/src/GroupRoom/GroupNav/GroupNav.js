@@ -33,7 +33,7 @@ export default function GroupNav() {
   useEffect(() => {
     setRandomColor(colors[Math.floor(Math.random() * colors.length)]);
   }, [hovercolor]);
-
+  console.log(inGroup)
   if (inGroup === false) {
     return <Navigate to="/dashboard" />;
   }

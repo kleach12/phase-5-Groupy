@@ -58,7 +58,7 @@ export default function JoinModal({
         .catch((error) => console.error(error));
     }
   }
-
+console.log(inGroup)
   if (inGroup) {
     return <Navigate to="/group-room" />;
   }

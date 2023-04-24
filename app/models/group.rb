@@ -1,6 +1,6 @@
 class Group < ApplicationRecord
   has_one_attached :group_pic
-  validates :name, :city, :group_pic, presence: true
+  validates :name, :city, presence: true
   validates :name, uniqueness: true
 
 
