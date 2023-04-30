@@ -10,13 +10,18 @@ export default function GroupChat() {
   const [message, setMessage] = useState("");
   const [groupMessages, setGroupMessages] = useState([]);
   const [rerender, setRerender] = useState(false);
-  const {theme} = useContext(AllContext);
-  const {viewingGroup} = useContext(AllContext)
-
+  const { theme } = useContext(AllContext);
+  const { viewingGroup } = useContext(AllContext);
+  const bottomRef = useRef(null);
   const handleChange = (evt) => {
     // console.log(evt.target.value)
     setMessage(evt.target.value);
   };
+
+  useEffect(() => {
+    // 👇️ scroll to bottom every time messages change
+    bottomRef.current?.scrollIntoView({behavior: 'smooth'});
+  }, [groupMessages]);
 
   useEffect(() => {
     fetch(`/api/group_messages/${viewingGroup.id}`)
@@ -70,7 +75,13 @@ export default function GroupChat() {
   }
 
   const mappedMessages = groupMessages.map((message) => {
-    return <GroupChatMessage key = {message.id} message={message} className="overflow" />;
+    return (
+      <GroupChatMessage
+        key={message.id}
+        message={message}
+        className="overflow"
+      />
+    );
   });
 
   return (
@@ -78,7 +89,10 @@ export default function GroupChat() {
       <div id="group_top">
         <h2 id={"group_title_" + theme}> {viewingGroup.name} </h2>
       </div>
-      <div className="overflow">{mappedMessages}</div>
+      <div className="overflow">{mappedMessages}
+      <div ref={bottomRef} > </div>
+      </div>
+      {/* <div ref={bottomRef} > </div> */}
       <div className="fixed_pos">
         <form
           id={"bottom_chat_" + theme}
@@ -92,7 +106,6 @@ export default function GroupChat() {
             // onBlur={handleBlur}
             onChange={handleChange}
           />
-
           <button id={"submit_message_" + theme}>
             {" "}
             <BsFillArrowRightSquareFill
