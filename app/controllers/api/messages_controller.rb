@@ -5,6 +5,7 @@ class Api::MessagesController < ApplicationController
   if user
     message = Message.create(message_params)
     if message.valid?
+      ActionCable.server.broadcast("#{message.group.name}", MessageSerializer.new(message))
       render json: message
     else 
       render json: {errors: message.errors.full_messages}
@@ -16,6 +17,8 @@ class Api::MessagesController < ApplicationController
 
   def group_messages
     message  = Message.where(group_id: message_params[:group_id])
+    # ActionCable.server.broadcast("#{message.group.name}", message)
+
     render json: message
   end
 

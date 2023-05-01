@@ -5,14 +5,16 @@ import { BsFillArrowRightSquareFill } from "react-icons/bs";
 import GroupChatMessage from "./GroupChatMessage/GroupChatMessage";
 import "./GroupChat.css";
 import { AllContext } from "../../AllContext";
-export default function GroupChat() {
+
+
+export default function GroupChat({groupMessages, setGroupMessages}) {
   const formRef = useRef();
   const [message, setMessage] = useState("");
-  const [groupMessages, setGroupMessages] = useState([]);
-  const [rerender, setRerender] = useState(false);
-  const { theme } = useContext(AllContext);
+  // const [groupMessages, setGroupMessages] = useState([]);
+  const { theme, } = useContext(AllContext);
   const { viewingGroup } = useContext(AllContext);
   const bottomRef = useRef(null);
+
   const handleChange = (evt) => {
     // console.log(evt.target.value)
     setMessage(evt.target.value);
@@ -22,19 +24,6 @@ export default function GroupChat() {
     // 👇️ scroll to bottom every time messages change
     bottomRef.current?.scrollIntoView({behavior: 'smooth'});
   }, [groupMessages]);
-
-  useEffect(() => {
-    fetch(`/api/group_messages/${viewingGroup.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) {
-          console.log(data.error);
-        } else {
-          setGroupMessages(data);
-          // setRerender(!rerender)
-        }
-      });
-  }, [rerender]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -66,8 +55,9 @@ export default function GroupChat() {
             //   setErrorMessage(null);
             // }, 5000);
           } else {
+            // console.log(data)
             setMessage("");
-            setRerender(!rerender);
+           
           }
         })
         .catch((error) => console.error(error));

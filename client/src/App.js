@@ -14,6 +14,7 @@ import GroupPage from "./GroupPage/GroupPage";
 import DeleteAccount from "./DeleteAccount/DeleteAccount";
 import { AllContext } from "./AllContext";
 import ViewingUserDash from "./ViewingUserDash/ViewingUserDash";
+// import Cable from 'actioncable'
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -27,10 +28,33 @@ function App() {
   const [userGroups, setUserGroups] = useState([]);
   const [viewingUser, setViewingUser] = useState(false);
   const [viewedUser, setViewedUser] = useState([]);
+  // const [groupMessages, setGroupMessages] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
 
   // nav(0)
+//   useEffect(() => {
+//     function createSocket() {
+//       const consumer = Cable.createConsumer(`ws://${window.location.hostname}:3000/cable`)
+//       console.log(consumer)
+//       const subscription = consumer.subscriptions.create(
+//         { 
+//           channel: 'MessageChannel',
+//           room: viewingGroup.name
+//         }, 
+//         {
+//           received(data){
+//             setGroupMessages([...groupMessages, data])
+//             console.log(groupMessages)
+//             console.log(data)
+//           }
+//         }
+//       )
+//     }
+//     if (viewingGroup.name) {
+//       createSocket()
+//     }
+// },[viewingGroup.name, viewingGroup.id])
 
   useEffect(() => {
     fetch("/api/me")
@@ -85,6 +109,8 @@ function App() {
         setViewingUser,
         viewedUser,
         setViewedUser,
+        // groupMessages,
+        // setGroupMessages
       }}
     >
       <Routes>

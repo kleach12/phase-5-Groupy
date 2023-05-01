@@ -24,6 +24,7 @@ Notes on installation
   - run lsof -wni tcp:3000 to find the current PID
   - then run  kill -9 PID
   - run foreman start -f Procfile.dev and you should be good to go!
+  - sudo service postgresql start
  
 <h2>Visuals</h2>
 <img src = "https://media3.giphy.com/media/UJqH7QvokoFXnuCIpQ/giphy.gif" style=/>

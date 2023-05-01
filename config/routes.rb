@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+  mount ActionCable.server => '/cable'
+
   namespace :api do 
+
+
     resources :user_chats
     resources :messages
     resources :group_users,:only => [:index, :create]
