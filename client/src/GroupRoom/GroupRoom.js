@@ -15,7 +15,7 @@ export default function GroupRoom() {
   useEffect(() => {
     let consumer = null;
     function createSocket() {
-      consumer = Cable.createConsumer(`ws://${window.location.hostname}:3000/cable`)
+      consumer = Cable.createConsumer(`wss://${window.location.hostname}:3000/cable`)
       consumer.subscriptions.create(
         { 
           channel: 'MessageChannel',
