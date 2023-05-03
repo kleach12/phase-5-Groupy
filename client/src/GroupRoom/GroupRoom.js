@@ -18,7 +18,7 @@ export default function GroupRoom() {
       // consumer = Cable.createConsumer(`wss://${window.location.hostname}:3000/cable`)
       // Development
       const cableUrl =
-        process.env.REACT_APP_ACTION_CABLE_URL || "ws://localhost:3000/cable";
+     ` wss://${window.location.hostname}:3000/cable"`|| "ws://localhost:3000/cable";
       consumer = Cable.createConsumer(cableUrl);
       consumer.subscriptions.create(
         {
