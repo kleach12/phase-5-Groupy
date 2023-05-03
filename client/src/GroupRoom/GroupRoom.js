@@ -35,11 +35,11 @@ export default function GroupRoom() {
       createSocket()
     }
 
-    return () => {
-      if (consumer) {
-        consumer.disconnect();
-      }
-    }
+    // return () => {
+    //   if (consumer) {
+    //     consumer.disconnect();
+    //   }
+    // }
 },[viewingGroup.name, viewingGroup.id])
 
 useEffect(() => {
