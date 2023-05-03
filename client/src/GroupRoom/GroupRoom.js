@@ -16,8 +16,8 @@ export default function GroupRoom() {
     let consumer = null;
     function createSocket() {
       // production
-      consumer = Cable.createConsumer(`wss://${window.location.hostname}:3000/cable`)
-      // setconsumer(Cable.createConsumer(`ws://${window.location.hostname}:3000/cable`))
+      // consumer = Cable.createConsumer(`wss://${window.location.hostname}:3000/cable`)
+      consumer = Cable.createConsumer(`ws://${window.location.hostname}:3000/cable`)
       consumer.subscriptions.create(
         { 
           channel: 'MessageChannel',
