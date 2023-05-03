@@ -9,7 +9,7 @@ import {
 import Dashboard from "./Dashboard/Dashboard";
 import GroupRoom from "./GroupRoom/GroupRoom";
 import SignInUp from "./SignInUp/SignInUp";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import GroupPage from "./GroupPage/GroupPage";
 import DeleteAccount from "./DeleteAccount/DeleteAccount";
 import { AllContext } from "./AllContext";
@@ -28,33 +28,27 @@ function App() {
   const [userGroups, setUserGroups] = useState([]);
   const [viewingUser, setViewingUser] = useState(false);
   const [viewedUser, setViewedUser] = useState([]);
-  // const [groupMessages, setGroupMessages] = useState([]);
+  const [windowSize, setWindowSize] = useState([
+    window.innerWidth,
+    window.innerHeight,
+  ]);
+
   const navigate = useNavigate();
   const location = useLocation();
+  
 
-  // nav(0)
-//   useEffect(() => {
-//     function createSocket() {
-//       const consumer = Cable.createConsumer(`ws://${window.location.hostname}:3000/cable`)
-//       console.log(consumer)
-//       const subscription = consumer.subscriptions.create(
-//         { 
-//           channel: 'MessageChannel',
-//           room: viewingGroup.name
-//         }, 
-//         {
-//           received(data){
-//             setGroupMessages([...groupMessages, data])
-//             console.log(groupMessages)
-//             console.log(data)
-//           }
-//         }
-//       )
-//     }
-//     if (viewingGroup.name) {
-//       createSocket()
-//     }
-// },[viewingGroup.name, viewingGroup.id])
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize([window.innerWidth, window.innerHeight]);
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
+
 
   useEffect(() => {
     fetch("/api/me")
@@ -109,8 +103,7 @@ function App() {
         setViewingUser,
         viewedUser,
         setViewedUser,
-        // groupMessages,
-        // setGroupMessages
+        windowSize
       }}
     >
       <Routes>

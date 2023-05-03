@@ -42,7 +42,7 @@
   font-weight: 500;
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 580px) {
   #sign_up_modal{
     width: 300px;
     justify-content: center;
@@ -52,5 +52,35 @@
   #first_last{
     flex-direction:column;
   }
+
+  .sign_up_text{
+    flex-grow: 1;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 1%;
+    padding: 1%;
+    border: .5px solid #000000;
+    border-radius: 1vh;
+  }
+
+  .modal-content {
+    width: 600px !important;
+    /* display: flex !important;
+    align-items: center !important;
+    justify-content: center !important; */
+    /* width: 500px !important */
+    /* --bs-modal-margin: 1.75rem !important;
+    --bs-modal-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; */
+}
+
+
+  .modal {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    /* width: 500px !important */
+    /* --bs-modal-margin: 1.75rem !important;
+    --bs-modal-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important; */
+}
 
 }
