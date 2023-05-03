@@ -38,7 +38,8 @@ Kale Leach
 
 
 <h2>Project status</h2>
-This project has been completed but is still being maintained by myself as I am constantly updating it with new things I learn.
+This project has been completed for the completion of the Flatiron bootcamp.
+5/3//2023 - Currently still working on the project and chat feature is down as I am attempting to implement real time chat.
 
 <h2>Colors</h2>
 
