@@ -11,4 +11,4 @@ test:
 production:
   adapter: redis
   url: redis://red-ch8skumkobicv5pj8k5g:6379
-  # channel_prefix: api_production
+  channel_prefix: api_production
