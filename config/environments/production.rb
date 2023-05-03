@@ -68,5 +68,7 @@ Rails.application.configure do
     # Store uploaded files on the local file system (see config/storage.yml for options).
     config.active_storage.service = :render
     
-    config.action_cable.allowed_request_origins = ["https://irl.onrender.com"]
+    # config.action_cable.allowed_request_origins = ["https://irl.onrender.com"]
+
+    config.action_cable.disable_request_forgery_protection = true
 end
