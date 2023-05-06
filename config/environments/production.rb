@@ -73,4 +73,6 @@ Rails.application.configure do
     # config.action_cable.allowed_request_origins = ["https://irl.onrender.com"]
 
     config.action_cable.disable_request_forgery_protection = true
+
+    config.force_ssl = false,
 end
