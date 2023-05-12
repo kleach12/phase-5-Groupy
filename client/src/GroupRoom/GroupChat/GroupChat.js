@@ -56,6 +56,7 @@ export default function GroupChat({groupMessages, setGroupMessages}) {
             // }, 5000);
           } else {
             // console.log(data)
+            setGroupMessages([...groupMessages,data])
             setMessage("");
            
           }

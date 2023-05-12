@@ -11,41 +11,35 @@ export default function GroupRoom() {
   const [groupMessages, setGroupMessages] = useState([]);
   // const [consumer, setconsumer] - useState(null)
   const {viewingGroup} = useContext(AllContext)
-
-  useEffect(() => {
-    let consumer = null;
-    function createSocket() {
-      // production
-      consumer = Cable.createConsumer(`wss://${window.location.hostname}:3000/cable`)
-      // Development
+  let wsConsumer = null;
+//   useEffect(() => {
+//     function createSocket() {
+//       // production
+//       // consumer = Cable.createConsumer(`wss://${window.location.hostname}:3000/cable`)
+//       // Development
       
-      // consumer = Cable.createConsumer(`ws://${window.location.hostname}:3000/cable`)
-      consumer.subscriptions.create(
-        { 
-          channel: 'MessageChannel',
-          room: viewingGroup.name
-        }, 
-        {
-          received(data){
-            setGroupMessages(prevMessages => [...prevMessages, data])
-            // setGroupMessages( [...groupMessages, data])
-            // console.log(groupMessages)
-            // console.log(data)
-          }
-        }
-      )
-    }
-    if (viewingGroup.name) {
-      createSocket()
-    }
+//       let consumer = Cable.createConsumer(`ws://${window.location.hostname}:3000/cable`)
+//       wsConsumer = consumer.subscriptions.create(
+//         { 
+//           channel: 'MessageChannel',
+//           room: viewingGroup.name
+//         }, 
+//         {
+//           received(data){
+//             setGroupMessages(prevMessages => [...prevMessages, data])
+//             // setGroupMessages( [...groupMessages, data])
+//             // console.log(groupMessages)
+//             // console.log(data)
+//           }
+//         }
+//       )
+//     }
+//     if (viewingGroup.name) {
+//       createSocket()
+//     }
 
-    return () => {
-      if (consumer) {
-        consumer.disconnect();
-      }
-    }
-},[viewingGroup.name, viewingGroup.id])
-
+// },[viewingGroup.name, viewingGroup.id])
+// console.log(wsConsumer)
 useEffect(() => {
   fetch(`/api/group_messages/${viewingGroup.id}`)
     .then((res) => res.json())
@@ -61,7 +55,8 @@ useEffect(() => {
 
   return (
     <div id="group_room">
-      <GroupNav />
+      {/* <GroupNav wsConsumer = {wsConsumer}/> */}
+      <GroupNav/>
       <GroupChat groupMessages = {groupMessages} setGroupMessages={setGroupMessages} />
       <GroupUsers />
       {/* left side a group pictue and infomation similar to user profile */}

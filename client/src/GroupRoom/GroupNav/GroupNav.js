@@ -11,14 +11,19 @@ const HoverColorButton = styled.button`
   background-color: ${(props) => props.color} !important;
 `;
 
-export default function GroupNav() {
+export default function GroupNav({wsConsumer}) {
   const colors = ["#F06C9B", "#256EFF", "#FFE74C", "#33CA7F", "#EF6054"];
   const [hovercolor, setHoverColor] = useState("");
   const [randomColor, setRandomColor] = useState(
     colors[Math.floor(Math.random() * colors.length)]
   );
   const {theme,inGroup,setInGroup,viewingGroup} = useContext(AllContext);
-
+  
+  function leaveGroup(){
+    // consumer.onclose();
+    setInGroup(false)
+    // console.log(wsConsumer)
+  }
   function handleHover() {
     let newColor = randomColor;
     while (newColor === randomColor) {
@@ -48,7 +53,7 @@ export default function GroupNav() {
       <SocialIcons user={viewingGroup} />
       <HoverColorButton
         className="exit_group"
-        onClick={() => setInGroup(false)}
+        onClick={() => leaveGroup()}
         color={randomColor}
         hovercolor={hovercolor}
         onMouseEnter={handleHover}
